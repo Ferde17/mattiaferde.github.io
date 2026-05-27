@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mattia Ferdeghini</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0E0E0E;--bg2:#181818;--bg3:#252525;--txt:#EBEBEB;--dim:#888;--mut:#333;--bdr:rgba(235,235,235,.08);--acc:#60A5FA;--ar:96,165,250;--afc:#000;--sb:68px}
+[data-theme=light]{--bg:#F4F2EC;--bg2:#EAE8E1;--bg3:#DEDAD1;--txt:#141414;--dim:#888;--mut:#C8C6BE;--bdr:rgba(20,20,20,.1);--acc:#2563EB;--ar:37,99,235;--afc:#fff}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,'Helvetica Neue',sans-serif;cursor:none;overflow-x:hidden;transition:background .35s,color .35s}
+a{color:inherit;text-decoration:none}button{cursor:none;background:none;border:none;color:inherit;font:inherit}
+#cur,#fol{position:fixed;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+#cur{width:8px;height:8px;background:var(--acc);transition:transform .12s,background .3s}
+#fol{width:30px;height:30px;border:1.5px solid rgba(var(--ar),.35);z-index:9998;transition:width .25s,height .25s,border-color .3s}
+body.hov #cur{transform:translate(-50%,-50%) scale(2.2)}
+body.hov #fol{width:38px;height:38px;border-color:rgba(var(--ar),.7)}
+
+/* ══ SIDEBAR ══ */
+#sb{position:fixed;left:0;top:0;bottom:0;width:var(--sb);border-right:1px solid var(--bdr);background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:16px 0 18px;z-index:500;transition:background .35s,border-color .35s}
+.sb-logo{font-size:.68rem;font-weight:900;letter-spacing:.18em;padding:6px;margin-bottom:20px}
+.sb-ico{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--dim);transition:background .2s,color .2s;margin:2px 0}
+.sb-ico:hover,.sb-ico.on{background:var(--bg2);color:var(--acc)}
+.sb-ico svg{width:17px;height:17px}
+.sb-sp{flex:1}
+.sb-sep{width:30px;height:1px;background:var(--bdr);margin:8px 0}
+.sb-lang{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 7px;border-radius:6px;border:1px solid var(--bdr);color:var(--dim);background:var(--bg2);transition:all .2s;margin-top:4px}
+.sb-lang:hover{border-color:rgba(var(--ar),.4);color:var(--acc)}
+
+/* ══ 00Kubi THEME SWITCH ══ */
+.theme-switch{display:inline-block;cursor:pointer;--ts:9px}
+.theme-switch__container{
+  font-size:var(--ts);
+  position:relative;width:6.25em;height:3.125em;
+  border-radius:99em;
+  background:linear-gradient(to bottom,#1c1c3e,#2d2b55);
+  overflow:hidden;cursor:pointer;
+  transition:background .45s;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 .08em .08em rgba(0,0,0,.25);
+}
+[data-theme=light] .theme-switch__container{
+  background:linear-gradient(to bottom,#60b8fa,#a8d8ff);
+  border-color:rgba(0,0,.1,.12);
+}
+.theme-switch__clouds{position:absolute;bottom:0;left:0;right:0;height:.9em;opacity:0;transition:opacity .4s;pointer-events:none}
+[data-theme=light] .theme-switch__clouds{opacity:1}
+.theme-switch__clouds::before{content:'';position:absolute;bottom:0;left:-.15em;right:-.15em;height:.42em;background:rgba(255,255,255,.86);border-radius:.25em .25em 0 0}
+.theme-switch__clouds::after{content:'';position:absolute;bottom:.28em;left:.2em;width:1em;height:.6em;background:rgba(255,255,255,.94);border-radius:.5em .5em .3em .3em;box-shadow:1.1em -.1em 0 .07em rgba(255,255,255,.92),2.25em .02em 0 .09em rgba(255,255,255,.88),3.45em -.06em 0 .06em rgba(255,255,255,.84),4.55em .04em 0 .04em rgba(255,255,255,.78)}
+.theme-switch__stars-container{
+  position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:flex-end;padding-right:.35em;
+  color:rgba(255,255,255,.85);opacity:1;transition:opacity .4s;
+}
+.theme-switch__stars-container svg{width:2.8em;height:auto}
+[data-theme=light] .theme-switch__stars-container{opacity:0}
+.theme-switch__circle-container{
+  position:absolute;top:.25em;left:.25em;
+  width:2.625em;height:2.625em;
+  transition:transform .45s cubic-bezier(.68,-.6,.32,1.6);z-index:5;
+}
+[data-theme=light] .theme-switch__circle-container{transform:translateX(3.125em)}
+.theme-switch__sun-moon-container{
+  width:100%;height:100%;border-radius:50%;
+  background:#fdb813;overflow:hidden;position:relative;
+  box-shadow:0 0 .5em rgba(253,184,19,.6);transition:background .4s,box-shadow .4s;
+}
+[data-theme=dark] .theme-switch__sun-moon-container{background:#f0efc8;box-shadow:0 0 .3em rgba(240,239,200,.3)}
+.theme-switch__moon{
+  position:absolute;top:-.25em;right:-.25em;
+  width:1.4em;height:1.4em;border-radius:50%;
+  background:#1c1c3a;transition:transform .45s;
+}
+[data-theme=light] .theme-switch__moon{transform:translate(150%,-150%)}
+.theme-switch__spot{position:absolute;border-radius:50%;background:rgba(255,255,255,.22)}
+.theme-switch__spot:nth-child(1){width:.28em;height:.28em;top:.58em;left:.28em}
+.theme-switch__spot:nth-child(2){width:.2em;height:.2em;top:.98em;left:.68em}
+.theme-switch__spot:nth-child(3){width:.18em;height:.18em;top:.35em;left:.75em}
+.theme-switch__shooting-star,.theme-switch__shooting-star-2{
+  position:absolute;height:.04em;border-radius:99em;
+  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.9));
+  opacity:0;transition:opacity .3s;
+}
+.theme-switch__shooting-star{width:.7em;top:18%;left:8%}
+.theme-switch__shooting-star-2{width:.5em;top:58%;left:25%}
+[data-theme=dark] .theme-switch__shooting-star{opacity:1;animation:ss1 3.2s linear infinite}
+[data-theme=dark] .theme-switch__shooting-star-2{opacity:1;animation:ss2 4.5s linear infinite 1.8s}
+@keyframes ss1{0%{transform:translateX(0) rotate(-20deg);opacity:0}10%{opacity:1}100%{transform:translateX(4em) rotate(-20deg);opacity:0}}
+@keyframes ss2{0%{transform:translateX(0) rotate(-25deg);opacity:0}10%{opacity:1}100%{transform:translateX(3em) rotate(-25deg);opacity:0}}
+.theme-switch__meteor{
+  position:absolute;width:.22em;height:.22em;border-radius:50%;
+  background:rgba(255,255,255,.7);box-shadow:0 0 .15em rgba(255,255,255,.5);
+  opacity:0;top:28%;left:18%;
+}
+[data-theme=dark] .theme-switch__meteor{opacity:1;animation:mtr 5.5s linear infinite 2.2s}
+@keyframes mtr{0%{transform:translate(0,0) scale(1);opacity:.7}100%{transform:translate(2em,1em) scale(.1);opacity:0}}
+.theme-switch__stars-cluster{position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none}
+[data-theme=dark] .theme-switch__stars-cluster{opacity:1}
+.theme-switch__stars-cluster .star{
+  position:absolute;width:.1em;height:.1em;border-radius:50%;
+  background:#fff;animation:twk 2.2s ease-in-out infinite;
+}
+.star:nth-child(1){top:15%;left:22%;animation-delay:0s}
+.star:nth-child(2){top:62%;left:14%;animation-delay:.45s}
+.star:nth-child(3){top:22%;left:52%;animation-delay:.9s}
+.star:nth-child(4){top:68%;left:58%;animation-delay:1.35s}
+.star:nth-child(5){top:38%;left:78%;animation-delay:1.8s}
+@keyframes twk{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.6)}}
+.theme-switch__aurora{
+  position:absolute;bottom:0;left:0;right:0;height:45%;
+  background:linear-gradient(to top,rgba(64,224,208,.25),transparent);
+  filter:blur(.2em);opacity:0;transition:opacity .3s;
+}
+[data-theme=dark] .theme-switch__aurora{opacity:1}
+.theme-switch__comets{position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none}
+[data-theme=dark] .theme-switch__comets{opacity:1}
+.comet{position:absolute;height:.025em;border-radius:99em;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.75))}
+.comet:nth-child(1){width:.7em;top:22%;left:3%;animation:cmt1 7s linear infinite}
+.comet:nth-child(2){width:.5em;top:65%;left:18%;animation:cmt2 9s linear infinite 3.5s}
+@keyframes cmt1{0%{transform:translateX(0) rotate(-12deg);opacity:0}15%{opacity:1}100%{transform:translateX(5em) rotate(-12deg);opacity:0}}
+@keyframes cmt2{0%{transform:translateX(0) rotate(-8deg);opacity:0}15%{opacity:1}100%{transform:translateX(4em) rotate(-8deg);opacity:0}}
+
+/* ══ MOBILE NAV ══ */
+#mob{display:none;position:fixed;top:0;left:0;right:0;height:50px;background:var(--bg);border-bottom:1px solid var(--bdr);z-index:500;align-items:center;justify-content:space-between;padding:0 18px;transition:background .35s}
+.mob-logo{font-size:.7rem;font-weight:900;letter-spacing:.18em}
+.mob-r{display:flex;align-items:center;gap:3px}
+.mob-ico{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--dim);transition:background .2s,color .2s}
+.mob-ico:hover,.mob-ico.on{background:var(--bg2);color:var(--acc)}
+.mob-ico svg{width:16px;height:16px}
+.mob-th{width:30px;height:30px;border-radius:8px;border:1px solid var(--bdr);background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--dim);transition:all .2s;margin-left:2px}
+.mob-th:hover{border-color:rgba(var(--ar),.4);color:var(--acc)}
+.mob-lang{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 7px;border-radius:5px;border:1px solid var(--bdr);color:var(--dim);margin-left:3px;line-height:1.3;background:var(--bg2)}
+
+/* ══ LAYOUT ══ */
+.main{margin-left:var(--sb)}
+.inner{max-width:660px;margin:0 auto;padding:0 40px}
+.page{display:none;padding:52px 0 60px}
+.page.on{display:block}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+#btt{position:fixed;bottom:20px;right:20px;z-index:400;width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--dim);opacity:0;pointer-events:none;transition:opacity .3s,border-color .3s,transform .3s,color .3s}
+#btt.on{opacity:1;pointer-events:auto}
+#btt:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-3px)}
+
+/* ══ HOME ══ */
+.avatar{width:110px;height:110px;border-radius:50%;background:var(--bg2);border:2px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:20px;overflow:hidden}
+#nameWrap{position:relative;margin-bottom:12px}
+#nameSizer{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:900;letter-spacing:-.04em;line-height:1.06;color:transparent;user-select:none;pointer-events:none}
+.info-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin:14px 0 18px;flex-wrap:wrap}
+.info-l{font-size:.83rem;color:var(--dim);line-height:1.65}
+.info-r{text-align:right;font-size:.76rem;color:var(--dim);line-height:1.7}
+.clock{display:block;font-weight:700;color:var(--txt);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.bio{font-size:.93rem;line-height:1.82;color:var(--dim);margin-bottom:24px}
+.h-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:52px}
+
+/* ══ BOTAO (Tsiangana) ══ */
+.botao{display:inline-flex;align-items:center;gap:9px;padding:11px 22px;border-radius:11px;background:var(--acc);color:var(--afc);font-size:.78rem;font-weight:700;letter-spacing:.04em;transition:transform .2s,box-shadow .2s;overflow:hidden;position:relative}
+.botao:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(var(--ar),.32)}
+.botao:active{transform:translateY(0)}
+.mysvg{flex-shrink:0;transition:transform .3s}
+.botao:hover .mysvg{animation:dlB .5s ease}
+@keyframes dlB{0%{transform:translateY(0)}35%{transform:translateY(-5px)}75%{transform:translateY(6px)}100%{transform:translateY(0)}}
+
+/* ══ COPY EMAIL (Galahhad) ══ */
+.copy{position:relative;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;border:1px solid var(--bdr);background:var(--bg2);font-size:.78rem;font-weight:600;color:var(--dim);transition:border-color .2s,color .2s}
+.copy:hover{border-color:rgba(var(--ar),.3);color:var(--txt)}
+.copy .tooltip{position:absolute;top:-38px;left:50%;transform:translateX(-50%) translateY(4px);background:var(--bg3);border:1px solid var(--bdr);color:var(--txt);padding:4px 9px;border-radius:6px;font-size:.6rem;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s,transform .2s}
+.copy .tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--bg3)}
+.copy:hover .tooltip,.copy.copied .tooltip{opacity:1;transform:translateX(-50%) translateY(0)}
+.copy .tooltip::before{content:attr(data-text-initial)}
+.copy.copied .tooltip::before{content:attr(data-text-end);color:var(--acc)}
+.copy>span{display:flex;align-items:center;gap:7px}
+.copy .checkmark{display:none}
+.copy.copied .clipboard{display:none}
+.copy.copied .checkmark{display:block;color:var(--acc)}
+
+/* ══ SECTION HEADER ══ */
+.sec-hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;margin-top:52px}
+.slbl{font-size:.57rem;letter-spacing:.3em;text-transform:uppercase;color:var(--acc)}
+.smore{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);transition:color .2s}
+.smore:hover{color:var(--acc)}
+
+/* ══ WORK CARDS (featured + 2 smaller) ══ */
+.wg{display:flex;flex-direction:column;gap:12px}
+.wg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wc{background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:26px;position:relative;overflow:hidden;cursor:pointer;transition:border-color .3s,transform .3s,background .3s}
+.wc:hover{border-color:rgba(var(--ar),.28);transform:translateY(-3px)}
+.wc.feat{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center}
+.wc-n{font-size:.57rem;color:var(--mut);letter-spacing:.15em;font-weight:600;margin-bottom:12px;text-transform:uppercase}
+.wc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.wc-tag{font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:100px;border:1px solid var(--bdr);color:var(--dim)}
+.wc.feat .wc-tag{border-color:rgba(var(--ar),.2);color:var(--acc)}
+.wc-t{font-size:clamp(1.1rem,2vw,1.8rem);font-weight:800;letter-spacing:-.02em;margin-bottom:7px;line-height:1.2}
+.wc-d{font-size:.79rem;color:var(--dim);line-height:1.65}
+.wc-arr{position:absolute;bottom:17px;right:17px;width:30px;height:30px;border:1px solid var(--bdr);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.76rem;color:var(--dim);transition:all .3s}
+.wc:hover .wc-arr{background:var(--acc);border-color:var(--acc);color:var(--afc)}
+.wc-vis{border-radius:10px;background:var(--bg3);height:165px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .3s}
+
+/* ══ CONTACT ══ */
+.ct{margin-top:64px;padding:44px 0 0;border-top:1px solid var(--bdr);text-align:center}
+.ct-lbl{font-size:.57rem;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);margin-bottom:7px}
+.ct-t{font-size:clamp(2rem,4.5vw,3.8rem);font-weight:900;letter-spacing:-.04em;margin-bottom:5px}
+.ct-t a:hover{color:var(--acc)}
+.ct-sub{font-size:.77rem;color:var(--dim);margin-bottom:22px}
+.ct-ics{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+.ci{width:42px;height:42px;border-radius:10px;border:1px solid var(--bdr);background:var(--bg2);display:flex;align-items:center;justify-content:center;color:var(--dim);transition:border-color .2s,color .2s,transform .2s}
+.ci:hover{border-color:rgba(var(--ar),.3);color:var(--acc);transform:translateY(-3px)}
+.ci svg{width:17px;height:17px}
+footer{padding:22px 0 0;border-top:1px solid var(--bdr);display:flex;justify-content:space-between;font-size:.6rem;color:var(--mut);margin-top:44px;flex-wrap:wrap;gap:6px}
+
+/* ══ WORK LIST ══ */
+.pg-h{font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;letter-spacing:-.04em;line-height:.92;margin:8px 0 14px}
+.lbl{font-size:.57rem;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+.wl{margin-top:36px}
+.wi{border-top:1px solid var(--bdr);padding:22px 0;display:grid;grid-template-columns:52px 1fr 20px;gap:16px;align-items:start;cursor:pointer;transition:padding-left .22s}
+.wi:hover{padding-left:6px}
+.wi-yr{font-size:.63rem;color:var(--dim);padding-top:3px}
+.wi-t{font-size:1.02rem;font-weight:800;letter-spacing:-.02em;margin-bottom:5px}
+.wi-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
+.wi-tag{font-size:.54rem;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:100px;background:var(--bg2);color:var(--dim)}
+.wi-abs{font-size:.78rem;color:var(--dim);line-height:1.65}
+.wi-ar{font-size:.82rem;color:var(--dim);align-self:center;transition:color .2s,transform .22s}
+.wi:hover .wi-ar{color:var(--acc);transform:translateX(4px)}
+
+/* ══ SINGLE WORK ══ */
+.back-btn{display:inline-flex;align-items:center;gap:5px;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:28px;transition:color .2s}
+.back-btn:hover{color:var(--acc)}
+.sw-hero{height:34vh;min-height:160px;background:var(--bg2);border-radius:14px;margin-bottom:40px;display:flex;align-items:center;justify-content:center;transition:background .35s}
+.sw-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:44px;padding-bottom:30px;border-bottom:1px solid var(--bdr)}
+.sm-l{font-size:.54rem;text-transform:uppercase;letter-spacing:.18em;color:var(--dim);margin-bottom:4px}
+.sm-v{font-size:.83rem;font-weight:600}
+.sw-body{display:grid;grid-template-columns:1fr 240px;gap:44px;align-items:start}
+.sw-c h2{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;margin:28px 0 10px}
+.sw-c h2:first-child{margin-top:0}
+.sw-c p{font-size:.88rem;line-height:1.82;color:var(--dim);margin-bottom:14px}
+.hl{background:rgba(var(--ar),.07);border-left:2px solid var(--acc);padding:13px 17px;border-radius:0 9px 9px 0;margin:18px 0;font-size:.84rem;line-height:1.72}
+.sw-img{background:var(--bg2);border-radius:9px;height:180px;display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;margin:18px 0;transition:background .35s}
+.sw-sb{position:sticky;top:20px}
+.sb-box{background:var(--bg2);border:1px solid var(--bdr);border-radius:12px;padding:18px;margin-bottom:9px;transition:background .35s}
+.sb-t{font-size:.55rem;text-transform:uppercase;letter-spacing:.2em;color:var(--dim);margin-bottom:9px}
+.sb-kw{font-size:.55rem;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border:1px solid var(--bdr);border-radius:100px;color:var(--dim);display:inline-block;margin:2px}
+.sb-stat{margin-bottom:11px}
+.sb-stat:last-child{margin:0}
+.sb-stat .n{font-size:1.55rem;font-weight:900;color:var(--acc);line-height:1}
+.sb-stat .u{font-size:.65rem;color:var(--dim);margin-top:2px}
+
+/* ══ ABOUT ══ */
+.ab-top{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;padding:8px 0 28px}
+.car-wrap{position:relative;height:340px;overflow:hidden;border-radius:14px;background:var(--bg2);cursor:pointer}
+.car-slide{position:absolute;inset:0;opacity:0;transform:translateX(100%) scale(.85);transition:all .5s cubic-bezier(.4,0,.2,1);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+.car-slide.cur{opacity:1;transform:none;z-index:3}
+.car-slide.prv{opacity:.35;transform:translateX(-68%) scale(.8);z-index:2;filter:blur(3px)}
+.car-slide.nxt{opacity:.35;transform:translateX(68%) scale(.8);z-index:2;filter:blur(3px)}
+.car-slide.prv2{opacity:.1;transform:translateX(-110%) scale(.72);z-index:1;filter:blur(6px)}
+.car-slide.nxt2{opacity:.1;transform:translateX(110%) scale(.72);z-index:1;filter:blur(6px)}
+.car-ico{font-size:3rem;position:relative;z-index:4}
+.car-lbl{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);position:relative;z-index:4}
+.car-dots{display:flex;gap:5px;justify-content:center;margin-top:10px}
+.car-dot{width:5px;height:5px;border-radius:50%;background:var(--mut);cursor:pointer;transition:all .22s}
+.car-dot.on{background:var(--acc);width:14px;border-radius:3px}
+.ab-name{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;letter-spacing:-.04em;line-height:.92;margin-bottom:14px}
+.ab-p{font-size:.88rem;line-height:1.82;color:var(--dim);margin-bottom:12px}
+.cv-row{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:28px 0;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);flex-wrap:wrap}
+.cv-row-txt .lbl{margin-bottom:4px}
+.cv-row-txt h3{font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:900;letter-spacing:-.03em;margin-bottom:7px}
+.cv-row-txt p{font-size:.8rem;color:var(--dim);max-width:270px;line-height:1.7}
+.cv-card{position:relative;width:240px;height:168px;background:linear-gradient(140deg,rgba(var(--ar),.15),rgba(var(--ar),.04));border:3px solid rgba(var(--ar),.22);border-radius:16px;padding:16px;display:flex;flex-direction:column;align-items:flex-start;gap:7px;overflow:hidden;transform:rotate(-11deg);transition:transform .4s cubic-bezier(.4,0,.2,1),border-color .3s;cursor:pointer;flex-shrink:0}
+.cv-card:hover{transform:rotate(0);border-color:rgba(var(--ar),.5)}
+.cv-card-n{font-size:2rem;font-weight:900;color:var(--acc);line-height:1;position:relative;z-index:2}
+.cv-card-tl{font-size:.6rem;color:var(--dim);letter-spacing:.04em;position:relative;z-index:2}
+.cv-card-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;background:var(--acc);color:var(--afc);font-size:.65rem;font-weight:700;border-radius:6px;position:relative;z-index:2;transition:background .2s}
+.cv-card-btn svg{width:12px;height:12px;fill:currentColor}
+.cv-fig{position:absolute;bottom:-2px;right:-36px;width:112px;height:112px;transition:transform .5s}
+.cv-card:hover .cv-fig{transform:scale(1.1)}
+.cv-fig1{fill:rgba(var(--ar),.1);stroke:rgba(var(--ar),.25);stroke-width:4}
+.cv-fig2{fill:rgba(var(--ar),.06);stroke:rgba(var(--ar),.42);stroke-width:1.5}
+.res-sec{padding:36px 0;border-bottom:1px solid var(--bdr)}
+.res-sec:last-of-type{border-bottom:none}
+.res-row{display:grid;grid-template-columns:130px 1fr;gap:24px}
+.res-lbl{font-size:clamp(.95rem,2vw,1.5rem);font-weight:400;color:var(--mut);letter-spacing:-.01em;padding-top:3px}
+.acc-item{border-bottom:1px solid var(--bdr)}
+.acc-item:last-child{border-bottom:none}
+.acc-hd{display:flex;align-items:flex-start;justify-content:space-between;padding:17px 0;cursor:pointer;gap:12px}
+.acc-co{font-size:clamp(.88rem,1.7vw,1.25rem);font-weight:400;transition:color .2s;margin-bottom:3px;letter-spacing:-.01em}
+.acc-hd:hover .acc-co{color:var(--acc)}
+.acc-rl{font-size:.7rem;color:var(--dim)}
+.acc-rr{display:flex;align-items:flex-start;gap:8px;flex-shrink:0}
+.acc-yr{font-size:.62rem;color:var(--mut);white-space:nowrap;padding-top:3px}
+.acc-chv{color:var(--dim);font-size:.7rem;transition:transform .28s;padding-top:4px}
+.acc-item.open .acc-chv{transform:rotate(90deg)}
+.acc-bd{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.acc-item.open .acc-bd{max-height:220px}
+.acc-bd-inner{padding:0 0 16px;font-size:.79rem;color:var(--dim);line-height:1.78}
+.sk-cat{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:5px;margin-top:18px}
+.sk-cat:first-child{margin-top:0}
+.sk-txt{font-size:.85rem;color:var(--dim);line-height:1.7;padding-bottom:15px;border-bottom:1px solid var(--bdr)}
+.sk-txt:last-child{border:none;padding:0}
+.lang-item{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--bdr)}
+.lang-item:last-child{border:none}
+.lang-n{font-size:.85rem;font-weight:500;min-width:66px}
+.lang-dots{display:flex;gap:5px}
+.ld{width:8px;height:8px;border-radius:50%;border:1.5px solid rgba(var(--ar),.35)}
+.ld.on{background:var(--acc);border-color:var(--acc)}
+.lang-lv{font-size:.67rem;color:var(--dim);margin-left:4px}
+.pers-hd{padding:32px 0 18px;border-top:1px solid var(--bdr)}
+.pers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pc{border-radius:13px;overflow:hidden;position:relative;min-height:180px;cursor:default}
+.pc-front{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;transition:opacity .32s}
+.pc:hover .pc-front{opacity:0}
+.pc-ico{font-size:1.8rem;margin-bottom:5px}
+.pc-t{font-size:.86rem;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.pc-back{position:absolute;inset:0;z-index:3;background:rgba(8,8,8,.88);backdrop-filter:blur(5px);padding:16px;opacity:0;transition:opacity .32s;display:flex;align-items:center;justify-content:center}
+.pc:hover .pc-back{opacity:1}
+.pc-back p{font-size:.75rem;color:rgba(235,235,235,.85);line-height:1.75}
+.pers-lnk{display:inline-flex;align-items:center;gap:5px;margin-top:18px;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);border-bottom:1px solid rgba(var(--ar),.25);padding-bottom:2px;transition:gap .2s}
+.pers-lnk:hover{gap:9px}
+
+/* ══ PLAYGROUND masonry ══ */
+.pg-header{text-align:center;padding:0 0 44px}
+.pg-header h1{font-size:clamp(2.2rem,5vw,4rem);font-weight:300;letter-spacing:-.02em;margin-bottom:4px}
+.pg-header p{font-size:.85rem;color:var(--dim)}
+.pg-masonry{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:210px;gap:10px}
+.pm{border-radius:13px;overflow:hidden;cursor:pointer;position:relative;transition:transform .28s}
+.pm:hover{transform:scale(1.02)}
+.pm.tall{grid-row:span 2}
+.pm.wide{grid-column:span 2}
+.pm-bg{position:absolute;inset:0;transition:transform .4s}
+.pm:hover .pm-bg{transform:scale(1.04)}
+.pm-ico{position:absolute;top:50%;left:50%;transform:translate(-50%,-58%);font-size:3rem;opacity:.35;z-index:1;transition:opacity .3s}
+.pm:hover .pm-ico{opacity:.55}
+.pm-inner{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;padding:16px;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 55%);z-index:2}
+.pm-t{font-size:.8rem;font-weight:700;color:#fff;line-height:1.3}
+.pm-dt{font-size:.63rem;color:rgba(255,255,255,.5);white-space:nowrap;margin-left:8px;flex-shrink:0;align-self:flex-end}
+.pm-cat{display:block;font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:3px}
+.pd-hero{height:36vh;min-height:160px;border-radius:14px;margin-bottom:40px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;font-size:4rem}
+.pd-body{display:grid;grid-template-columns:1fr 240px;gap:44px;align-items:start}
+.pd-c h2{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;margin:28px 0 10px}
+.pd-c h2:first-child{margin-top:0}
+.pd-c p{font-size:.88rem;line-height:1.82;color:var(--dim);margin-bottom:14px}
+.pd-img{background:var(--bg2);border-radius:9px;height:164px;display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;margin:18px 0;transition:background .35s}
+.pd-meta{background:var(--bg2);border:1px solid var(--bdr);border-radius:12px;padding:17px;position:sticky;top:20px;transition:background .35s}
+.pd-mt{font-size:.55rem;text-transform:uppercase;letter-spacing:.2em;color:var(--dim);margin-bottom:9px}
+.pd-mrow{display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--bdr);margin-bottom:8px}
+.pd-mrow:last-child{border:none;padding:0;margin:0}
+.pd-ml{font-size:.6rem;color:var(--dim)}.pd-mv{font-size:.7rem;font-weight:600}
+.rel-t{font-size:.55rem;text-transform:uppercase;letter-spacing:.2em;color:var(--dim);margin:11px 0 8px;padding-top:11px;border-top:1px solid var(--bdr)}
+.rel-item{background:var(--bg3);border-radius:7px;padding:8px;cursor:pointer;transition:background .18s;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.rel-item:hover{background:var(--bg2)}
+.rel-ico{font-size:.88rem;flex-shrink:0}.rel-n{font-size:.68rem;font-weight:600;line-height:1.3}
+
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.02;pointer-events:none;z-index:9001}
+
+@media(max-width:900px){.wc.feat{grid-template-columns:1fr}.wc-vis{display:none}.sw-body,.pd-body{grid-template-columns:1fr}.sw-sb,.pd-meta{position:static;margin-top:24px}.sw-sb{display:grid;grid-template-columns:1fr 1fr;gap:9px}.ab-top{grid-template-columns:1fr}.car-wrap{height:260px}.res-row{grid-template-columns:90px 1fr;gap:18px}.cv-row{flex-direction:column}.pg-masonry{grid-template-columns:1fr 1fr}.pm.wide{grid-column:span 2}.pm.tall{grid-row:span 1}}
+@media(max-width:700px){#sb{display:none}#mob{display:flex}.main{margin-left:0;padding-top:50px}.inner{padding:0 20px}.pers-grid{grid-template-columns:1fr 1fr}.sw-meta{grid-template-columns:1fr 1fr}.res-row{grid-template-columns:1fr}.res-lbl{margin-bottom:10px}.wg-row{grid-template-columns:1fr}}
+@media(max-width:480px){.pers-grid,.pg-masonry,.wg-row{grid-template-columns:1fr}.pm.wide,.pm.tall{grid-column:span 1;grid-row:span 1}.h-btns{flex-direction:column}}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="fol"></div>
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- SIDEBAR -->
+<nav id="sb">
+  <a class="sb-logo" href="#" onclick="go('home');return false">MF</a>
+  <button class="sb-ico on" data-pg="home" onclick="go('home')" title="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
+  <button class="sb-ico" data-pg="work" onclick="go('work')" title="Work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></button>
+  <button class="sb-ico" data-pg="about" onclick="go('about')" title="About"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+  <button class="sb-ico" data-pg="play" onclick="go('play')" title="Playground"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></button>
+  <div class="sb-sp"></div>
+  <a href="cv.pdf" download id="sbCvBtn" class="sb-ico" title="Download CV">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 16l-4-4M12 16l4-4"/><line x1="4" y1="20" x2="20" y2="20"/></svg>
+  </a>
+  <div class="sb-sep"></div>
+  <!-- 00Kubi Theme Switch -->
+  <label class="theme-switch" onclick="toggleTheme()">
+    <div class="theme-switch__container">
+      <div class="theme-switch__clouds"></div>
+      <div class="theme-switch__stars-container">
+        <svg fill="none" viewBox="0 0 144 55" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+      </div>
+      <div class="theme-switch__circle-container">
+        <div class="theme-switch__sun-moon-container">
+          <div class="theme-switch__moon">
+            <div class="theme-switch__spot"></div><div class="theme-switch__spot"></div><div class="theme-switch__spot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="theme-switch__shooting-star"></div>
+      <div class="theme-switch__shooting-star-2"></div>
+      <div class="theme-switch__meteor"></div>
+      <div class="theme-switch__stars-cluster"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <div class="theme-switch__aurora"></div>
+      <div class="theme-switch__comets"><div class="comet"></div><div class="comet"></div></div>
+    </div>
+  </label>
+  <button class="sb-lang" id="langBtn" onclick="toggleLang()">IT</button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div id="mob">
+  <a class="mob-logo" href="#" onclick="go('home');return false">MF</a>
+  <div class="mob-r">
+    <button class="mob-ico on" data-pg="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></button>
+    <button class="mob-ico" data-pg="work" onclick="go('work')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/></svg></button>
+    <button class="mob-ico" data-pg="about" onclick="go('about')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+    <button class="mob-ico" data-pg="play" onclick="go('play')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></button>
+    <label class="theme-switch" style="--ts:7px;margin-left:3px;flex-shrink:0" onclick="toggleTheme()"><div class="theme-switch__container"><div class="theme-switch__clouds"></div><div class="theme-switch__stars-container"><svg fill="none" viewBox="0 0 144 55" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" clip-rule="evenodd" fill-rule="evenodd"></path></svg></div><div class="theme-switch__circle-container"><div class="theme-switch__sun-moon-container"><div class="theme-switch__moon"><div class="theme-switch__spot"></div><div class="theme-switch__spot"></div><div class="theme-switch__spot"></div></div></div></div><div class="theme-switch__shooting-star"></div><div class="theme-switch__shooting-star-2"></div><div class="theme-switch__meteor"></div><div class="theme-switch__stars-cluster"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="theme-switch__aurora"></div><div class="theme-switch__comets"><div class="comet"></div><div class="comet"></div></div></div></label>
+    <button class="mob-lang" id="langBtnM" onclick="toggleLang()">IT</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ═══ HOME ═══ -->
+<div id="p-home" class="page on"><div class="inner">
+  <div class="avatar rv" id="avatarWrap" style="padding:0;position:relative;display:block">
+    <img id="heroImg" src="Hero.jpg" alt="Mattia Ferdeghini"
+      style="width:100%;height:100%;object-fit:cover;object-position:center 10%;display:block">
+  </div>
+  <script>
+  (async()=>{
+    const wrap=document.getElementById('avatarWrap');
+    const canvas=document.getElementById('avatarCanvas');
+    const fb=document.getElementById('avatarFb');
+    const ctx=canvas.getContext('2d');
+    const S=136; canvas.width=canvas.height=S;
+
+    // ── LOAD HERO MEDIA (video first, image fallback) ──
+    function drawCircle(source){
+      const isVid=source instanceof HTMLVideoElement;
+      const W=isVid?source.videoWidth:source.naturalWidth;
+      const H=isVid?source.videoHeight:source.naturalHeight;
+      if(!W||!H)return;
+      const crop=Math.min(W,H),cx=(W-crop)/2,cy=Math.max(0,(H-crop)*.1);
+      ctx.clearRect(0,0,S,S);
+      ctx.save();ctx.beginPath();ctx.arc(S/2,S/2,S/2,0,Math.PI*2);ctx.clip();
+      ctx.drawImage(source,cx,cy,crop,crop,0,0,S,S);
+      ctx.restore();
+    }
+
+    const vtypes={mp4:'video/mp4',webm:'video/webm',ogg:'video/ogg',mov:'video/mp4',m4v:'video/mp4'};
+    const heroVids=['Hero.mp4','Hero.webm','Hero.mov','Hero.m4v','Hero.ogg'];
+    const heroImgs=['Hero.jpg','Hero.jpeg','Hero.png','Hero.webp','image.jpg','image.jpeg','photo.jpg','mattia.jpg'];
+
+    let heroBlob=null,isVideo=false;
+    for(const n of heroVids){
+      try{
+        const ext=n.split('.').pop().toLowerCase();
+        const d=await window.fs.readFile(n);
+        heroBlob=new Blob([d],{type:vtypes[ext]||'video/mp4'});
+        isVideo=true;break;
+      }catch(e){}
+    }
+    if(!heroBlob){
+      for(const n of heroImgs){
+        try{const d=await window.fs.readFile(n);heroBlob=new Blob([d],{type:'image/jpeg'});break}catch(e){}
+      }
+    }
+
+    if(heroBlob){
+      const hsrc=URL.createObjectURL(heroBlob);
+      if(isVideo){
+        // ── VIDEO PATH ──
+        const vid=document.createElement('video');
+        vid.src=hsrc;vid.muted=true;vid.loop=true;vid.playsInline=true;
+        vid.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 10%;border-radius:50%;display:none';
+        wrap.appendChild(vid);
+
+        // Draw first frame to canvas as soon as data is available
+        vid.addEventListener('loadeddata',()=>{
+          fb.style.display='none';
+          drawCircle(vid);
+        },{once:true});
+        vid.load();
+
+        let _pt=null;
+
+        // HOVER → play from beginning
+        wrap.addEventListener('mouseenter',()=>{
+          clearTimeout(_pt);
+          canvas.style.display='none';
+          vid.style.display='block';
+          vid.currentTime=0;
+          vid.play().catch(()=>{});
+        });
+
+        // LEAVE → pause + freeze current frame to canvas
+        wrap.addEventListener('mouseleave',()=>{
+          _pt=setTimeout(()=>{
+            vid.pause();
+            requestAnimationFrame(()=>{
+              try{drawCircle(vid);}catch(e){}
+              vid.style.display='none';
+              canvas.style.display='block';
+            });
+          },80);
+        });
+
+      } else {
+        // ── IMAGE FALLBACK PATH ──
+        const bi=new Image();
+        bi.onload=()=>{fb.style.display='none';drawCircle(bi);};
+        bi.src=hsrc;
+      }
+    }
+
+    // ── LOAD CV PDF ──
+    const cvNames=['CV_MattiaFerdeghini.pdf','Mattia_Ferdeghini_CV.pdf','Ferdeghini_CV.pdf','cv.pdf','CV.pdf','resume.pdf','MattiaFerdeghini.pdf'];
+    for(const n of cvNames){
+      try{
+        const d=await window.fs.readFile(n);
+        const cvUrl=URL.createObjectURL(new Blob([d],{type:'application/pdf'}));
+        document.querySelectorAll('a[download]').forEach(el=>el.href=cvUrl);
+        break;
+      }catch(e){}
+    }
+  })();
+  </script>
+  <div id="nameWrap" class="rv d1"><div id="nameSizer"><div>MATTIA</div><div>FERDEGHINI</div></div></div>
+  <div class="info-row rv d2">
+    <div class="info-l">Mechanical Engineer<br>Università di Bologna</div>
+    <div class="info-r"><span class="clock" id="clock">--:--:--</span>Bologna, Italy</div>
+  </div>
+  <p class="bio rv d2" data-en="I design mechanical systems that don't fail, simulate the ones that might, and prototype ideas until they work." data-it="Progetto sistemi meccanici che non cedono, simulo quelli che potrebbero, e prototipo idee finché non funzionano.">I design mechanical systems that don't fail, simulate the ones that might, and prototype ideas until they work.</p>
+  <div class="h-btns rv d3">
+    <!-- Tsiangana Download CV -->
+    <a href="cv.pdf" download class="botao">
+      <svg class="mysvg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="22px" width="22px">
+        <g id="Interface / Download">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12"></path>
+        </g>
+      </svg>
+      <span class="texto" data-en="Download CV" data-it="Scarica CV">Download CV</span>
+    </a>
+    <!-- Galahhad Copy Email -->
+    <button class="copy" id="cpBtn" onclick="cpMail()">
+      <span data-text-end="Copied!" data-text-initial="Copy email" class="tooltip"></span>
+      <span>
+        <svg class="clipboard" viewBox="0 0 6.35 6.35" height="17" width="17" xmlns="http://www.w3.org/2000/svg"><g><path fill="currentColor" d="M2.43.265c-.3 0-.548.236-.573.53h-.328a.74.74 0 0 0-.735.734v3.822a.74.74 0 0 0 .735.734H4.82a.74.74 0 0 0 .735-.734V1.529a.74.74 0 0 0-.735-.735h-.328a.58.58 0 0 0-.573-.53zm0 .529h1.49c.032 0 .049.017.049.049v.431c0 .032-.017.049-.049.049H2.43c-.032 0-.05-.017-.05-.049V.843c0-.032.018-.05.05-.05zm-.901.53h.328c.026.292.274.528.573.528h1.49a.58.58 0 0 0 .573-.529h.328a.2.2 0 0 1 .206.206v3.822a.2.2 0 0 1-.206.205H1.53a.2.2 0 0 1-.206-.205V1.529a.2.2 0 0 1 .206-.206z"></path></g></svg>
+        <svg class="checkmark" viewBox="0 0 24 24" height="15" width="15" xmlns="http://www.w3.org/2000/svg"><g><path fill="currentColor" d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"></path></g></svg>
+        <span data-en="Copy email" data-it="Copia email">Copy email</span>
+      </span>
+    </button>
+  </div>
+
+  <!-- WORK CARDS: featured top + 2 below -->
+  <div class="sec-hd rv"><span class="slbl" data-en="Selected Work" data-it="Lavori selezionati">Selected Work</span><a href="#" class="smore" onclick="go('work');return false" data-en="View all →" data-it="Vedi tutti →">View all →</a></div>
+  <div class="wg">
+    <div class="wc feat rv" onclick="go('single')">
+      <div>
+        <div class="wc-n">03 — Featured</div>
+        <div class="wc-tags"><span class="wc-tag">Thesis</span><span class="wc-tag">Dynamics</span><span class="wc-tag">Control Systems</span><span class="wc-tag">2025</span></div>
+        <h3 class="wc-t">Vibration Control in a 6-DOF Manipulator</h3>
+        <p class="wc-d">Master's thesis — active damping via LQR and piezoelectric actuation. 34% displacement reduction, settling time halved.</p>
+        <div style="display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">Open case study →</div>
+      </div>
+      <div class="wc-vis">
+        <svg width="140" height="120" viewBox="0 0 140 120" fill="none" style="stroke:var(--acc);opacity:.55">
+          <circle cx="70" cy="88" r="38" stroke-width=".8" stroke-dasharray="5 3"/>
+          <line x1="70" y1="88" x2="108" y2="54" stroke-width="2"/><circle cx="108" cy="54" r="6" stroke-width="1.5" fill="none"/>
+          <line x1="108" y1="54" x2="130" y2="36" stroke-width="1.5"/><circle cx="130" cy="36" r="4" stroke-width="1.5" fill="none"/>
+          <line x1="125" y1="31" x2="135" y2="41" stroke-width="1.8"/><line x1="135" y1="31" x2="125" y2="41" stroke-width="1.8"/>
+          <circle cx="70" cy="88" r="4" fill="var(--acc)" stroke="none"/>
+        </svg>
+      </div>
+    </div>
+    <div class="wg-row rv d1">
+      <div class="wc" onclick="go('single')">
+        <div class="wc-n">01</div>
+        <div class="wc-tags"><span class="wc-tag">FEM</span><span class="wc-tag">SolidWorks</span><span class="wc-tag">2024</span></div>
+        <h3 class="wc-t">Structural Analysis of a Robotic Gripper</h3>
+        <p class="wc-d">FEM & topology optimization — 28% weight reduction, all safety factors maintained.</p>
+        <div class="wc-arr">↗</div>
+      </div>
+      <div class="wc" onclick="go('single')">
+        <div class="wc-n">02</div>
+        <div class="wc-tags"><span class="wc-tag">CFD</span><span class="wc-tag">ANSYS Fluent</span><span class="wc-tag">2024</span></div>
+        <h3 class="wc-t">Heat Exchanger CFD Optimization</h3>
+        <p class="wc-d">Plate heat exchanger redesign: +19% thermal efficiency, −12% pressure drop.</p>
+        <div class="wc-arr">↗</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ct rv">
+    <div class="ct-lbl" data-en="Get in touch" data-it="Contatti">Get in touch</div>
+    <div class="ct-t"><a href="mailto:mattia.ferdeghini17@gmail.com" data-en="Let's talk." data-it="Parliamo.">Let's talk.</a></div>
+    <div class="ct-sub" data-en="Based in Bologna · Open to opportunities" data-it="Bologna · Aperto a nuove opportunità">Based in Bologna · Open to opportunities</div>
+    <div class="ct-ics">
+      <a href="https://www.linkedin.com/in/mattia-ferdeghini" target="_blank" rel="noopener" class="ci" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="https://github.com/Ferde17" target="_blank" rel="noopener" class="ci" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+      <a href="https://www.instagram.com/matty.ferde17/" target="_blank" rel="noopener" class="ci" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="mailto:mattia.ferdeghini17@gmail.com" class="ci" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,6 12,13 22,6"/></svg></a>
+    </div>
+  </div>
+  <footer><span>© 2025 Mattia Ferdeghini · Bologna</span><span data-en="Designed with obsessive attention to detail ✦" data-it="Progettato con ossessione per i dettagli ✦">Designed with obsessive attention to detail ✦</span></footer>
+</div></div>
+
+<!-- ═══ WORK LIST ═══ -->
+<div id="p-work" class="page"><div class="inner">
+  <div class="lbl rv">Work</div>
+  <h1 class="pg-h rv d1" data-en="Selected Projects" data-it="Progetti Selezionati">Selected Projects</h1>
+  <p style="font-size:.86rem;color:var(--dim);max-width:440px;line-height:1.78;margin-top:6px" class="rv d2">Engineering projects spanning dynamics, structural analysis, thermal systems, and prototyping.</p>
+  <div class="wl rv d3">
+    <div class="wi" onclick="go('single')"><div class="wi-yr">2025</div><div><div class="wi-t">Vibration Control in a 6-DOF Manipulator</div><div class="wi-tags"><span class="wi-tag">Dynamics</span><span class="wi-tag">Control Systems</span><span class="wi-tag">Modal Analysis</span><span class="wi-tag">MATLAB</span><span class="wi-tag">Thesis</span></div><p class="wi-abs">Active vibration damping for a 6-axis robot — LQR, piezoelectric actuation, prototype. End-effector oscillation −34%, settling time halved.</p></div><div class="wi-ar">→</div></div>
+    <div class="wi" onclick="go('single')"><div class="wi-yr">2024</div><div><div class="wi-t">Structural Analysis of a Robotic Gripper</div><div class="wi-tags"><span class="wi-tag">FEM</span><span class="wi-tag">Topology Optimization</span><span class="wi-tag">SolidWorks</span><span class="wi-tag">ANSYS</span></div><p class="wi-abs">FEM and topology optimization of an industrial gripper: 28% weight reduction, all safety factors within spec.</p></div><div class="wi-ar">→</div></div>
+    <div class="wi" onclick="go('single')"><div class="wi-yr">2024</div><div><div class="wi-t">Heat Exchanger CFD Optimization</div><div class="wi-tags"><span class="wi-tag">CFD</span><span class="wi-tag">ANSYS Fluent</span><span class="wi-tag">Thermal Engineering</span></div><p class="wi-abs">Plate heat exchanger redesign: +19% thermal efficiency, −12% pressure drop vs. baseline.</p></div><div class="wi-ar">→</div></div>
+    <div class="wi" onclick="go('single')"><div class="wi-yr">2023</div><div><div class="wi-t">3D-Printed Lightweight Bracket Redesign</div><div class="wi-tags"><span class="wi-tag">Additive Manufacturing</span><span class="wi-tag">Generative Design</span><span class="wi-tag">Fusion 360</span></div><p class="wi-abs">Generative design for an automotive bracket: CNC → additive, 41% mass reduction, improved fatigue life.</p></div><div class="wi-ar">→</div></div>
+  </div>
+  <footer style="margin-top:52px"><span>© 2025 Mattia Ferdeghini</span><span data-en="Designed with obsessive attention to detail ✦" data-it="Progettato con ossessione per i dettagli ✦">Designed with obsessive attention to detail ✦</span></footer>
+</div></div>
+
+<!-- ═══ SINGLE WORK ═══ -->
+<div id="p-single" class="page"><div class="inner">
+  <a href="#" class="back-btn rv" onclick="go('work');return false">← Back to Work</a>
+  <div class="sw-hero rv"><svg width="210" height="145" viewBox="0 0 210 145" fill="none" style="stroke:var(--acc);opacity:.5"><circle cx="105" cy="108" r="42" stroke-width=".8" stroke-dasharray="5 3"/><line x1="105" y1="108" x2="148" y2="68" stroke-width="2"/><circle cx="148" cy="68" r="7" stroke-width="1.6" fill="none"/><line x1="148" y1="68" x2="182" y2="44" stroke-width="1.6"/><circle cx="182" cy="44" r="5" stroke-width="1.6" fill="none"/><line x1="182" y1="44" x2="198" y2="27" stroke-width="1.3"/><line x1="190" y1="19" x2="206" y2="35" stroke-width="1.6"/><line x1="206" y1="19" x2="190" y2="35" stroke-width="1.6"/><circle cx="105" cy="108" r="5" fill="var(--acc)" stroke="none"/><rect x="94" y="118" width="22" height="10" rx="3" stroke-width="1.3" fill="none"/><line x1="105" y1="128" x2="105" y2="140" stroke-width="1.6"/><line x1="87" y1="140" x2="123" y2="140" stroke-width="1.6"/></svg></div>
+  <div class="sw-meta rv"><div><div class="sm-l">Project</div><div class="sm-v">Master's Thesis</div></div><div><div class="sm-l">Year</div><div class="sm-v">2024–2025</div></div><div><div class="sm-l">Role</div><div class="sm-v">Lead Engineer</div></div><div><div class="sm-l">Tools</div><div class="sm-v">MATLAB · ANSYS</div></div></div>
+  <div class="sw-body rv">
+    <div class="sw-c">
+      <h2>The Problem</h2><p>Industrial 6-DOF manipulators exhibit significant end-effector vibration during high-speed operations. Baseline: ±2.3 mm displacement vs ±0.5 mm target.</p>
+      <div class="hl">"The first bending mode at 12.4 Hz accounted for 68% of total displacement."</div>
+      <h2>Approach</h2><p>Modal analysis via ANSYS, LQR control design in MATLAB/Simulink, physical validation on scaled prototype. Piezoelectric actuators at joints 3 and 5 based on modal strain energy maps.</p>
+      <div class="sw-img">[ Figure: 1st bending mode @ 12.4 Hz — ANSYS ]</div>
+      <h2>Results</h2><p>34% reduction in peak displacement. Settling time 380 ms → 210 ms. Prototype confirmed within 6% margin.</p>
+      <div class="hl">Final: ±0.38 mm · 210 ms settling · within ±0.5 mm target</div>
+    </div>
+    <div class="sw-sb">
+      <div class="sb-box"><div class="sb-t">Keywords</div><div><span class="sb-kw">Vibration Control</span><span class="sb-kw">LQR</span><span class="sb-kw">Modal Analysis</span><span class="sb-kw">6-DOF</span><span class="sb-kw">Piezoelectric</span><span class="sb-kw">MATLAB</span><span class="sb-kw">ANSYS</span><span class="sb-kw">FEM</span></div></div>
+      <div class="sb-box"><div class="sb-t">Outcomes</div><div class="sb-stat"><div class="n">−34%</div><div class="u">End-effector displacement</div></div><div class="sb-stat"><div class="n">−45%</div><div class="u">Settling time</div></div><div class="sb-stat"><div class="n">±0.38mm</div><div class="u">Final precision</div></div></div>
+    </div>
+  </div>
+  <footer style="margin-top:52px"><span>© 2025 Mattia Ferdeghini</span><span>Case Study</span></footer>
+</div></div>
+
+<!-- ═══ ABOUT ═══ -->
+<div id="p-about" class="page"><div class="inner">
+  <div class="ab-top">
+    <div class="rv"><div class="car-wrap" id="carWrap" onclick="carNext()"></div><div class="car-dots" id="carDots"></div></div>
+    <div class="rv d2">
+      <div class="lbl" data-en="About" data-it="Chi sono">About</div>
+      <div class="ab-name">Mattia<br><span style="color:var(--acc)">Ferdeghini.</span></div>
+      <p class="ab-p" data-en="I'm a mechanical engineer from Bologna — a city I love for its porticoes, its obsession with food, and its serious engineering tradition." data-it="Sono un ingegnere meccanico bolognese — una città che amo per i portici, l'ossessione per il cibo e la seria tradizione ingegneristica.">I'm a mechanical engineer from Bologna — a city I love for its porticoes, its obsession with food, and its serious engineering tradition.</p>
+      <p class="ab-p" data-en="At UniBo I focused on dynamics, control systems, and mechanical design — problems at the intersection of math and intuition." data-it="All'UniBo mi sono concentrato su dinamica, sistemi di controllo e progettazione meccanica.">At UniBo I focused on dynamics, control systems, and mechanical design — problems at the intersection of math and intuition.</p>
+      <p class="ab-p" data-en="Outside the lab: basketball since 12, Emilian cooking, strong opinions on music." data-it="Fuori: basket dall'età di 12 anni, cucina emiliana e opinioni precise sulla musica.">Outside the lab: basketball since 12, Emilian cooking, strong opinions on music.</p>
+    </div>
+  </div>
+  <div class="cv-row rv">
+    <div class="cv-row-txt"><div class="lbl">Resume</div><h3 data-en="Want the full picture?" data-it="Vuoi il quadro completo?">Want the full picture?</h3><p data-en="Download my CV for a complete overview of projects, experience and skills." data-it="Scarica il mio CV per una panoramica completa.">Download my CV for a complete overview of projects, experience and skills.</p></div>
+    <div class="cv-card">
+      <div class="cv-card-n">MF</div>
+      <div class="cv-card-tl">Mechanical Engineer</div>
+      <a href="cv.pdf" download class="cv-card-btn">Download CV <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M22.1,77.9a4,4,0,0,1,4-4H73.9a4,4,0,0,1,0,8H26.1A4,4,0,0,1,22.1,77.9ZM35.2,47.2a4,4,0,0,1,5.7,0L46,52.3V22.1a4,4,0,1,1,8,0V52.3l5.1-5.1a4,4,0,0,1,5.7,5.6l-12,12a3.9,3.9,0,0,1-5.6,0l-12-12A4,4,0,0,1,35.2,47.2Z" fill-rule="evenodd"></path></svg></a>
+      <svg class="cv-fig cv-fig1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M50.4 51C40.5 49.1 40 46 40 44v-1.2a18.9 18.9 0 0 0 5.7-8.8h.1c3 0 3.8-6.3 3.8-7.3s.1-4.7-3-4.7C53 4 30 0 22.3 6c-5.4 0-5.9 8-3.9 16-3.1 0-3 3.8-3 4.7s.7 7.3 3.8 7.3c1 3.6 2.3 6.9 4.7 9v1.2c0 2 .5 5-9.5 6.8S2 62 2 62h60a14.6 14.6 0 0 0-11.6-11z" stroke-miterlimit="10" stroke-width="4"></path></svg>
+      <svg class="cv-fig cv-fig2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M50.4 51C40.5 49.1 40 46 40 44v-1.2a18.9 18.9 0 0 0 5.7-8.8h.1c3 0 3.8-6.3 3.8-7.3s.1-4.7-3-4.7C53 4 30 0 22.3 6c-5.4 0-5.9 8-3.9 16-3.1 0-3 3.8-3 4.7s.7 7.3 3.8 7.3c1 3.6 2.3 6.9 4.7 9v1.2c0 2 .5 5-9.5 6.8S2 62 2 62h60a14.6 14.6 0 0 0-11.6-11z" stroke-miterlimit="10" stroke-width="1.5"></path></svg>
+    </div>
+  </div>
+  <div class="res-sec rv"><div class="res-row"><div class="res-lbl" data-en="Experience" data-it="Esperienze">Experience</div><div>
+    <div class="acc-item"><div class="acc-hd" onclick="toggleAcc(this)"><div><div class="acc-co">[Company Name]</div><div class="acc-rl">Engineering Intern · Bologna</div></div><div class="acc-rr"><span class="acc-yr">Summer 2023</span><span class="acc-chv">›</span></div></div><div class="acc-bd"><div class="acc-bd-inner">FEM analysis and CAD support on industrial components. Structural optimization of a production line fixture, reducing machining time by 15%.</div></div></div>
+    <div class="acc-item"><div class="acc-hd" onclick="toggleAcc(this)"><div><div class="acc-co">Università di Bologna</div><div class="acc-rl">Thesis Research — Vibration Control</div></div><div class="acc-rr"><span class="acc-yr">2024–2025</span><span class="acc-chv">›</span></div></div><div class="acc-bd"><div class="acc-bd-inner">Design and validation of an active vibration damping system for a 6-DOF robotic manipulator. Modal analysis, LQR control, piezoelectric actuation, physical prototype.</div></div></div>
+    <div class="acc-item"><div class="acc-hd" onclick="toggleAcc(this)"><div><div class="acc-co">Università di Bologna</div><div class="acc-rl">Lab Assistant — Mechanics of Materials</div></div><div class="acc-rr"><span class="acc-yr">2022–2023</span><span class="acc-chv">›</span></div></div><div class="acc-bd"><div class="acc-bd-inner">Supported lab sessions for undergraduates. Managed test equipment, supervised tensile and fatigue testing.</div></div></div>
+  </div></div></div>
+  <div class="res-sec rv"><div class="res-row"><div class="res-lbl" data-en="Education" data-it="Istruzione">Education</div><div>
+    <div class="acc-item"><div class="acc-hd" onclick="toggleAcc(this)"><div><div class="acc-co">Università di Bologna</div><div class="acc-rl">MSc Mechanical Engineering</div></div><div class="acc-rr"><span class="acc-yr">2023–2025</span><span class="acc-chv">›</span></div></div><div class="acc-bd"><div class="acc-bd-inner">Focus: Dynamics, Control Systems, Mechanical Design. Thesis on active vibration control in a 6-DOF manipulator via LQR and piezoelectric actuation.</div></div></div>
+    <div class="acc-item"><div class="acc-hd" onclick="toggleAcc(this)"><div><div class="acc-co">Università di Bologna</div><div class="acc-rl">BSc Mechanical Engineering</div></div><div class="acc-rr"><span class="acc-yr">2020–2023</span><span class="acc-chv">›</span></div></div><div class="acc-bd"><div class="acc-bd-inner">Core curriculum: mechanics, thermodynamics, materials science, manufacturing. Final project: FEM analysis of a bicycle frame.</div></div></div>
+    <div class="acc-item"><div class="acc-hd" onclick="toggleAcc(this)"><div><div class="acc-co">[Liceo Scientifico]</div><div class="acc-rl">Scientific High School · Bologna</div></div><div class="acc-rr"><span class="acc-yr">2015–2020</span><span class="acc-chv">›</span></div></div><div class="acc-bd"><div class="acc-bd-inner">Diploma in Scientific Studies. Mathematics, physics, natural sciences. Final grade: 100/100.</div></div></div>
+  </div></div></div>
+  <div class="res-sec rv"><div class="res-row"><div class="res-lbl" data-en="Skills" data-it="Competenze">Skills</div><div>
+    <div class="sk-cat">CAD / SIMULATION</div><div class="sk-txt">SolidWorks · CATIA V5 · Fusion 360 · ANSYS Mechanical · ANSYS Fluent · MATLAB / Simulink</div>
+    <div class="sk-cat">PROGRAMMING</div><div class="sk-txt">MATLAB · Python · C++ · LaTeX</div>
+    <div class="sk-cat">MANUFACTURING</div><div class="sk-txt">3D Printing (FDM/SLA) · CNC Machining · Rapid Prototyping · GD&T · Metrology</div>
+    <div class="sk-cat">OTHER</div><div class="sk-txt" style="border:none;padding:0">Project Management · Technical Documentation · FEM Post-Processing · Modal Testing</div>
+  </div></div></div>
+  <div class="res-sec rv"><div class="res-row"><div class="res-lbl" data-en="Languages" data-it="Lingue">Languages</div><div>
+    <div class="lang-item"><span class="lang-n">Italian</span><div class="lang-dots"><span class="ld on"></span><span class="ld on"></span><span class="ld on"></span><span class="ld on"></span><span class="ld on"></span></div><span class="lang-lv">Native</span></div>
+    <div class="lang-item"><span class="lang-n">English</span><div class="lang-dots"><span class="ld on"></span><span class="ld on"></span><span class="ld on"></span><span class="ld on"></span><span class="ld"></span></div><span class="lang-lv">Fluent · C1</span></div>
+    <div class="lang-item"><span class="lang-n">German</span><div class="lang-dots"><span class="ld on"></span><span class="ld on"></span><span class="ld"></span><span class="ld"></span><span class="ld"></span></div><span class="lang-lv">Basic · A2</span></div>
+  </div></div></div>
+  <div class="pers-hd rv"><div class="lbl" data-en="Beyond work" data-it="Oltre il lavoro">Beyond work</div><h2 style="font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:900;letter-spacing:-.03em;margin:5px 0 5px" data-en="The human side." data-it="Il lato umano.">The human side.</h2><p style="font-size:.85rem;color:var(--dim);line-height:1.72;max-width:440px" data-en="What you do outside work says as much about you as what you do in it." data-it="Quello che fai fuori dice tanto di te quanto quello che fai dentro.">What you do outside work says as much about you as what you do in it.</p></div>
+  <div class="pers-grid rv d1">
+    <div class="pc" style="background:linear-gradient(155deg,#1c0800,#8c3200)"><div class="pc-front"><div class="pc-ico">🏀</div><div class="pc-t">Basketball</div></div><div class="pc-back"><p data-en="Playing since I was 12. Point guard. The game taught me more about teamwork and decisions under pressure than any course ever did." data-it="Gioco dall'età di 12 anni. Playmaker. Il basket mi ha insegnato più sul lavoro di squadra di qualsiasi corso.">Playing since I was 12. Point guard. The game taught me more about teamwork and decisions under pressure than any course ever did.</p></div></div>
+    <div class="pc" style="background:linear-gradient(155deg,#0f0f00,#3d4200)"><div class="pc-front"><div class="pc-ico">🍝</div><div class="pc-t" data-en="Cooking" data-it="Cucina">Cooking</div></div><div class="pc-back"><p data-en="Emilian through and through. Cooking is engineering: variables, process, result. You can also eat the prototype." data-it="Emiliano doc. Cucinare è ingegneria: variabili, processo, risultato. E puoi anche mangiare il prototipo.">Emilian through and through. Cooking is engineering: variables, process, result. You can also eat the prototype.</p></div></div>
+    <div class="pc" style="background:linear-gradient(155deg,#130018,#3a0068)"><div class="pc-front"><div class="pc-ico">🎵</div><div class="pc-t" data-en="Music" data-it="Musica">Music</div></div><div class="pc-back"><p data-en="Always something on. Ambient for focus, rap for energy, jazz on slow evenings." data-it="Sempre qualcosa in ascolto. Ambient per la concentrazione, rap per l'energia, jazz nelle serate tranquille.">Always something on. Ambient for focus, rap for energy, jazz on slow evenings.</p></div></div>
+  </div>
+  <a href="#" class="pers-lnk rv" onclick="go('play');return false" data-en="See my side quests →" data-it="Vedi le mie side quest →">See my side quests →</a>
+  <footer style="margin-top:52px"><span>© 2025 Mattia Ferdeghini</span><span data-en="Designed with obsessive attention to detail ✦" data-it="Progettato con ossessione per i dettagli ✦">Designed with obsessive attention to detail ✦</span></footer>
+</div></div>
+
+<!-- ═══ PLAYGROUND ═══ -->
+<div id="p-play" class="page"><div class="inner">
+  <div class="pg-header rv"><h1 data-en="Playground" data-it="Playground">Playground</h1><p data-en="Curiosity given permission to run." data-it="Curiosità a cui ho dato il permesso di correre.">Curiosity given permission to run.</p></div>
+  <div class="pg-masonry rv d1" id="pgGrid"></div>
+  <footer style="margin-top:52px"><span>© 2025 Mattia Ferdeghini</span><span data-en="Designed with obsessive attention to detail ✦" data-it="Progettato con ossessione per i dettagli ✦">Designed with obsessive attention to detail ✦</span></footer>
+</div></div>
+
+<!-- ═══ PLAYGROUND DETAIL ═══ -->
+<div id="p-play-detail" class="page"><div class="inner">
+  <a href="#" class="back-btn rv" onclick="go('play');return false" data-en="← Back to Playground" data-it="← Torna al Playground">← Back to Playground</a>
+  <div id="pdContent"></div>
+  <footer style="margin-top:52px"><span>© 2025 Mattia Ferdeghini</span><span>Playground</span></footer>
+</div></div>
+</div>
+
+<script>
+// ── SYSTEM THEME INIT ──
+(function(){
+  const s=window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark';
+  document.body.setAttribute('data-theme',s);
+})();
+
+// ── CURSOR ──
+const cur=document.getElementById('cur'),fol=document.getElementById('fol');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function loop(){fx+=(mx-fx)*.12;fy+=(my-fy)*.12;fol.style.left=fx+'px';fol.style.top=fy+'px';requestAnimationFrame(loop)})();
+function addHov(s){document.querySelectorAll(s).forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'))})}
+addHov('a,button,.wc,.wi,.pc,.pm,.cv-card,.botao,.copy,.acc-hd,.car-wrap,.rel-item,.theme-switch');
+
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt.classList.toggle('on',scrollY>250),{passive:true});
+
+// ── THEME ──
+function toggleTheme(){
+  const d=document.body.getAttribute('data-theme')==='dark';
+  document.body.setAttribute('data-theme',d?'light':'dark');
+  setTimeout(rebuildParticles,60);
+}
+
+// ── LANG ──
+let lang='en';
+function toggleLang(){
+  lang=lang==='en'?'it':'en';
+  const lbl=lang==='en'?'IT':'EN';
+  ['langBtn','langBtnM'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lbl});
+  document.querySelectorAll('[data-en]').forEach(el=>{const v=el.getAttribute('data-'+lang);if(v!=null)el.textContent=v});
+}
+
+// ── ROUTING ──
+function go(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  const pg=document.getElementById('p-'+id);if(pg)pg.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+  const base=id.split('-')[0];
+  document.querySelectorAll('[data-pg]').forEach(b=>b.classList.toggle('on',b.getAttribute('data-pg')===base));
+  setTimeout(revealAll,60);
+  addHov('a,button,.wc,.wi,.pc,.pm,.cv-card,.acc-hd,.rel-item');
+}
+
+// ── REVEAL ──
+function revealAll(){
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}})},{threshold:.05});
+  document.querySelectorAll('.rv:not(.on)').forEach(el=>obs.observe(el));
+}
+revealAll();
+
+// ── CLOCK ──
+function tick(){const el=document.getElementById('clock');if(el)el.textContent=new Date().toLocaleTimeString('it-IT',{timeZone:'Europe/Rome',hour:'2-digit',minute:'2-digit',second:'2-digit'})}
+tick();setInterval(tick,1000);
+
+// ── COPY EMAIL ──
+function cpMail(){
+  navigator.clipboard.writeText('mattia.ferdeghini17@gmail.com').catch(()=>{});
+  const b=document.getElementById('cpBtn');b.classList.add('copied');
+  setTimeout(()=>b.classList.remove('copied'),2200);
+}
+
+// ── ACCORDION ──
+function toggleAcc(hd){
+  const item=hd.parentElement;
+  const was=item.classList.contains('open');
+  document.querySelectorAll('.acc-item.open').forEach(i=>i.classList.remove('open'));
+  if(!was)item.classList.add('open');
+}
+
+// ══ PARTICLE NAME (ported from ParticleTextEffect React component) ══
+let _pts=[],_pCtx=null,_pCvs=null,_pH=false,_pAF=null,_iR=100;
+
+function rand(max=1,min=0){return min+Math.random()*(max-min)}
+
+function initParticles(){
+  const wrap=document.getElementById('nameWrap'),sizer=document.getElementById('nameSizer');
+  if(!wrap||!sizer)return;
+  const old=wrap.querySelector('canvas');if(old)old.remove();
+  if(_pAF){cancelAnimationFrame(_pAF);_pAF=null}
+  const wr=wrap.getBoundingClientRect();
+  if(!wr.width||!wr.height)return;
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  const W=Math.round(wr.width*dpr),H=Math.round(wr.height*dpr);
+  const cvs=document.createElement('canvas');
+  cvs.width=W;cvs.height=H;
+  cvs.style.cssText=`position:absolute;top:0;left:0;width:${wr.width}px;height:${wr.height}px;pointer-events:none`;
+  wrap.style.position='relative';
+  wrap.appendChild(cvs);
+  _pCvs=cvs;
+  const ctx=cvs.getContext('2d');ctx.scale(dpr,dpr);_pCtx=ctx;
+  const W2=wr.width,H2=wr.height;
+  const fs=parseFloat(getComputedStyle(sizer).fontSize)||48;
+  const lh=fs*1.06;
+  _iR=Math.max(50,fs*1.5);
+  const off=document.createElement('canvas');off.width=W;off.height=H;
+  const oc=off.getContext('2d');oc.scale(dpr,dpr);
+  const dark=document.body.getAttribute('data-theme')!=='light';
+  const fn=`900 ${fs}px -apple-system,'Helvetica Neue',sans-serif`;
+  oc.font=fn;
+  oc.fillStyle=dark?'#EBEBEB':'#141414';
+  oc.fillText('MATTIA',0,fs*.88);
+  oc.fillStyle=dark?'#60A5FA':'#2563EB';
+  oc.fillText('FERDEGHINI',0,fs*.88+lh);
+  const id=oc.getImageData(0,0,W,H).data;
+  _pts=[];
+  const DENSITY=5;
+  for(let y=0;y<H;y+=DENSITY){
+    for(let x=0;x<W;x+=DENSITY){
+      const i=(y*W+x)*4;
+      if(id[i+3]>100){
+        const hx=x/dpr,hy=y/dpr;
+        const vary=c=>Math.max(0,Math.min(255,c+rand(13,-13)));
+        _pts.push({
+          ox:hx,oy:hy,cx:hx,cy:hy,
+          or:rand(2.5,2),cr:rand(2.5,2),
+          f:rand(95,65),
+          rgb:[vary(id[i]),vary(id[i+1]),vary(id[i+2])]
+        });
+      }
+    }
+  }
+  sDraw();
+  wrap.onpointermove=e=>{
+    const r=cvs.getBoundingClientRect();
+    _pH=true;
+    _pMx=e.clientX-r.left;_pMy=e.clientY-r.top;
+    if(!_pAF)_pAF=requestAnimationFrame(animP);
+  };
+  wrap.onpointerleave=()=>{
+    _pH=false;_pMx=undefined;_pMy=undefined;
+    if(!_pAF)_pAF=requestAnimationFrame(animP);
+  };
+}
+
+let _pMx,_pMy;
+
+function sDraw(){
+  if(!_pCtx||!_pCvs)return;
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  _pCtx.clearRect(0,0,_pCvs.width/dpr,_pCvs.height/dpr);
+  _pts.forEach(p=>{
+    _pCtx.fillStyle=`rgb(${p.rgb[0]},${p.rgb[1]},${p.rgb[2]})`;
+    _pCtx.beginPath();_pCtx.arc(p.cx,p.cy,p.cr,0,Math.PI*2);_pCtx.fill();
+  });
+}
+
+function animP(){
+  if(!_pCtx||!_pCvs){_pAF=null;return}
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  _pCtx.clearRect(0,0,_pCvs.width/dpr,_pCvs.height/dpr);
+  let moved=false;
+  _pts.forEach(p=>{
+    if(_pH&&_pMx!==undefined){
+      const dx=p.cx-_pMx,dy=p.cy-_pMy,dist=Math.hypot(dx,dy);
+      if(dist<_iR&&dist>0){
+        const force=Math.min(p.f,((_iR-dist)/dist)*2);
+        p.cx+=(dx/dist)*force;p.cy+=(dy/dist)*force;moved=true;
+      }
+    }
+    const odx=p.ox-p.cx,ody=p.oy-p.cy,od=Math.hypot(odx,ody);
+    if(od>0.5){
+      const restore=Math.min(od*.1,3);
+      p.cx+=(odx/od)*restore;p.cy+=(ody/od)*restore;moved=true;
+    }else{p.cx=p.ox;p.cy=p.oy}
+    _pCtx.fillStyle=`rgb(${p.rgb[0]},${p.rgb[1]},${p.rgb[2]})`;
+    _pCtx.beginPath();_pCtx.arc(p.cx,p.cy,p.cr,0,Math.PI*2);_pCtx.fill();
+  });
+  if(moved||_pH){_pAF=requestAnimationFrame(animP)}
+  else{_pAF=null;sDraw()}
+}
+
+function rebuildParticles(){
+  if(_pAF){cancelAnimationFrame(_pAF);_pAF=null}
+  _pts=[];_pCtx=null;_pCvs=null;_pH=false;
+  setTimeout(initParticles,80);
+}
+document.fonts.ready.then(()=>setTimeout(initParticles,250));
+window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(rebuildParticles,350)});
+
+// ── CAROUSEL ──
+const carD=[{ico:'🏀',lbl:'Basketball',bg:'linear-gradient(160deg,#1c0800,#8c3200)'},{ico:'🍝',lbl:'Cooking',bg:'linear-gradient(160deg,#0f0f00,#3d4200)'},{ico:'⚙️',lbl:'Engineering',bg:'linear-gradient(160deg,#090920,#1a2060)'},{ico:'🎵',lbl:'Music',bg:'linear-gradient(160deg,#130018,#3a0068)'},{ico:'🌍',lbl:'Travel',bg:'linear-gradient(160deg,#001018,#003060)'}];
+let cI=0;
+function buildCar(){
+  const w=document.getElementById('carWrap'),d=document.getElementById('carDots');
+  if(!w)return;
+  w.innerHTML=carD.map((c,i)=>`<div class="car-slide" id="cs${i}" style="background:${c.bg}"><div class="car-ico">${c.ico}</div><div class="car-lbl">${c.lbl}</div></div>`).join('');
+  if(d)d.innerHTML=carD.map((_,i)=>`<div class="car-dot${i===0?' on':''}" onclick="event.stopPropagation();carGo(${i})"></div>`).join('');
+  renderCar();setInterval(carNext,3500);
+}
+function renderCar(){
+  const n=carD.length;
+  carD.forEach((_,i)=>{
+    const el=document.getElementById('cs'+i);if(!el)return;
+    let o=((i-cI)%n+n)%n;if(o>n/2)o-=n;
+    el.className='car-slide';
+    if(o===0)el.classList.add('cur');
+    else if(o===-1)el.classList.add('prv');
+    else if(o===1)el.classList.add('nxt');
+    else if(o<=-2)el.classList.add('prv2');
+    else el.classList.add('nxt2');
+  });
+  document.querySelectorAll('.car-dot').forEach((d,i)=>d.classList.toggle('on',i===cI));
+}
+function carNext(){cI=(cI+1)%carD.length;renderCar()}
+function carGo(i){cI=i;renderCar()}
+buildCar();
+
+// ── PLAYGROUND ──
+const plays=[
+  {id:'printer',ico:'🖨️',cat:'Build',title:'Wall-Mounted 3D Printer Enclosure',bg:'linear-gradient(135deg,#2a1000,#7a3a00)',date:"MAR '25",size:'tall',meta:{Category:'Build',Time:'3 weeks',Tools:'Fusion 360'},body:[{t:'h2',v:'The Setup Problem'},{t:'p',v:'My printer was sitting on my desk taking up a third of it and slowly covering everything in fine particulate. The obvious solution turned into a full engineering sub-project that consumed three weekends.'},{t:'img',v:'[ Sketch: wall bracket concept ]'},{t:'h2',v:'Design Constraints'},{t:'p',v:'9.2 kg fully loaded, with vibration loads during printing. Modeled in Fusion 360, FEM pass, bracket designed around 4× safety factor.'},{t:'hl',v:'"The enclosure also needed to dampen sound and filter VOCs — suddenly I was designing a little HVAC system."'},{t:'h2',v:'Result'},{t:'p',v:'Flush wall enclosure with active carbon filter and magnetic doors. 40+ hours print time. Would I do it again? Immediately.'}]},
+  {id:'ragu',ico:'🍝',cat:'Food',title:'The Perfect Bolognese: An Engineering Approach',bg:'linear-gradient(135deg,#1a1a00,#4a5000)',date:"JAN '25",size:'',meta:{Category:'Food',Iterations:'8',Method:'Controlled'},body:[{t:'h2',v:'The Hypothesis'},{t:'p',v:'8 iterations, one variable changed at a time. Real research methodology applied to a ragù.'},{t:'hl',v:'"Iteration 6 was the one. Every subsequent batch has been Iteration 6."'},{t:'h2',v:'Key Findings'},{t:'p',v:'What actually matters: 60/40 beef/pork ratio, minimum 20 min soffrittura, the milk step. Tomato matters far less than tradition suggests.'}]},
+  {id:'shelf',ico:'📚',cat:'Build',title:'Floating Bookshelf, No Visible Brackets',bg:'linear-gradient(135deg,#0d0d20,#252870)',date:"NOV '24",size:'',meta:{Category:'Build',Load:'~35 kg',Tools:'SolidWorks'},body:[{t:'h2',v:'The Constraint'},{t:'p',v:'No visible supports. Solution: M12 threaded rods hidden inside the shelf, epoxy-anchored into studs.'},{t:'hl',v:'"Safety factor: 6.2. Overkill? Yes. Regrets? None."'},{t:'h2',v:'Calculations'},{t:'p',v:'35 kg books + 1.5 kg shelf over 1.2 m span. Verified analytically — 0 deflection observed.'}]},
+  {id:'freethrow',ico:'🏀',cat:'Sport',title:'Analyzing My Free Throw With Python + Pose Estimation',bg:'linear-gradient(135deg,#001828,#004080)',date:"OCT '24",size:'wide',meta:{Category:'Sport',Tool:'MediaPipe + Python',Finding:'2° off optimal'},body:[{t:'h2',v:'The Idea'},{t:'p',v:'Free throw stuck at ~62% for two years. Data-driven diagnosis.'},{t:'img',v:'[ Screenshot: pose estimation overlay ]'},{t:'h2',v:'Method'},{t:'p',v:'MediaPipe pose estimation on video footage. Release angle averaged 47° vs optimal ~51°. Inconsistent elbow alignment also flagged.'},{t:'hl',v:'"62% → 71% after six weeks on just those two variables."'}]},
+  {id:'spotify',ico:'🎵',cat:'Music',title:'3 Years of Spotify Data, Visualized',bg:'linear-gradient(135deg,#1a0028,#500090)',date:"SEP '24",size:'',meta:{Category:'Music',Data:'~18k plays',Tools:'Python'},body:[{t:'h2',v:'The Export'},{t:'p',v:'Full listening history as JSON (~18k entries), analyzed in Python.'},{t:'img',v:'[ Chart: listening by time of day — 3 years ]'},{t:'h2',v:'Findings'},{t:'p',v:'Distinct phases: hip-hop 2022, jazz rabbit hole early 2023, ambient during thesis. Listening spikes at 11pm.'}]},
+  {id:'apartment',ico:'🪑',cat:'Home',title:'Furnishing a Bologna Apartment on a Budget',bg:'linear-gradient(135deg,#181818,#383838)',date:"AUG '24",size:'',meta:{Category:'Home',Method:'Spreadsheet-driven'},body:[{t:'h2',v:'The Problem'},{t:'p',v:'New apartment, zero furniture. CAD floor plan, constraint mapping, then backwards to a furniture list.'},{t:'hl',v:'"Best decision: starting with a good bed and a good desk."'},{t:'h2',v:'Lessons'},{t:'p',v:'A tape measure and 30 minutes in the empty apartment saves more money than any budget spreadsheet.'}]},
+];
+function buildPlayground(){
+  const g=document.getElementById('pgGrid');if(!g)return;
+  g.innerHTML=plays.map(p=>`<div class="pm${p.size?' '+p.size:''}" onclick="openPlay('${p.id}')"><div class="pm-bg" style="background:${p.bg}"></div><div class="pm-ico">${p.ico}</div><div class="pm-inner"><div><span class="pm-cat">${p.cat}</span><div class="pm-t">${p.title}</div></div><div class="pm-dt">${p.date}</div></div></div>`).join('');
+}
+buildPlayground();
+function openPlay(id){
+  const p=plays.find(x=>x.id===id);if(!p)return;
+  const el=document.getElementById('pdContent');
+  const mR=Object.entries(p.meta).map(([k,v])=>`<div class="pd-mrow"><div class="pd-ml">${k}</div><div class="pd-mv">${v}</div></div>`).join('');
+  const rI=plays.filter(x=>x.id!==id).slice(0,3).map(x=>`<div class="rel-item" onclick="openPlay('${x.id}')"><div class="rel-ico">${x.ico}</div><div class="rel-n">${x.title}</div></div>`).join('');
+  const bH=p.body.map(b=>b.t==='h2'?`<h2>${b.v}</h2>`:b.t==='p'?`<p>${b.v}</p>`:b.t==='img'?`<div class="pd-img">${b.v}</div>`:b.t==='hl'?`<div class="hl">${b.v}</div>`:'').join('');
+  el.innerHTML=`<div class="pd-hero rv" style="background:${p.bg}">${p.ico}<div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:4px">${p.cat}</div></div><h1 style="font-size:clamp(1.7rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-.03em;margin-bottom:36px" class="rv d1">${p.title}</h1><div class="pd-body rv d2"><div class="pd-c">${bH}</div><div><div class="pd-meta"><div class="pd-mt">Details</div>${mR}</div><div class="pd-meta" style="margin-top:10px"><div class="rel-t">More Side Quests</div>${rI}</div></div></div>`;
+  go('play-detail');
+}
+</script>
+</body>
+</html>
