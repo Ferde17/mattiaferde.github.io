@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-Hv3GT+ChoF+CIf3VI5lpWDnOtORPRduyRigLrvAdoLc='; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'none'; frame-src 'none'; child-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests; require-trusted-types-for 'script'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script>(function(){var d=document.documentElement,t;d.classList.add('js');try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.setAttribute('data-theme',t)})()</script>
+<meta name="color-scheme" content="dark light">
+<title>CS50x: Harvard&#39;s Introduction to Computer Science | Mattia Ferdeghini</title>
+<meta name="description" content="Harvard&#39;s CS50x, done between university courses: ten problem sets in C, Python, SQL and the web, and a contact book drawn as a graph.">
+<meta name="author" content="Mattia Ferdeghini">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://mattiaferdeghini.com/playground/cs50x/">
+<link rel="alternate" hreflang="en" href="https://mattiaferdeghini.com/playground/cs50x/">
+<link rel="alternate" hreflang="it" href="https://mattiaferdeghini.com/it/playground/cs50x/">
+<link rel="alternate" hreflang="x-default" href="https://mattiaferdeghini.com/playground/cs50x/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mattia Ferdeghini">
+<meta property="og:title" content="CS50x: Harvard&#39;s Introduction to Computer Science | Mattia Ferdeghini">
+<meta property="og:description" content="Harvard&#39;s CS50x, done between university courses: ten problem sets in C, Python, SQL and the web, and a contact book drawn as a graph.">
+<meta property="og:url" content="https://mattiaferdeghini.com/playground/cs50x/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="it_IT">
+<meta property="og:image" content="https://mattiaferdeghini.com/playground/cs50x/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Harvard shield above the words &quot;This is CS50.&quot; on a white background">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0E0E0E" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F2EC" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/assets/site.4e161e9e8a.css">
+<script src="/assets/site.3df76050f8.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","headline":"CS50x: Harvard's Introduction to Computer Science","name":"CS50x: Harvard's Introduction to Computer Science","description":"Harvard's introduction to computer science, which I worked through in the gaps between university courses. Ten problem sets covering C, Python, SQL and the web, plus a final project that turns a contact book into an interactive graph.","inLanguage":"en","url":"https://mattiaferdeghini.com/playground/cs50x/","mainEntityOfPage":"https://mattiaferdeghini.com/playground/cs50x/","image":"https://mattiaferdeghini.com/playground/cs50x/og.jpg","datePublished":"2026","keywords":"Computer Science, C, Python, SQL, Flask, JavaScript","author":{"@type":"Person","@id":"https://mattiaferdeghini.com/#person","name":"Mattia Ferdeghini","url":"https://mattiaferdeghini.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mattiaferdeghini.com/"},{"@type":"ListItem","position":2,"name":"Playground","item":"https://mattiaferdeghini.com/playground/"},{"@type":"ListItem","position":3,"name":"CS50x: Harvard's Introduction to Computer Science","item":"https://mattiaferdeghini.com/playground/cs50x/"}]}</script>
+</head>
+<body class="pg-post">
+<a class="skip" href="#main">Skip to content</a>
+<p class="framed-note"><a href="https://mattiaferdeghini.com/playground/cs50x/" target="_top">mattiaferdeghini.com</a></p>
+<svg class="sprite" aria-hidden="true" focusable="false"><symbol id="i-stars" viewBox="0 0 144 55"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z"/></symbol></svg>
+<div class="c-dot" aria-hidden="true"></div><div class="c-ring" aria-hidden="true"></div>
+<div class="read-progress js-only" aria-hidden="true"><span></span></div>
+<header class="site-head">
+<a class="sb-logo" href="/">MF<span class="sr"> · Mattia Ferdeghini, Home</span></a>
+<nav class="sb-nav" aria-label="Main"><ul><li><a class="sb-ico" href="/" aria-label="Home" data-tip="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a></li><li><a class="sb-ico" href="/work/" aria-label="Work" data-tip="Work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></a></li><li><a class="sb-ico" href="/about/" aria-label="About" data-tip="About"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a></li><li><a class="sb-ico" href="/playground/" aria-current="page" aria-label="Playground" data-tip="Playground"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></a></li></ul></nav>
+<div class="sb-sp"></div>
+<a class="sb-ico sb-cv" href="/mattia-ferdeghini-cv.pdf" download="Mattia-Ferdeghini-CV.pdf" aria-label="Download CV" data-tip="Download CV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 16V4M12 16l-4-4M12 16l4-4"/><line x1="4" y1="20" x2="20" y2="20"/></svg></a><div class="sb-sep" aria-hidden="true"></div>
+<button class="theme-switch" type="button" aria-pressed="true" aria-label="Dark mode" data-theme-toggle>
+<span class="theme-switch__container" aria-hidden="true">
+<span class="theme-switch__clouds"></span>
+<span class="theme-switch__stars-container"><svg focusable="false"><use href="#i-stars"/></svg></span>
+<span class="theme-switch__circle-container"><span class="theme-switch__sun-moon-container"><span class="theme-switch__moon"><span class="theme-switch__spot"></span><span class="theme-switch__spot"></span><span class="theme-switch__spot"></span></span></span></span>
+<span class="theme-switch__shooting-star"></span><span class="theme-switch__shooting-star-2"></span><span class="theme-switch__meteor"></span>
+<span class="theme-switch__stars-cluster"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></span>
+<span class="theme-switch__aurora"></span>
+<span class="theme-switch__comets"><span class="comet"></span><span class="comet"></span></span>
+</span></button>
+<a class="sb-lang" href="/it/playground/cs50x/" hreflang="it" lang="it" data-lang-switch="it">IT<span class="sr"> · Leggi in italiano</span></a>
+</header>
+<div class="main">
+<main id="main" tabindex="-1"><div class="inner">
+<article class="post">
+<a class="back-btn" href="/playground/"><span aria-hidden="true">←</span> Back to Playground</a>
+<div class="pd-hero photo contain" data-s="s3bd0a19"><img src="/playground/cs50x/cs50-cover-622.webp" srcset="/playground/cs50x/cs50-cover-480.webp 480w, /playground/cs50x/cs50-cover-622.webp 622w" sizes="(min-width: 1100px) 1040px, 100vw" width="622" height="350" alt="Harvard shield above the words &quot;This is CS50.&quot; on a white background" fetchpriority="high" decoding="async"><span class="pd-hcat">Computer Science</span></div>
+<header class="post-head">
+<h1 class="post-title">CS50x: Harvard&#39;s Introduction to Computer Science</h1>
+<p class="post-sum">Harvard&#39;s introduction to computer science, which I worked through in the gaps between university courses. Ten problem sets covering C, Python, SQL and the web, plus a final project that turns a contact book into an interactive graph.</p>
+<div class="post-actions"><button class="share-btn js-only" type="button" data-copy="https://mattiaferdeghini.com/playground/cs50x/" data-done="Copied ✓" data-fail="Copy failed: select the text manually"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span>Copy link</span></button></div>
+</header>
+<div class="pd-body has-toc">
+<nav class="toc" aria-labelledby="toc-h"><details open data-toc><summary><span id="toc-h">On this page</span></summary><ol><li><a href="#where-it-started">Where it started</a></li><li><a href="#the-course-step-by-step">The course, step by step</a></li><li><a href="#the-final-project">The final project</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#the-certificate">The certificate</a></li></ol></details></nav>
+<div class="pd-c prose">
+<h2 id="where-it-started">Where it started<a class="h-anchor" href="#where-it-started"><span class="sr">Link to this section</span><span aria-hidden="true">#</span></a></h2>
+<p>CS50x is Harvard&#39;s introduction to computer science, taught by David J. Malan: ten problem sets and one final project. I signed up as a mechanical engineering student who wanted to know what actually happens underneath the software I use every day. It turned out to be one of the hardest things I have done outside my degree, and one of the most satisfying.</p>
+<h2 id="the-course-step-by-step">The course, step by step<a class="h-anchor" href="#the-course-step-by-step"><span class="sr">Link to this section</span><span aria-hidden="true">#</span></a></h2>
+<p>It opens almost as a game, with Scratch, and then drops you straight into C. That is where you finally learn what a variable, a loop and (later on) a pointer are. From there the difficulty climbs steadily: arrays and algorithms, what one extra loop costs you, sorting and searching, and then memory itself. <code>malloc</code>, the stack, the heap, and the dread of a segmentation fault.</p>
+<p>Halfway through, the course switches to Python, and everything you fought for in C suddenly feels easy. After that come data structures, SQL and databases, and finally the web: HTML, CSS, JavaScript and Flask.</p>
+<p>The surprise for me was SQL. Working with databases, structuring data, querying it and getting it to answer real questions, was the part that came most naturally. I like managing data, and I did not expect to.</p>
+<h2 id="the-final-project">The final project<a class="h-anchor" href="#the-final-project"><span class="sr">Link to this section</span><span aria-hidden="true">#</span></a></h2>
+<p>For the final project I wanted something I would actually use: an interactive contact book. It is a personal address book redrawn as a network, inspired by the graph view in Obsidian.</p>
+<p>Every contact is a node, and every relationship is a link: a friend, a colleague, a family member, the person who introduced you to someone else. Instead of scrolling through hundreds of names in a flat list, you get a map of your own network that you can read at a glance.</p>
+<figure class="fig"><a class="zoom" href="/playground/cs50x/cs50-graph-1116.webp" data-w="1116" data-h="1004" data-s="sa8d0cf4" aria-label="Enlarge image: Contact graph from the final project, with a central &quot;Tu&quot; (you) node and linked contact nodes around it; the contacts&#39; names are blurred and their initials hidden"><img src="/playground/cs50x/cs50-graph-960.webp" srcset="/playground/cs50x/cs50-graph-480.webp 480w, /playground/cs50x/cs50-graph-720.webp 720w, /playground/cs50x/cs50-graph-960.webp 960w, /playground/cs50x/cs50-graph-1116.webp 1116w" sizes="(min-width: 1100px) 720px, (min-width: 701px) calc(100vw - 420px), calc(100vw - 40px)" width="960" height="864" alt="Contact graph from the final project, with a central &quot;Tu&quot; (you) node and linked contact nodes around it; the contacts&#39; names are blurred and their initials hidden" loading="lazy" decoding="async"></a><figcaption>The final project running: each contact is a node and each relationship is a link, so you see the whole network at once. I blurred the contacts&#39; names and hid their initials.</figcaption></figure>
+<p>Laid out as a graph, the structure of your relationships becomes obvious: who knows whom, which groups exist, and who connects different circles. Seeing it as a graph helps me keep track of the people I already know.</p>
+<h2 id="how-it-works">How it works<a class="h-anchor" href="#how-it-works"><span class="sr">Link to this section</span><span aria-hidden="true">#</span></a></h2>
+<p>The backend is Flask, in Python. It manages the contacts and the relationships between them and serves a front end written in HTML, CSS and JavaScript. The interface draws the network as an interactive graph, so you can drag nodes, follow links and explore the connections right in the browser.</p>
+<h2 id="the-certificate">The certificate<a class="h-anchor" href="#the-certificate"><span class="sr">Link to this section</span><span aria-hidden="true">#</span></a></h2>
+<p>It was a long road, and a broken-up one. I fit it into the gaps between my main university courses: a problem set here, a lecture there, whenever I could find the time. I still got to the end, and it was worth it.</p>
+<p>Finishing all ten problem sets and the final project earned me the official CS50 certificate, signed by David J. Malan. You can verify it on Harvard&#39;s CS50 website.</p>
+<div class="pd-btns"><a class="pd-btn primary" href="/playground/cs50x/files/cs50x-certificate.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 16V4M12 16l-4-4M12 16l4-4"/><line x1="4" y1="20" x2="20" y2="20"/></svg><span>Download certificate (PDF)</span></a><a class="pd-btn" href="https://cs50.harvard.edu/certificates/4be80716-8a12-4d18-a35c-11b04ca9af56" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg><span>Verify on CS50</span></a></div>
+</div>
+<div class="pd-side"><section class="pd-meta" aria-labelledby="meta-h"><h2 class="pd-mt" id="meta-h">Details</h2><dl class="pd-dl"><div class="pd-mrow"><dt class="pd-ml">Course</dt><dd class="pd-mv">CS50x · Harvard</dd></div><div class="pd-mrow"><dt class="pd-ml">Completed</dt><dd class="pd-mv">2026</dd></div><div class="pd-mrow"><dt class="pd-ml">Workload</dt><dd class="pd-mv">10 problem sets + final project</dd></div><div class="pd-mrow"><dt class="pd-ml">Stack</dt><dd class="pd-mv">Flask · JavaScript · HTML/CSS</dd></div></dl><ul class="sb-kws" role="list"><li class="sb-kw">Computer Science</li><li class="sb-kw">C</li><li class="sb-kw">Python</li><li class="sb-kw">SQL</li><li class="sb-kw">Flask</li><li class="sb-kw">JavaScript</li></ul></section><section class="pd-meta rel" aria-labelledby="rel-h"><h2 class="rel-t" id="rel-h">More side quests</h2><ul role="list"><li><a class="rel-item" href="/playground/live-edge-coffee-table/"><span class="rel-n">A Hand-Built Live-Edge Coffee Table</span><span class="rel-c">Woodworking</span></a></li></ul></section></div>
+</div>
+</article>
+</div></main>
+<footer class="site-foot"><div class="inner"><div class="foot-in"><span>© 2026 Mattia Ferdeghini · Bologna</span><span>No cookies, no trackers</span></div></div></footer>
+</div>
+<button class="btt js-only" type="button" aria-label="Back to top" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<dialog class="lb" aria-label="Enlarge image" data-count="Image {n} of {total}">
+<figure class="lb-fig"><img class="lb-img" alt="" width="1600" height="1000"><figcaption class="lb-cap"></figcaption></figure>
+<p class="lb-count" aria-live="polite"></p>
+<button class="lb-btn lb-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+<button class="lb-btn lb-prev" type="button" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="15 18 9 12 15 6"/></svg></button>
+<button class="lb-btn lb-next" type="button" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></button>
+</dialog>
+<p class="sr live" aria-live="polite" data-live></p>
+</body>
+</html>

@@ -1,0 +1,15 @@
+.DS_Store
+.claude/
+.vscode/
+*.tmp
+*~
+*.docx
+*.md
+IMG_*
+*.heic
+*.HEIC
+*.mov
+*.MOV
+CV.pdf
+backup-privacy/
+backup-originali-*/

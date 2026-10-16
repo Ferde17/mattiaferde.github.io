@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mattiaferdeghini.com/sitemap.xml
