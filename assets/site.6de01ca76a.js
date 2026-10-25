@@ -382,6 +382,57 @@ window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(
 check();
 (doc.fonts && doc.fonts.ready ? doc.fonts.ready : Promise.resolve()).then(check);
 })();
+var tocList = $('.toc ol'), tocPct = $('[data-toc-pct]');
+var tocLinks = tocList ? $$('a', tocList) : [];
+var traces = $$('[data-trace]');
+var tracePads = function (list) { return $$('.acc-item', list); };
+var layoutTrace = function (list) {
+var items = tracePads(list);
+if (!items.length) return;
+var t0 = items[0].offsetTop + 27, t1 = items[items.length - 1].offsetTop + 27;
+list.style.setProperty('--t0', t0 + 'px');
+list.style.setProperty('--len', Math.max(0, t1 - t0) + 'px');
+};
+var detailsQueued = false;
+function onDetails() {
+detailsQueued = false;
+var vh = window.innerHeight;
+if (tocList && article) {
+var r = article.getBoundingClientRect();
+var total = r.height - vh * 0.6;
+var p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 1;
+tocList.style.setProperty('--tp', p.toFixed(4));
+if (tocPct) tocPct.textContent = Math.round(p * 100) + '%';
+var cur = tocLinks.filter(function (a) { return a.getAttribute('aria-current') === 'true'; })[0];
+var idx = tocLinks.indexOf(cur);
+tocLinks.forEach(function (a, i) { a.classList.toggle('is-read', i < idx || p >= 0.999); });
+}
+traces.forEach(function (list) {
+var r = list.getBoundingClientRect();
+var t0 = parseFloat(list.style.getPropertyValue('--t0')) || 0, len = parseFloat(list.style.getPropertyValue('--len')) || 0;
+var y = vh * 0.6 - r.top;
+var p = len > 0 ? Math.min(1, Math.max(0, (y - t0) / len)) : (y >= t0 ? 1 : 0);
+list.style.setProperty('--tp', p.toFixed(4));
+tracePads(list).forEach(function (it) { it.classList.toggle('on', it.offsetTop + 27 <= y + 0.5); });
+});
+}
+if (tocList || traces.length) {
+traces.forEach(layoutTrace);
+var reDetails = function () { if (!detailsQueued) { detailsQueued = true; requestAnimationFrame(onDetails); } };
+window.addEventListener('scroll', reDetails, { passive: true });
+window.addEventListener('resize', function () { traces.forEach(layoutTrace); reDetails(); });
+if ('ResizeObserver' in window) traces.forEach(function (list) { new ResizeObserver(function () { layoutTrace(list); reDetails(); }).observe(list); });
+if (toc) toc.addEventListener('toggle', reDetails);
+onDetails();
+}
+doc.addEventListener('click', function (e) {
+var b = e.target.closest('[data-fx-v]');
+if (!b) return;
+var fx = b.closest('[data-fx]'), v = b.getAttribute('data-fx-v');
+fx.setAttribute('data-v', v);
+$$('[data-fx-v]', fx).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+window.dispatchEvent(new Event('resize'));
+});
 var wrap = $('[data-particles]');
 if (wrap && window.HTMLCanvasElement) {
 var sizer = $('.name-sizer', wrap);
