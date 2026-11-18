@@ -45,37 +45,6 @@
   ],
   "ricette": [
     {
-      "id": "strudel",
-      "titolo": "Strudel",
-      "descrizione": "Bolognese sauce, known in Italian as ragú alla Bolognese, is a meat-based sauce originating from Bologna, Italy. In Italian cuisine, it is customarily used to dress “tagliatelle al ragú” and to prepare “lasagne alla bolognese”.",
-      "categoria": "dolci",
-      "pasti": ["colazione", "merenda"],
-      "anticipo": true,
-      "porzioni": "4",
-      "tempi": { "preparazione": 25, "cottura": 40 },
-      "difficolta": "facile",
-      "ingredienti": [
-        "750g mele",
-        "60g zucchero",
-        "60g pangrattato",
-        "50g burro",
-        "50g uvetta",
-        "25g pinoli",
-        "cannella",
-        "scorza di limone",
-        "base preparata per dolci"
-      ],
-      "procedimento": [
-        "Heat oil and butter in a large saucepan over medium-high heat. Add onion and garlic and cook, stirring, for 3 minutes or until onion softens. Add the mince and cook, stirring with a wooden spoon to break up any lumps, for 5 minutes or until the mince changes color.",
-        "Add the tomato paste, wine, tomato, oregano and bay leaves, and bring to the boil. Reduce heat to medium and simmer, stirring occasionally, for 1 hour or until sauce thickens. Taste and season with salt and pepper. Stir in the parsley.",
-        "Meanwhile, cook the spaghetti in a large saucepan of salted boiling water following packet directions until al dente. Drain.",
-        "Divide the spaghetti among bowls and spoon over bolognese sauce. Grate over the parmesan and serve immediately."
-      ],
-      "note": "You can freeze this bolognese sauce for up to 2 months. Cool to room temperature, then place individual portions or whole quantity in airtight containers or freezer bags and expel air. Label, date and freeze. Place in the fridge overnight to thaw.",
-      "pdf": "pdf/dolci/strudel.pdf",
-      "aggiunta": "2026-09-19"
-    },
-    {
       "id": "gnocchi-alla-sorrentina",
       "titolo": "Gnocchi alla sorrentina",
       "descrizione": "Gnocchi di patate fatti in casa con sugo al basilico, mozzarella e Parmigiano, gratinati in forno.",
@@ -155,64 +124,6 @@
       "fonte": "gz",
       "fonteUrl": "https://ricette.giallozafferano.it/Gnocchi-di-patate.html",
       "pdf": "pdf/primi/gnocchi-di-patate.pdf",
-      "aggiunta": "2026-11-18"
-    },
-    {
-      "id": "lasagne-alla-bolognese",
-      "titolo": "Lasagne alla bolognese",
-      "descrizione": "Lasagne con sfoglia verde agli spinaci, ragù bolognese cotto a lungo, besciamella e Parmigiano.",
-      "categoria": "primi",
-      "pasti": ["pranzo", "cena"],
-      "anticipo": true,
-      "notaAnticipo": "Si assemblano il giorno prima e si cuociono al momento; si possono congelare crude e il ragù da solo si tiene 2-3 giorni in frigo.",
-      "porzioni": "8",
-      "tempi": { "preparazione": 120, "cottura": 180, "riposo": 30 },
-      "difficolta": "media",
-      "costo": "medio",
-      "ingredienti": [
-        { "sezione": "Per la sfoglia all'uovo verde" },
-        "175 g semola di grano duro rimacinata",
-        "75 g farina 00",
-        "125 g spinaci",
-        "1 uovo",
-        "2 tuorli",
-        { "sezione": "Per il ragù" },
-        "700 g macinato di manzo",
-        "350 g passata di pomodoro",
-        "270 g pancetta fresca",
-        "110 g carote",
-        "110 g sedano",
-        "110 g cipolle dorate",
-        "350 g brodo vegetale",
-        "110 g vino rosso",
-        "2 cucchiai di doppio concentrato di pomodoro",
-        "6 cucchiai di olio extravergine d'oliva",
-        "Sale fino q.b.",
-        "Pepe nero q.b.",
-        { "sezione": "Per la besciamella" },
-        "800 g latte intero",
-        "50 g burro",
-        "50 g farina 00",
-        "Noce moscata q.b.",
-        "Sale fino q.b.",
-        { "sezione": "Per la superficie" },
-        "150 g Parmigiano Reggiano DOP",
-        "Burro q.b."
-      ],
-      "procedimento": [
-        "Ragù: tritate al coltello cipolla, sedano, carota e la pancetta. In una casseruola sciogliete la pancetta nell'olio caldo a fuoco moderato finché è ben rosolata, poi aggiungete le verdure e fatele appassire piano, mescolando spesso, senza farle bruciare.",
-        "Alzate la fiamma, unite il macinato e cuocetelo una decina di minuti, mescolando, finché sfrigola ed è asciutto. Sfumate con il vino rosso e lasciatelo evaporare del tutto, poi aggiungete il doppio concentrato.",
-        "Versate la passata e il brodo caldo, coprite e cuocete a fuoco dolce per circa 2 ore, regolando di sale e pepe a metà cottura. Il ragù deve risultare cremoso e di un arancione scuro.",
-        "Sfoglia verde: sbollentate gli spinaci, strizzateli molto bene e frullateli finemente con l'uovo e i tuorli. Impastate con la semola e la farina fino a ottenere un panetto liscio e sodo, avvolgetelo nella pellicola e lasciatelo riposare 30 minuti.",
-        "Besciamella: sciogliete il burro, unite la farina mescolando con la frusta, versate il latte caldo e fate addensare a fuoco medio; insaporite con sale e noce moscata.",
-        "Stendete la sfoglia sottile e tagliatela in rettangoli della misura della teglia; sbollentateli pochi secondi in acqua salata, passateli in acqua fredda e asciugateli su un canovaccio.",
-        "In una teglia imburrata di circa 30×20 cm alternate strati di sfoglia, ragù, besciamella e Parmigiano grattugiato; terminate con ragù, besciamella, Parmigiano e qualche fiocchetto di burro.",
-        "Cuocete in forno statico preriscaldato a 170 °C per circa 40 minuti, finché la superficie è dorata, e lasciate riposare qualche minuto prima di tagliarle."
-      ],
-      "note": "Si conservano 1-2 giorni in frigo coperte; si possono assemblare il giorno prima e cuocere il giorno dopo. Con ingredienti freschi si congelano, meglio da crude: fatele scongelare in frigo per 24 ore e poi infornatele.",
-      "fonte": "gz",
-      "fonteUrl": "https://ricette.giallozafferano.it/Lasagne-alla-Bolognese.html",
-      "pdf": "pdf/primi/lasagne-alla-bolognese.pdf",
       "aggiunta": "2026-11-18"
     },
     {
@@ -1012,42 +923,6 @@
       "fonte": "gz",
       "fonteUrl": "https://ricette.giallozafferano.it/Carne-alla-pizzaiola.html",
       "pdf": "pdf/secondi/carne-alla-pizzaiola.pdf",
-      "aggiunta": "2026-11-18"
-    },
-    {
-      "id": "cotolette-di-pollo",
-      "titolo": "Cotolette di pollo",
-      "descrizione": "Fettine sottili di petto di pollo con doppia panatura croccante, fritte in pochi minuti.",
-      "categoria": "secondi",
-      "pasti": ["pranzo", "cena"],
-      "anticipo": false,
-      "porzioni": "4",
-      "tempi": { "preparazione": 10, "cottura": 20 },
-      "difficolta": "facile",
-      "costo": "basso",
-      "ingredienti": [
-        "200 g petto di pollo",
-        "1 uovo",
-        "80 g farina 00",
-        "120 g pangrattato",
-        "2 pizzichi di sale",
-        { "sezione": "Per friggere" },
-        "500 ml olio di semi di arachide",
-        { "sezione": "Per servire" },
-        "1 spicchio di limone",
-        "Lattuga q.b."
-      ],
-      "procedimento": [
-        "Tagliate il petto di pollo a fettine molto sottili, spesse 3-5 mm.",
-        "Sbattete l'uovo con il sale in un piatto fondo; mettete farina e pangrattato in due piatti separati.",
-        "Passate ogni fettina nell'uovo lasciando sgocciolare l'eccesso, poi nella farina, di nuovo nell'uovo e infine nel pangrattato, premendo perché aderisca bene e copra tutta la superficie.",
-        "Scaldate l'olio di semi a circa 160 °C e friggete le cotolette una alla volta, circa 2 minuti per lato, finché sono dorate.",
-        "Scolatele su carta assorbente e servitele con lo spicchio di limone e qualche foglia di lattuga."
-      ],
-      "note": "La fonte non dà indicazioni sulla conservazione: sono da mangiare appena fritte, quando la panatura è croccante.",
-      "fonte": "gz",
-      "fonteUrl": "https://ricette.giallozafferano.it/Cotolette-di-pollo.html",
-      "pdf": "pdf/secondi/cotolette-di-pollo.pdf",
       "aggiunta": "2026-11-18"
     },
     {
@@ -3099,44 +2974,6 @@
       "aggiunta": "2026-11-18"
     },
     {
-      "id": "crescentine-o-tigelle",
-      "titolo": "Crescentine o tigelle",
-      "descrizione": "Piccoli pani tondi modenesi cotti nella tigelliera, da farcire caldi con salumi, formaggi o pesto di lardo.",
-      "categoria": "pane-lievitati",
-      "pasti": ["pranzo", "cena", "aperitivo"],
-      "anticipo": true,
-      "notaAnticipo": "Si possono congelare una volta fredde e scaldare in forno a 150 °C per 10-15 minuti.",
-      "porzioni": "22 tigelle",
-      "tempi": { "preparazione": 30, "cottura": 30, "riposo": 200 },
-      "difficolta": "media",
-      "costo": "basso",
-      "ingredienti": [
-        { "sezione": "Per circa 22 crescentine" },
-        "500 g farina 00",
-        "250 g farina 0",
-        "300 g latte intero",
-        "150 g acqua",
-        "50 g strutto",
-        "50 g olio extravergine d'oliva",
-        "10 g lievito di birra fresco",
-        "20 g sale fino"
-      ],
-      "procedimento": [
-        "Mettete nella planetaria con il gancio le due farine e il lievito sbriciolato, unite il latte e lo strutto e avviate a bassa velocità.",
-        "Quando gli ingredienti iniziano ad amalgamarsi aumentate un po' la velocità e aggiungete l'acqua a filo; a metà unite il sale e finite di versare l'acqua.",
-        "Dopo circa 10 minuti, quando l'impasto è uniforme, aggiungete l'olio a filo e lavorate altri 5 minuti (se resta appiccicoso, fermatevi e lasciatelo riposare coperto 5 minuti). Deve risultare liscio e incordato.",
-        "Lasciatelo lievitare in una ciotola coperta con pellicola, a temperatura ambiente, per 3 ore o fino al raddoppio.",
-        "Stendetelo sul piano infarinato a mezzo centimetro di spessore (se si ritira, aspettate qualche minuto) e ricavate dei dischi con un coppapasta da 9 cm; reimpastate i ritagli per ottenerne altri.",
-        "Disponete i dischi su carta forno, copriteli con pellicola e lasciateli riposare 20 minuti.",
-        "Cuoceteli nella tigelliera ben calda, ma non rovente, per circa 5 minuti per lato, finché sono dorati e con il disegno impresso. Teneteli sotto un canovaccio perché restino morbidi e servite."
-      ],
-      "note": "Sono più buone appena cotte. Non farcite si conservano al massimo un giorno in frigo ben coperte (scaldatele in padella un minuto per lato), oppure si possono congelare e rigenerare in forno statico a 150 °C per 10-15 minuti. Lo strutto si può sostituire con la stessa quantità di olio di semi.",
-      "fonte": "gz",
-      "fonteUrl": "https://ricette.giallozafferano.it/Crescentine-o-tigelle.html",
-      "pdf": "pdf/pane-lievitati/crescentine-o-tigelle.pdf",
-      "aggiunta": "2026-11-18"
-    },
-    {
       "id": "focaccia-fugassa-alla-genovese",
       "titolo": "Focaccia (fügassa) alla genovese",
       "descrizione": "La focaccia ligure bassa e unta, con i caratteristici buchi pieni di olio e salamoia, croccante sotto e morbida sopra.",
@@ -3387,86 +3224,6 @@
         ]
       },
       "pdf": "pdf/prep/prep-ragu-alla-bolognese.pdf",
-      "aggiunta": "2026-11-18"
-    },
-    {
-      "id": "prep-lasagne-alla-bolognese",
-      "titolo": "Lasagne alla bolognese",
-      "descrizione": "Si montano in anticipo e si congelano crude: il giorno prima si scongelano in frigo e si infornano.",
-      "sezione": "prep",
-      "categoria": "primi",
-      "pasti": ["pranzo", "cena"],
-      "anticipo": true,
-      "notaAnticipo": "Frigo: 1-2 giorni (cotte o montate crude). Freezer: Sì, meglio crude (3 mesi).",
-      "porzioni": "8",
-      "tempi": { "preparazione": 120, "cottura": 180, "riposo": 30 },
-      "difficolta": "media",
-      "costo": "medio",
-      "ingredienti": [
-        { "sezione": "Per la sfoglia verde" },
-        "175 g semola di grano duro rimacinata",
-        "75 g farina 00",
-        "125 g spinaci",
-        "1 uovo",
-        "2 tuorli",
-        { "sezione": "Per il ragù" },
-        "700 g macinato di manzo",
-        "270 g pancetta fresca",
-        "110 g carote",
-        "110 g sedano",
-        "110 g cipolle dorate",
-        "350 g passata di pomodoro",
-        "2 cucchiai doppio concentrato di pomodoro",
-        "110 g vino rosso",
-        "350 g brodo vegetale",
-        "6 cucchiai olio extravergine d'oliva",
-        "sale e pepe nero q.b.",
-        { "sezione": "Per la besciamella" },
-        "800 g latte intero",
-        "50 g burro",
-        "50 g farina 00",
-        "noce moscata e sale q.b.",
-        { "sezione": "Per la superficie" },
-        "150 g Parmigiano Reggiano DOP",
-        "burro q.b."
-      ],
-      "procedimento": [
-        "Prepara il ragù come nella ricetta del ragù alla bolognese, con una cottura lenta di circa 2 ore.",
-        "Per la sfoglia lessa e strizza gli spinaci, frullali con uova e tuorli e impasta con semola e farina; lascia riposare l'impasto coperto per 30 minuti.",
-        "Tira la sfoglia sottile, tagliala in rettangoli e sbollentali per 30-40 secondi, poi stendili su un canovaccio.",
-        "Prepara la besciamella: fondi il burro, tosta la farina, aggiungi il latte caldo a filo e cuoci fino ad addensare; profuma con noce moscata e sale.",
-        "In una teglia 30×20 alterna besciamella, sfoglia, ragù e Parmigiano per circa 6 strati; finisci con Parmigiano e fiocchetti di burro.",
-        "Se le consumi subito, cuoci in forno statico a 170 °C per circa 40 minuti; per il meal prep fermati prima della cottura (vedi conservazione)."
-      ],
-      "fonte": "gz",
-      "fonteUrl": "https://ricette.giallozafferano.it/Lasagne-alla-Bolognese.html",
-      "prep": {
-        "frigo": "1-2 giorni (cotte o montate crude)",
-        "frigoGiorni": 2,
-        "freezer": "Sì, meglio crude (3 mesi)",
-        "congelabile": true,
-        "conservazione": [
-          "Puoi montarle il giorno prima e cuocerle il giorno dopo, tenendole coperte in frigo.",
-          "Per il freezer congelale crude, intere o in monoporzioni, ben avvolte nella pellicola e poi nell'alluminio, con etichetta e data.",
-          "Cotte si tengono in frigo coperte al massimo 1-2 giorni."
-        ],
-        "ravvivare": [
-          "Dal freezer: scongela in frigo per circa 24 ore, poi cuoci in forno a 170 °C per 40-50 minuti coperte di alluminio, scoprendo negli ultimi 10.",
-          "Avanzi già cotti: forno a 180 °C coperte per 15-20 minuti, con un cucchiaio di latte o di sugo sui bordi perché non si secchino.",
-          "Al microonde solo una porzione alla volta, coperta, finché è bollente al centro."
-        ],
-        "alMomento": [
-          "Un velo di Parmigiano e qualche minuto di grill per ridare la crosticina"
-        ],
-        "ricettaBase": false,
-        "fonti": [
-          {
-            "nome": "GialloZafferano",
-            "url": "https://ricette.giallozafferano.it/Lasagne-alla-Bolognese.html"
-          }
-        ]
-      },
-      "pdf": "pdf/prep/prep-lasagne-alla-bolognese.pdf",
       "aggiunta": "2026-11-18"
     },
     {
@@ -4710,6 +4467,86 @@
         ]
       },
       "pdf": "pdf/prep/prep-soffritto-da-congelare.pdf",
+      "aggiunta": "2026-11-18"
+    },
+    {
+      "id": "prep-lasagne-alla-bolognese",
+      "titolo": "Lasagne alla bolognese",
+      "descrizione": "Si montano in anticipo e si congelano crude: il giorno prima si scongelano in frigo e si infornano.",
+      "sezione": "prep",
+      "categoria": "primi",
+      "pasti": ["pranzo", "cena"],
+      "anticipo": true,
+      "notaAnticipo": "Frigo: 1-2 giorni (cotte o montate crude). Freezer: Sì, meglio crude (3 mesi).",
+      "porzioni": "8",
+      "tempi": { "preparazione": 120, "cottura": 180, "riposo": 30 },
+      "difficolta": "media",
+      "costo": "medio",
+      "ingredienti": [
+        { "sezione": "Per la sfoglia verde" },
+        "175 g semola di grano duro rimacinata",
+        "75 g farina 00",
+        "125 g spinaci",
+        "1 uovo",
+        "2 tuorli",
+        { "sezione": "Per il ragù" },
+        "700 g macinato di manzo",
+        "270 g pancetta fresca",
+        "110 g carote",
+        "110 g sedano",
+        "110 g cipolle dorate",
+        "350 g passata di pomodoro",
+        "2 cucchiai doppio concentrato di pomodoro",
+        "110 g vino rosso",
+        "350 g brodo vegetale",
+        "6 cucchiai olio extravergine d'oliva",
+        "sale e pepe nero q.b.",
+        { "sezione": "Per la besciamella" },
+        "800 g latte intero",
+        "50 g burro",
+        "50 g farina 00",
+        "noce moscata e sale q.b.",
+        { "sezione": "Per la superficie" },
+        "150 g Parmigiano Reggiano DOP",
+        "burro q.b."
+      ],
+      "procedimento": [
+        "Prepara il ragù come nella ricetta del ragù alla bolognese, con una cottura lenta di circa 2 ore.",
+        "Per la sfoglia lessa e strizza gli spinaci, frullali con uova e tuorli e impasta con semola e farina; lascia riposare l'impasto coperto per 30 minuti.",
+        "Tira la sfoglia sottile, tagliala in rettangoli e sbollentali per 30-40 secondi, poi stendili su un canovaccio.",
+        "Prepara la besciamella: fondi il burro, tosta la farina, aggiungi il latte caldo a filo e cuoci fino ad addensare; profuma con noce moscata e sale.",
+        "In una teglia 30×20 alterna besciamella, sfoglia, ragù e Parmigiano per circa 6 strati; finisci con Parmigiano e fiocchetti di burro.",
+        "Se le consumi subito, cuoci in forno statico a 170 °C per circa 40 minuti; per il meal prep fermati prima della cottura (vedi conservazione)."
+      ],
+      "fonte": "gz",
+      "fonteUrl": "https://ricette.giallozafferano.it/Lasagne-alla-Bolognese.html",
+      "prep": {
+        "frigo": "1-2 giorni (cotte o montate crude)",
+        "frigoGiorni": 2,
+        "freezer": "Sì, meglio crude (3 mesi)",
+        "congelabile": true,
+        "conservazione": [
+          "Puoi montarle il giorno prima e cuocerle il giorno dopo, tenendole coperte in frigo.",
+          "Per il freezer congelale crude, intere o in monoporzioni, ben avvolte nella pellicola e poi nell'alluminio, con etichetta e data.",
+          "Cotte si tengono in frigo coperte al massimo 1-2 giorni."
+        ],
+        "ravvivare": [
+          "Dal freezer: scongela in frigo per circa 24 ore, poi cuoci in forno a 170 °C per 40-50 minuti coperte di alluminio, scoprendo negli ultimi 10.",
+          "Avanzi già cotti: forno a 180 °C coperte per 15-20 minuti, con un cucchiaio di latte o di sugo sui bordi perché non si secchino.",
+          "Al microonde solo una porzione alla volta, coperta, finché è bollente al centro."
+        ],
+        "alMomento": [
+          "Un velo di Parmigiano e qualche minuto di grill per ridare la crosticina"
+        ],
+        "ricettaBase": false,
+        "fonti": [
+          {
+            "nome": "GialloZafferano",
+            "url": "https://ricette.giallozafferano.it/Lasagne-alla-Bolognese.html"
+          }
+        ]
+      },
+      "pdf": "pdf/prep/prep-lasagne-alla-bolognese.pdf",
       "aggiunta": "2026-11-18"
     }
   ]
