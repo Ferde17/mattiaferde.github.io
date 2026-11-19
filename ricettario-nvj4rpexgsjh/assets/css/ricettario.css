@@ -628,3 +628,41 @@ main:focus { outline: none; }
   .r-steps li.r-step::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .r-ingr .tick { display: none; }
 }
+
+/* ---------- Riquadri colorati (al posto delle foto) e valori nutrizionali ---------- */
+.tile {
+  --c: #8a8780;
+  display: flex; align-items: center; justify-content: center;
+  height: 58px; border-radius: 6px;
+  background: color-mix(in srgb, var(--c) 20%, var(--sheet));
+  color: color-mix(in srgb, var(--c) 78%, var(--ink));
+}
+.tile svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.tile[data-p="pollo"] { --c: #d9962b; }
+.tile[data-p="manzo"] { --c: #b04a3f; }
+.tile[data-p="maiale"] { --c: #d4818f; }
+.tile[data-p="agnello"] { --c: #8c6a4f; }
+.tile[data-p="pesce"] { --c: #3d82ad; }
+.tile[data-p="frutti-di-mare"] { --c: #2f908b; }
+.tile[data-p="uova"] { --c: #dcb53a; }
+.tile[data-p="latticini"] { --c: #8f9cbb; }
+.tile[data-p="anatra"] { --c: #7a5f9a; }
+.tile[data-p="capra"] { --c: #a0785a; }
+.tile[data-p="nessuna"] { --c: #7f9a6b; }
+.tile-big { height: 84px; margin-bottom: 18px; }
+.tile-big svg { width: 42px; height: 42px; }
+
+.m-macro b { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.r-macro {
+  display: flex; flex-wrap: wrap; column-gap: 20px; row-gap: 4px;
+  padding: 2px 0 8px;
+  font: 400 1rem/1.3 var(--sans);
+}
+.r-macro div { display: inline-flex; gap: 5px; }
+.r-macro dt { font-weight: 700; text-transform: uppercase; letter-spacing: .01em; color: var(--muted); }
+.r-macro dd { font-variant-numeric: tabular-nums; }
+.r-macro-note { margin: 0 0 6px; font: 400 .8rem/1.3 var(--sans); color: var(--muted); }
+.r-facet { background: var(--chip); }
+
+@media print { .tile { display: none; } }

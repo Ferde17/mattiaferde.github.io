@@ -21,7 +21,38 @@
     { id: 'az', nome: 'A → Z' },
     { id: 'tempo', nome: 'Più veloci' },
     { id: 'recenti', nome: 'Aggiunte di recente' },
+    { id: 'proteine', nome: 'Più proteine' },
+    { id: 'densita', nome: 'Più proteine per kcal' },
+    { id: 'kcal', nome: 'Meno calorie' },
   ];
+
+  /* Filtri a faccette per le ricette con dati nutrizionali e tag (proteina, base, cucina…).
+     `all: true` = la ricetta deve avere tutte le voci scelte; altrimenti basta una. */
+  const FACETS = {
+    collezioni: { title: 'Raccolta', get: (r) => r.collezioni || [] },
+    proteine: { title: 'Proteina', get: (r) => (r.proteina ? [r.proteina] : []) },
+    basi: { title: 'Base', get: (r) => (r.base ? [r.base] : []) },
+    cucine: { title: 'Cucina', get: (r) => r.cucina || [] },
+    stili: { title: 'Stile', get: (r) => r.stile || [] },
+    caratt: { title: 'Caratteristiche', get: (r) => r.caratt || [], all: true },
+    kcal: { title: 'Calorie a porzione', get: (r) => (r.fasciaKcal ? [r.fasciaKcal] : []) },
+  };
+  const FACET_KEYS = Object.keys(FACETS);
+
+  /* Riquadro colorato al posto della foto: colore dalla proteina, disegno dalla base. */
+  const BASE_ICON = {
+    riso: '<path d="M3 12h18a9 9 0 0 1-18 0Z"/><path d="M8 8c0-1.6 1-2 1-3.5M12 8c0-1.6 1-2 1-3.5M16 8c0-1.6 1-2 1-3.5"/>',
+    pasta: '<path d="M8 3v8M12 3v8M16 3v8"/><path d="M8 11c0 3.2 8 3.2 8 0M12 14v7"/>',
+    noodles: '<path d="M3 7c3-3 6 3 9 0s6 3 9 0M3 13c3-3 6 3 9 0s6 3 9 0M3 19c3-3 6 3 9 0s6 3 9 0"/>',
+    legumi: '<ellipse cx="8.5" cy="9" rx="3.2" ry="5" transform="rotate(-30 8.5 9)"/><ellipse cx="15.5" cy="15" rx="3.2" ry="5" transform="rotate(-30 15.5 15)"/>',
+    pane: '<path d="M4 19V11a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8Z"/><path d="M9 7v4M14 7v4"/>',
+    patate: '<path d="M5 13c0-4 4-8 9-7s6 6 3 10-9 5-11 2c-1-1-1-3-1-5Z"/><path d="M10 11h.01M14 14h.01M9 16h.01"/>',
+    nessuna: '<path d="M5 19c0-9 5-14 14-14 0 9-5 14-14 14Z"/><path d="M5 19 14 10"/>',
+    impasto: '<path d="M3 15a9 5 0 0 1 18 0v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 12.5v1.5M12 12v2M16 12.5v1.5"/>',
+  };
+  const tile = (r, big = false) => (r.proteina
+    ? `<span class="tile${big ? ' tile-big' : ''}" data-p="${esc(r.proteina)}" aria-hidden="true"><svg viewBox="0 0 24 24">${BASE_ICON[r.base] || BASE_ICON.nessuna}</svg></span>`
+    : '');
 
   const ICON = {
     clock: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
@@ -124,6 +155,7 @@
       prepRegole: Array.isArray(raw.prepRegole) ? raw.prepRegole : [],
       ricette: (raw.ricette || []).filter((r) => r && r.id && r.titolo),
     };
+    for (const k of FACET_KEYS) data[k] = Array.isArray(raw[k]) ? raw[k] : [];
     for (const r of data.ricette) {
       r._section = r.sezione === 'prep' && r.prep ? 'prep' : 'ricette';
       r.pasti = Array.isArray(r.pasti) ? r.pasti : [];
@@ -132,7 +164,8 @@
       r._tot = totalTime(r);
       const ingr = r.ingredienti.map((i) => (typeof i === 'string' ? i : i?.sezione || '')).join(' ');
       const src = byId(data.fonti, r.fonte);
-      r._search = norm([r.titolo, r.descrizione, ingr, byId(data.categorie, r.categoria)?.nome, src?.nome, src?.sigla].join(' '));
+      const facetNames = FACET_KEYS.flatMap((k) => FACETS[k].get(r).map((v) => byId(data[k], v)?.nome || v));
+      r._search = norm([r.titolo, r.descrizione, ingr, byId(data.categorie, r.categoria)?.nome, src?.nome, src?.sigla, ...facetNames].join(' '));
     }
     return data;
   }
@@ -149,7 +182,11 @@
   const pool = () => db.ricette.filter((r) => r._section === section);
 
   /* ---------------------------------------------------------------- filtri */
-  const defaultFilters = () => ({ q: '', pasti: [], categorie: [], difficolta: [], costo: [], fonti: [], anticipo: 'tutte', congela: 'tutte', tmin: 0, tmax: null, ordina: 'categoria' });
+  const defaultFilters = () => ({
+    q: '', pasti: [], categorie: [], difficolta: [], costo: [], fonti: [],
+    ...Object.fromEntries(FACET_KEYS.map((k) => [k, []])),
+    anticipo: 'tutte', congela: 'tutte', tmin: 0, tmax: null, ordina: 'categoria',
+  });
 
   const filtersByKey = {};
   const filtersKey = (s) => (s === 'ricette' ? FILTERS_KEY : `${FILTERS_KEY}:${s}`);
@@ -157,7 +194,7 @@
     if (filtersByKey[s]) return filtersByKey[s];
     const saved = storage.get(filtersKey(s), 'sessionStorage');
     const f = { ...defaultFilters(), ...(saved && typeof saved === 'object' ? saved : {}) };
-    for (const k of ['pasti', 'categorie', 'difficolta', 'costo', 'fonti']) if (!Array.isArray(f[k])) f[k] = [];
+    for (const k of ['pasti', 'categorie', 'difficolta', 'costo', 'fonti', ...FACET_KEYS]) if (!Array.isArray(f[k])) f[k] = [];
     if (!SORTS.some((x) => x.id === f.ordina)) f.ordina = 'categoria';
     filtersByKey[s] = f;
     return f;
@@ -170,6 +207,7 @@
 
   const timeActive = (f) => f.tmin > 0 || f.tmax != null;
   const activeCount = (f) => f.pasti.length + f.categorie.length + f.difficolta.length + f.costo.length + f.fonti.length
+    + FACET_KEYS.reduce((n, k) => n + f[k].length, 0)
     + (f.anticipo !== 'tutte' ? 1 : 0) + (f.congela !== 'tutte' ? 1 : 0) + (timeActive(f) ? 1 : 0);
 
   function hasValue(r, group, value) {
@@ -178,6 +216,7 @@
     if (group === 'difficolta') return r.difficolta === value;
     if (group === 'costo') return r.costo === value;
     if (group === 'fonti') return r.fonte === value;
+    if (FACETS[group]) return FACETS[group].get(r).includes(value);
     return false;
   }
 
@@ -192,6 +231,11 @@
     if (skip !== 'difficolta' && f.difficolta.length && !f.difficolta.includes(r.difficolta)) return false;
     if (skip !== 'costo' && f.costo.length && !f.costo.includes(r.costo)) return false;
     if (skip !== 'fonti' && f.fonti.length && !f.fonti.includes(r.fonte)) return false;
+    for (const k of FACET_KEYS) {
+      if (skip === k || !f[k].length) continue;
+      const have = FACETS[k].get(r);
+      if (!(FACETS[k].all ? f[k].every((v) => have.includes(v)) : f[k].some((v) => have.includes(v)))) return false;
+    }
     if (skip !== 'anticipo' && f.anticipo !== 'tutte' && (f.anticipo === 'si') !== (r.anticipo === true)) return false;
     if (skip !== 'congela' && f.congela !== 'tutte' && (f.congela === 'si') !== (r.prep?.congelabile === true)) return false;
     if (skip !== 'tempo' && timeActive(f)) {
@@ -206,6 +250,16 @@
     const az = (a, b) => a.titolo.localeCompare(b.titolo, 'it', { sensitivity: 'base' });
     const arr = list.slice();
     if (mode === 'tempo') return arr.sort((a, b) => (a._tot ?? Infinity) - (b._tot ?? Infinity) || az(a, b));
+    const by = (get, dir) => arr.sort((a, b) => {
+      const x = get(a); const y = get(b);
+      if (x == null && y == null) return az(a, b);
+      if (x == null) return 1;
+      if (y == null) return -1;
+      return (dir === 'desc' ? y - x : x - y) || az(a, b);
+    });
+    if (mode === 'proteine') return by((r) => r.macro?.proteine, 'desc');
+    if (mode === 'densita') return by((r) => r.macro?.proteine100kcal, 'desc');
+    if (mode === 'kcal') return by((r) => r.macro?.kcal, 'asc');
     if (mode === 'recenti') return arr.sort((a, b) => String(b.aggiunta || '').localeCompare(String(a.aggiunta || '')) || az(a, b));
     if (mode === 'categoria') {
       const order = new Map(db.categorie.map((c, i) => [c.id, i]));
@@ -314,6 +368,7 @@
             <div class="panel-body">
               ${chipGroup('pasti', 'Pasto', usedOptions(db.pasti, 'pasti'))}
               ${chipGroup('categorie', 'Categoria', usedOptions(db.categorie, 'categorie'))}
+              ${FACET_KEYS.map((k) => chipGroup(k, FACETS[k].title, usedOptions(db[k], k))).join('')}
               <fieldset class="fgroup">
                 <legend class="flabel">Tempo totale</legend>
                 <p class="range-value" id="tval" aria-live="polite"></p>
@@ -503,6 +558,7 @@
     filters.difficolta.forEach((v) => add(diff(v)?.nome ?? v, 'rm-difficolta', v));
     filters.costo.forEach((v) => add(`Costo ${(cost(v)?.nome ?? v).toLocaleLowerCase('it')}`, 'rm-costo', v));
     filters.fonti.forEach((v) => add(fonte(v)?.nome ?? v, 'rm-fonti', v));
+    FACET_KEYS.forEach((k) => filters[k].forEach((v) => add(byId(db[k], v)?.nome ?? v, `rm-${k}`, v)));
     if (timeActive(filters)) add($('#tval').textContent, 'rm-tempo', '');
     if (filters.anticipo !== 'tutte') add(filters.anticipo === 'si' ? 'In anticipo' : 'Non in anticipo', 'rm-anticipo', '');
     if (filters.congela !== 'tutte') add(filters.congela === 'si' ? 'Si congela' : 'Non si congela', 'rm-congela', '');
@@ -515,6 +571,7 @@
     const p = r._section === 'prep' ? r.prep : null;
     return `
       <a class="card${p ? ' card-prep' : ''}" href="#/${encodeURIComponent(r.id)}">
+        ${tile(r)}
         <span class="card-top">
           <span class="card-cat">${esc(catName(r.categoria))}</span>
           <span class="card-tags">
@@ -529,6 +586,7 @@
         <span class="card-meta">
           ${r._tot != null ? `<span class="m">${ICON.clock}${fmtTime(r._tot, { zero: true })}</span>` : ''}
           ${d ? `<span class="m">${dots(d.livello || 0)}${esc(d.nome)}</span>` : ''}
+          ${r.macro ? `<span class="m m-macro" title="Per porzione"><b>${r.macro.kcal}</b> kcal · <b>${String(r.macro.proteine).replace('.', ',')} g</b> proteine</span>` : ''}
           ${cost(r.costo) ? `<span class="m" title="Costo ${esc(cost(r.costo).nome.toLocaleLowerCase('it'))}">${euros(cost(r.costo).livello, costMax())}<span class="sr-only">Costo ${esc(cost(r.costo).nome)}</span></span>` : ''}
         </span>
         ${p ? `<span class="card-prep-line">
@@ -584,7 +642,20 @@
       ['Costo', cost(r.costo)?.nome],
     ].filter(([, v]) => v !== '' && v != null);
 
+    const fm = (n) => String(n).replace('.', ',');
+    const mc = r.macro;
+    const macroHtml = mc ? `
+              <dl class="r-macro" aria-label="Valori per porzione">
+                ${[['Calorie', `${mc.kcal} kcal`], ['Proteine', `${fm(mc.proteine)} g`], ['Carboidrati', `${fm(mc.carboidrati)} g`],
+    ['Grassi', `${fm(mc.grassi)} g`], ['Fibre', mc.fibre != null ? `${fm(mc.fibre)} g` : '']]
+    .filter(([, v]) => v).map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}
+              </dl>
+              <p class="r-macro-note">Valori per porzione.</p>` : '';
+
     const tags = [];
+    FACET_KEYS.filter((k) => k !== 'kcal').forEach((k) => FACETS[k].get(r).forEach((v) => {
+      tags.push(`<a class="r-tag r-facet" href="#/" data-goto="${k}" data-value="${esc(v)}">${esc(byId(db[k], v)?.nome ?? v)}</a>`);
+    }));
     if (r.categoria) tags.push(`<a class="r-tag" href="#/" data-goto="categorie" data-value="${esc(r.categoria)}">${esc(catName(r.categoria))}</a>`);
     r.pasti.forEach((p) => tags.push(`<a class="r-tag" href="#/" data-goto="pasti" data-value="${esc(p)}">${esc(pastoName(p))}</a>`));
     if (r._tot != null) tags.push(`<span class="r-tag">${ICON.clock}Totale ${fmtTime(r._tot, { zero: true })}</span>`);
@@ -649,13 +720,16 @@
         <article class="sheet">
           <div class="r-grid">
             <header class="r-head">
+              ${tile(r, true)}
               ${r.descrizione ? `<p class="r-desc">${esc(r.descrizione)}</p>` : ''}
               <h1 class="r-title" tabindex="-1">${esc(r.titolo)}</h1>
               <span class="rule" aria-hidden="true"></span>
               ${meta.length ? `<dl class="r-meta">${meta.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}
+              ${macroHtml}
               <span class="rule" aria-hidden="true"></span>
               ${tags.length ? `<div class="r-tags">${tags.join('')}</div>` : ''}
               ${r.anticipo === true && r.notaAnticipo ? `<p class="r-ahead-note">${esc(r.notaAnticipo)}</p>` : ''}
+              ${r.mealprepNota ? `<p class="r-ahead-note">Meal prep: meglio fresca. ${esc(r.mealprepNota)}</p>` : ''}
               ${pdfBtn ? `<div class="r-actions">${pdfBtn}</div>` : ''}
             </header>
 
@@ -769,7 +843,8 @@
         $('#q').value = '';
         syncSliderFromFilters();
         return changed();
-      case 'rm-pasti': case 'rm-categorie': case 'rm-difficolta': case 'rm-costo': case 'rm-fonti': {
+      case 'rm-pasti': case 'rm-categorie': case 'rm-difficolta': case 'rm-costo': case 'rm-fonti':
+      case 'rm-collezioni': case 'rm-proteine': case 'rm-basi': case 'rm-cucine': case 'rm-stili': case 'rm-caratt': case 'rm-kcal': {
         const g = action.slice(3);
         filters[g] = filters[g].filter((v) => v !== value);
         return changed();
