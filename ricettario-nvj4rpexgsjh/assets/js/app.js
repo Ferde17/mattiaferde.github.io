@@ -587,7 +587,7 @@
           ${r._tot != null ? `<span class="m">${ICON.clock}${fmtTime(r._tot, { zero: true })}</span>` : ''}
           ${d ? `<span class="m">${dots(d.livello || 0)}${esc(d.nome)}</span>` : ''}
           ${r.macro ? `<span class="m m-macro" title="Per porzione"><b>${r.macro.kcal}</b> kcal · <b>${String(r.macro.proteine).replace('.', ',')} g</b> proteine</span>` : ''}
-          ${cost(r.costo) ? `<span class="m" title="Costo ${esc(cost(r.costo).nome.toLocaleLowerCase('it'))}">${euros(cost(r.costo).livello, costMax())}<span class="sr-only">Costo ${esc(cost(r.costo).nome)}</span></span>` : ''}
+          ${cost(r.costo) ? `<span class="m" title="Costo ${esc(cost(r.costo).nome.toLocaleLowerCase('it'))}${r.costoStimato ? ' (stima)' : ''}">${euros(cost(r.costo).livello, costMax())}<span class="sr-only">Costo ${esc(cost(r.costo).nome)}</span></span>` : ''}
         </span>
         ${p ? `<span class="card-prep-line">
           <span title="In frigo">${ICON.fridge}${p.frigoGiorni} ${p.frigoGiorni === 1 ? 'giorno' : 'giorni'}</span>
@@ -639,7 +639,7 @@
       ['Cottura', fmtTime(t.cottura)],
       ['Riposo', fmtTime(t.riposo)],
       ['Difficoltà', d?.nome],
-      ['Costo', cost(r.costo)?.nome],
+      ['Costo', cost(r.costo) && `${cost(r.costo).nome}${r.costoStimato ? ' (stima)' : ''}`],
     ].filter(([, v]) => v !== '' && v != null);
 
     const fm = (n) => String(n).replace('.', ',');
