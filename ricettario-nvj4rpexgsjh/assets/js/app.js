@@ -9,6 +9,7 @@
   'use strict';
 
   const DATA_URL = 'data/ricette.json';
+  const FOTO_URL = 'data/foto.json';   // id ricetta -> img/<id>.jpg (facoltativo, vedi tools/foto.py)
   const FILTERS_KEY = 'ricettario:filtri';
   const THEME_KEY = 'ricettario:tema';
 
@@ -78,6 +79,7 @@
   const topbarActions = document.getElementById('topbar-actions');
 
   let db = null;          // { categorie, pasti, difficolta, costo, fonti, ricette }
+  let foto = {};          // id ricetta -> percorso della foto
   let steps = [0, 60];    // tappe effettive dello slider (in base ai dati)
   let filters = null;     // filtri della sezione corrente (ogni sezione ha i suoi)
   let section = 'ricette'; // 'ricette' | 'prep'
@@ -664,7 +666,7 @@
     else if (r.anticipo === true) tags.push(`<span class="r-tag solid">${ICON.ahead}Si prepara in anticipo</span>`);
     const src = fonte(r.fonte);
     if (src) {
-      const label = `<b class="src-sigla">${esc(src.sigla || '')}</b>${esc(src.nome)}`;
+      const label = `<b class="src-sigla" title="Ricetta tratta da ${esc(src.nome)}">${esc(src.sigla || src.nome)}</b>`;
       tags.push(r.fonteUrl
         ? `<a class="r-tag r-src" href="${esc(r.fonteUrl)}" target="_blank" rel="noopener noreferrer" title="Apri la ricetta originale">${label}</a>`
         : `<span class="r-tag r-src">${label}</span>`);
@@ -672,6 +674,10 @@
 
     const pdfBtn = r.pdf
       ? `<a class="btn" href="${esc(r.pdf)}" download="${esc(slugFileName(r.titolo))}.pdf">${ICON.download}Scarica PDF</a>`
+      : '';
+
+    const fotoHtml = foto[r.id]
+      ? `<figure class="r-foto"><img src="${esc(foto[r.id])}" alt="Foto del piatto: ${esc(r.titolo)}" width="640" height="480" loading="lazy" decoding="async"></figure>`
       : '';
 
     let ingrIdx = 0;
@@ -733,6 +739,7 @@
               ${pdfBtn ? `<div class="r-actions">${pdfBtn}</div>` : ''}
             </header>
 
+            ${fotoHtml}
             <section class="r-ingr" aria-labelledby="h-ingr">
               <h2 class="r-label" id="h-ingr">Ingredienti</h2>
               <ul>${ingredients}</ul>
@@ -919,9 +926,13 @@
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     initTheme();
     try {
-      const res = await fetch(DATA_URL, { cache: 'no-cache' });
+      const [res, resFoto] = await Promise.all([
+        fetch(DATA_URL, { cache: 'no-cache' }),
+        fetch(FOTO_URL, { cache: 'no-cache' }).catch(() => null), // le foto sono facoltative
+      ]);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       db = prepareData(await res.json());
+      if (resFoto?.ok) foto = await resFoto.json().catch(() => ({}));
     } catch (err) {
       renderError(err);
       return;

@@ -31,7 +31,9 @@
     { "id": "molto-elevato", "nome": "Molto elevato", "livello": 5 }
   ],
   "fonti": [
-    { "id": "gz", "nome": "GialloZafferano", "sigla": "GZ" }
+    { "id": "gz", "nome": "GialloZafferano", "sigla": "GZ" },
+    { "id": "gr", "nome": "Gather Round", "sigla": "GR", "linkOriginale": false },
+    { "id": "5030", "nome": "5030 by Finn Tonry", "sigla": "5030", "linkOriginale": false }
   ],
   "collezioni": [
     { "id": "pranzo-della-domenica", "nome": "Pranzo della domenica" },
@@ -10344,6 +10346,7 @@
     },
     {
       "id": "p-pad-kra-pao",
+      "fonte": "5030",
       "titolo": "Pad kra pao",
       "descrizione": "Macinato di maiale saltato nel wok con basilico thai e salsa dolce-salata, servito su riso con un uovo fritto croccante.",
       "sezione": "prep",
@@ -10412,6 +10415,7 @@
     },
     {
       "id": "p-merluzzo-zucca-fagioli-zhoug-di-chorizo",
+      "fonte": "5030",
       "titolo": "Merluzzo con crema di zucca e fagioli e zhoug di chorizo",
       "descrizione": "Merluzzo arrostito su una crema di zucca e fagioli di Spagna, con una salsa verde piccante e chorizo croccante.",
       "categoria": "secondi",
@@ -10476,6 +10480,7 @@
     },
     {
       "id": "p-bistecca-patate-e-insalata",
+      "fonte": "5030",
       "titolo": "Bistecca con patate e insalata",
       "descrizione": "Controfiletto rosolato con una salsa al pepe e scalogno, patatine bollite e un'insalata condita al limone.",
       "categoria": "secondi",
@@ -10536,6 +10541,7 @@
     },
     {
       "id": "p-noodles-piccanti-di-manzo-e-cavolo",
+      "fonte": "5030",
       "titolo": "Noodles piccanti di manzo e cavolo",
       "descrizione": "Macinato di manzo in salsa agrodolce piccante, cavolo cinese scottato e noodles, con un uovo barzotto.",
       "sezione": "prep",
@@ -10613,6 +10619,7 @@
     },
     {
       "id": "p-riso-al-salmone-in-stile-teriyaki",
+      "fonte": "5030",
       "titolo": "Riso al salmone in stile teriyaki",
       "descrizione": "Salmone dorato in padella e glassato con soia e mirin, su riso da sushi ai funghi shiitake e cetrioli piccanti.",
       "categoria": "piatti-unici",
@@ -10678,6 +10685,7 @@
     },
     {
       "id": "p-pollo-croccante-all-aglio-con-insalata-al-sesamo",
+      "fonte": "5030",
       "titolo": "Pollo croccante all'aglio con insalata al sesamo",
       "descrizione": "Cosce di pollo con la pelle croccante in un sugo veloce di aglio e brodo, su riso da sushi con insalata alla salsa di tahini.",
       "categoria": "piatti-unici",
@@ -10736,6 +10744,7 @@
     },
     {
       "id": "p-ragu-piccante-di-maiale-e-finocchio",
+      "fonte": "5030",
       "titolo": "Ragù piccante di maiale e finocchio",
       "descrizione": "Ragù di maiale e salsiccia con finocchio, gochujang e cavolo nero, pensato per il freezer, da condire con le fettuccine.",
       "sezione": "prep",
@@ -10810,6 +10819,7 @@
     },
     {
       "id": "p-pollo-con-piselli-e-fagioli",
+      "fonte": "5030",
       "titolo": "Pollo con piselli e fagioli",
       "descrizione": "Petto di pollo impanato in leggera farina, cotto nel grasso della pancetta, su una crema di fagioli bianchi e piselli.",
       "sezione": "prep",
@@ -10878,6 +10888,7 @@
     },
     {
       "id": "p-penne-alla-vodka-con-pollo-e-spinaci",
+      "fonte": "5030",
       "titolo": "Penne alla vodka con pollo e spinaci",
       "descrizione": "Sugo cremoso di macinato di pollo, concentrato di pomodoro, vodka e spinaci, già pronto per il freezer; la pasta si cuoce al momento.",
       "sezione": "prep",
@@ -10951,6 +10962,7 @@
     },
     {
       "id": "p-pollo-alla-soia-e-shiitake",
+      "fonte": "5030",
       "titolo": "Pollo alla soia e shiitake",
       "descrizione": "Bocconcini di pollo brasati in soia, zenzero e anice stellato con funghi shiitake, da servire su riso; si congela facilmente.",
       "sezione": "prep",
@@ -11020,6 +11032,7 @@
     },
     {
       "id": "p-ragu-di-tonno-e-fagioli",
+      "fonte": "5030",
       "titolo": "Ragù di tonno e fagioli",
       "descrizione": "Sugo di pomodoro con acciughe, capperi e basilico, fagioli cannellini e tonno, pronto per il freezer e da condire con la pasta.",
       "sezione": "prep",
@@ -11090,6 +11103,7 @@
     },
     {
       "id": "p-curry-di-pollo-al-cocco-caramellato",
+      "fonte": "5030",
       "titolo": "Curry di pollo al cocco caramellato",
       "descrizione": "Pollo in un curry giallo dove il latte di cocco viene fatto caramellare come un burro nocciola; si congela bene e si serve con il riso.",
       "sezione": "prep",
@@ -11157,6 +11171,7 @@
     },
     {
       "id": "p-uova-turche-al-burro-nocciola-cilbir",
+      "fonte": "5030",
       "titolo": "Uova alla turca con burro nocciola (cilbir)",
       "descrizione": "Uova in camicia su yogurt greco all'aglio e aneto, con burro nocciola al peperoncino e pane tostato.",
       "categoria": "piatti-unici",
@@ -11207,6 +11222,7 @@
     },
     {
       "id": "p-bowl-di-yogurt-con-banana-caramellata-e-mirtilli",
+      "fonte": "5030",
       "titolo": "Bowl di yogurt con banana caramellata e composta di mirtilli e chia",
       "descrizione": "Yogurt greco con una composta di mirtilli e semi di chia, mezza banana caramellata, fragole e granola.",
       "sezione": "prep",
@@ -11267,6 +11283,7 @@
     },
     {
       "id": "p-panino-con-uova-pancetta-e-formaggio",
+      "fonte": "5030",
       "titolo": "Panino con uova, pancetta e formaggio",
       "descrizione": "Panino da colazione con pancetta croccante, frittata a fagottino con formaggio fuso e ketchup.",
       "categoria": "piatti-unici",
@@ -11312,6 +11329,7 @@
     },
     {
       "id": "p-overnight-oats-alla-torta-di-mele",
+      "fonte": "5030",
       "titolo": "Overnight oats alla torta di mele",
       "descrizione": "Avena, semi di chia, yogurt e proteine alla vaniglia lasciati in frigo la notte, con topping di yogurt e mele e crumble di avena.",
       "sezione": "prep",
@@ -11383,6 +11401,7 @@
     },
     {
       "id": "p-piatto-colazione-pan-con-tomate",
+      "fonte": "5030",
       "titolo": "Piatto colazione pan con tomate",
       "descrizione": "Pane tostato con pomodoro grattugiato, uovo sodo, manchego, prosciutto e ricotta o fiocchi di latte: più uno schema che una ricetta.",
       "sezione": "prep",
@@ -11443,6 +11462,7 @@
     },
     {
       "id": "p-laab-di-tonno-e-pomodori",
+      "fonte": "5030",
       "titolo": "Laab di tonno e pomodori",
       "descrizione": "Insalata thai di tonno con pomodorini, erbe fresche e polvere di riso tostato, condita con lime, salsa di pesce e peperoncino.",
       "categoria": "piatti-unici",
@@ -11500,6 +11520,7 @@
     },
     {
       "id": "p-salmone-in-camicia-con-ceci-alla-harissa",
+      "fonte": "5030",
       "titolo": "Salmone in camicia con ceci alla harissa",
       "descrizione": "Salmone cotto a vapore su un letto di ceci in salsa di pomodoro alla harissa, con yogurt e aneto: una sola pentola e quasi niente da tagliare.",
       "sezione": "prep",
@@ -11564,6 +11585,7 @@
     },
     {
       "id": "p-insalata-di-tonno-e-fagioli-bianchi",
+      "fonte": "5030",
       "titolo": "Insalata di tonno e fagioli bianchi",
       "descrizione": "Tonno, cannellini e pomodori conditi con una salsa di acciughe, balsamico e limone, con feta e basilico.",
       "sezione": "prep",
@@ -11630,6 +11652,7 @@
     },
     {
       "id": "p-orzo-cremoso-con-merluzzo-e-spinaci",
+      "fonte": "5030",
       "titolo": "Orzo cremoso con merluzzo e spinaci",
       "descrizione": "Orzo cotto nel brodo con spinaci, piselli ed erbe, con filetti di merluzzo appoggiati sopra e yogurt per finire.",
       "categoria": "piatti-unici",
@@ -11684,6 +11707,7 @@
     },
     {
       "id": "p-insalata-di-pollo-bang-bang",
+      "fonte": "5030",
       "titolo": "Insalata di pollo bang bang",
       "descrizione": "Pollo arrosto sfilacciato con cetrioli e carote a julienne, in una salsa piccante di aceto nero, olio al peperoncino e tahini.",
       "sezione": "prep",
@@ -11745,6 +11769,7 @@
     },
     {
       "id": "p-tacos-smash-burger",
+      "fonte": "5030",
       "titolo": "Tacos smash burger",
       "descrizione": "Macinato di manzo schiacciato direttamente sulle tortillas di mais e croccante in padella, con formaggio, salsa da burger, cetriolini e lattuga.",
       "categoria": "secondi",
@@ -11801,6 +11826,7 @@
     },
     {
       "id": "p-insalata-thai-di-noodles-di-vetro-maiale-e-gamberi",
+      "fonte": "5030",
       "titolo": "Insalata thai di noodles di vetro con maiale e gamberi",
       "descrizione": "Noodles di soia con macinato di maiale e gamberi lessati, verdure croccanti e un condimento di lime, salsa di pesce e peperoncino.",
       "categoria": "piatti-unici",
@@ -11857,6 +11883,7 @@
     },
     {
       "id": "p-insalata-di-pollo-allo-zaatar-con-ceci-e-yogurt-alle-erbe",
+      "fonte": "5030",
       "titolo": "Insalata di pollo allo za'atar con pomodorini, ceci e yogurt alle erbe",
       "descrizione": "Bocconcini di pollo marinati allo za'atar su yogurt alle erbe e jalapeño, con un'insalata di ceci, pomodorini e sommacco.",
       "sezione": "prep",
@@ -11931,6 +11958,7 @@
     },
     {
       "id": "p-curry-verde-thai-di-maiale-e-gamberi",
+      "fonte": "5030",
       "titolo": "Curry verde thai di maiale e gamberi",
       "descrizione": "Curry verde con macinato di maiale e gamberi, con latte di cocco frullato con gli spinaci, in una sola pentola.",
       "sezione": "prep",
@@ -12003,6 +12031,7 @@
     },
     {
       "id": "p-pasta-cremosa-con-salsiccia-e-spinaci",
+      "fonte": "5030",
       "titolo": "Pasta cremosa con salsiccia e spinaci",
       "descrizione": "Orecchiette cotte direttamente in una crema di spinaci, latte e brodo con maiale speziato ai semi di finocchio, in una sola padella.",
       "sezione": "prep",
@@ -12070,6 +12099,7 @@
     },
     {
       "id": "p-adobo-di-pollo-e-cavolo",
+      "fonte": "5030",
       "titolo": "Adobo di pollo e cavolo",
       "descrizione": "Cosce di pollo e cavolo cappuccio stufati in una salsa di soia, aceto e latte di cocco, da servire su riso.",
       "sezione": "prep",
@@ -12140,6 +12170,7 @@
     },
     {
       "id": "p-pad-see-ew",
+      "fonte": "5030",
       "titolo": "Pad see ew",
       "descrizione": "Noodles di riso larghi saltati nel wok con pollo, cavolo e uovo in una salsa scura di soia e ostriche.",
       "categoria": "piatti-unici",
@@ -12193,6 +12224,7 @@
     },
     {
       "id": "p-salmone-al-curry-rosso-con-riso-al-cocco-e-spinaci",
+      "fonte": "5030",
       "titolo": "Salmone al curry rosso con riso al cocco e spinaci",
       "descrizione": "Riso jasmine cotto nel latte di cocco con spinaci, coperto da salmone spalmato di curry rosso e gratinato, con condimento di lime e peperoncino.",
       "categoria": "piatti-unici",
@@ -12260,6 +12292,7 @@
     },
     {
       "id": "p-merluzzo-alla-harissa-con-fagioli-porri-e-jalapeno",
+      "fonte": "5030",
       "titolo": "Merluzzo alla harissa con fagioli, porri e jalapeño",
       "descrizione": "Lombi di merluzzo marinati con harissa e miele, gratinati su fagioli cremosi con porri e zucchine, con yogurt alle erbe e jalapeño.",
       "sezione": "prep",
@@ -12338,6 +12371,7 @@
     },
     {
       "id": "p-rigatoni-alla-vodka-con-maiale",
+      "fonte": "5030",
       "titolo": "Rigatoni alla vodka con maiale",
       "descrizione": "Rigatoni cotti direttamente nel sugo di maiale, concentrato di pomodoro, pasta di peperoncino calabrese e vodka, mantecati con Parmigiano.",
       "sezione": "prep",
@@ -12410,6 +12444,7 @@
     },
     {
       "id": "p-riso-al-forno-con-pollo-croccante-e-funghi",
+      "fonte": "5030",
       "titolo": "Riso al forno con pollo croccante e funghi",
       "descrizione": "Riso da sushi cotto nel brodo con funghi, zenzero e aglio, con cosce di pollo dorate sopra e gratinate, yogurt alle erbe e cetrioli marinati.",
       "categoria": "piatti-unici",
@@ -12472,6 +12507,7 @@
     },
     {
       "id": "p-soba-fredda-con-tonno-e-sesamo",
+      "fonte": "5030",
       "titolo": "Soba fredda con tonno e sesamo",
       "descrizione": "Noodles di grano saraceno freddi con spinaci, tonno e una salsa di sesamo, soia e maionese giapponese, con alghe nori croccanti.",
       "sezione": "prep",
@@ -12542,6 +12578,7 @@
     },
     {
       "id": "p-udon-con-salmone-alla-griglia-e-dashi-freddo",
+      "fonte": "5030",
       "titolo": "Udon con salmone alla griglia e dashi freddo",
       "descrizione": "Udon freddi con cubetti di salmone appena scottati, cetriolo marinato e un brodo dashi freddo con soia e mirin.",
       "categoria": "piatti-unici",
@@ -12598,6 +12635,7 @@
     },
     {
       "id": "p-noodles-freddi-piccanti-alla-coreana-con-pollo",
+      "fonte": "5030",
       "titolo": "Noodles freddi piccanti alla coreana con pollo",
       "descrizione": "Ramen freddi con petto di pollo lessato e sfilacciato, carote e cetriolo marinati e una salsa piccante di gochujang e sesamo.",
       "sezione": "prep",
@@ -12669,6 +12707,7 @@
     },
     {
       "id": "p-noodles-freddi-con-pollo-e-salsa-di-tofu-e-soia",
+      "fonte": "5030",
       "titolo": "Noodles freddi con pollo e salsa di tofu e soia",
       "descrizione": "Udon freddi con macinato di pollo speziato, cetriolo, un uovo barzotto e una crema fredda di tofu, burro di arachidi e soia.",
       "sezione": "prep",
@@ -12741,6 +12780,7 @@
     },
     {
       "id": "p-noodles-con-agnello-al-cumino-e-tofu",
+      "fonte": "5030",
       "titolo": "Noodles con agnello al cumino e tofu",
       "descrizione": "Udon con macinato d'agnello speziato con cumino e pepe di Sichuan, su una crema di tofu e sesamo, con cetriolo e jalapeño.",
       "sezione": "prep",
@@ -12816,6 +12856,7 @@
     },
     {
       "id": "p-noodles-con-maiale-char-siu",
+      "fonte": "5030",
       "titolo": "Noodles con maiale char siu",
       "descrizione": "Maiale a cubetti glassato in una salsa dolce-speziata stile char siu, su noodles ramen con pak choi e cipollotti.",
       "sezione": "prep",
@@ -12884,6 +12925,7 @@
     },
     {
       "id": "p-noodles-alla-dandan-veloci",
+      "fonte": "5030",
       "titolo": "Noodles alla dandan veloci",
       "descrizione": "Ramen con macinato di manzo, salsa di burro di arachidi e chilli crisp, senape sott'aceto e cetriolo croccante.",
       "sezione": "prep",
@@ -12953,6 +12995,7 @@
     },
     {
       "id": "p-noodles-all-olio-di-cipollotto-con-pollo-al-miele-e-soia",
+      "fonte": "5030",
       "titolo": "Noodles all'olio di cipollotto con pollo al miele e soia",
       "descrizione": "Noodles conditi con olio di cipollotto bruciacchiato, soia e aceto nero, con macinato di pollo caramellato al miele e verdure cinesi.",
       "sezione": "prep",
@@ -13023,6 +13066,7 @@
     },
     {
       "id": "p-insalata-vietnamita-di-noodles-con-gamberi-e-agrumi",
+      "fonte": "5030",
       "titolo": "Insalata vietnamita di noodles con gamberi e agrumi",
       "descrizione": "Noodles di riso freddi con gamberi tritati alla citronella, pompelmo, arancia, verdure croccanti, erbe e un condimento di lime e salsa di pesce.",
       "categoria": "piatti-unici",
@@ -13088,6 +13132,7 @@
     },
     {
       "id": "p-insalata-di-pollo-al-miele-e-soia",
+      "fonte": "5030",
       "titolo": "Insalata di pollo al miele e soia",
       "descrizione": "Macinato di pollo caramellato con miele e soia su verdure croccanti e mais alla griglia, con una salsa di tofu, miso e chilli crisp.",
       "sezione": "prep",
@@ -13164,6 +13209,7 @@
     },
     {
       "id": "p-chili-di-manzo-e-fagioli-neri-con-pico-de-gallo",
+      "fonte": "5030",
       "titolo": "Chili di manzo e fagioli neri con pico de gallo",
       "descrizione": "Chili di macinato di manzo e fagioli neri con peperone e spezie, servito con pico de gallo, yogurt, formaggio e chips di tortilla al forno.",
       "sezione": "prep",
@@ -13245,6 +13291,7 @@
     },
     {
       "id": "p-pollo-con-ceci-e-asparagi",
+      "fonte": "5030",
       "titolo": "Pollo con ceci e asparagi",
       "descrizione": "Ceci stufati in un sugo con acciughe, pomodorini e senape, con macinato di pollo ai semi di finocchio e asparagi alla griglia.",
       "sezione": "prep",
@@ -13319,6 +13366,7 @@
     },
     {
       "id": "p-insalata-di-pollo-e-cetrioli-al-pepe-di-sichuan",
+      "fonte": "5030",
       "titolo": "Insalata di pollo e cetrioli al pepe di Sichuan",
       "descrizione": "Petto di pollo cotto nell'acqua aromatica, con cetrioli e una salsa piccante di aceto nero, olio al peperoncino e pepe di Sichuan, da servire con riso.",
       "sezione": "prep",
@@ -13390,6 +13438,7 @@
     },
     {
       "id": "p-panzanella-con-pollo-arrosto-e-asparagi",
+      "fonte": "5030",
       "titolo": "Panzanella con pollo arrosto e asparagi",
       "descrizione": "Pane croccante dorato nel grasso del pollo con pomodori, zucchine, asparagi arrosto e fagioli, condito con aceto rosso e Parmigiano.",
       "categoria": "piatti-unici",
@@ -13445,6 +13494,7 @@
     },
     {
       "id": "p-gyros-di-pollo-leggero",
+      "fonte": "5030",
       "titolo": "Gyros di pollo leggero",
       "descrizione": "Cosce di pollo marinate nello yogurt e spezie, grigliate e servite in una pita con tzatziki, pomodori, cipolla e patatine.",
       "sezione": "prep",
@@ -13519,6 +13569,7 @@
     },
     {
       "id": "p-tacos-di-merluzzo-al-chipotle-con-crema-di-jalapeno",
+      "fonte": "5030",
       "titolo": "Tacos di merluzzo al chipotle con crema di jalapeño",
       "descrizione": "Strisce di merluzzo con chipotle e miele, in tortillas con insalata di cavolo croccante e una crema fresca di yogurt e jalapeño.",
       "categoria": "secondi",
@@ -13583,6 +13634,7 @@
     },
     {
       "id": "p-udon-al-mapo-tofu",
+      "fonte": "5030",
       "titolo": "Udon al mapo tofu",
       "descrizione": "Udon con una crema fredda di tofu e tahini, manzo macinato speziato con pasta di fagioli neri e pepe di Sichuan e insalata di cetriolo.",
       "sezione": "prep",
@@ -13652,6 +13704,7 @@
     },
     {
       "id": "p-pollo-buldak-pollo-coreano-di-fuoco",
+      "fonte": "5030",
       "titolo": "Pollo buldak (pollo coreano di fuoco)",
       "descrizione": "Bocconcini di pollo laccati in una salsa dolce-piccante di gochujang e coperti di mozzarella gratinata, da servire con riso.",
       "sezione": "prep",
@@ -13717,6 +13770,7 @@
     },
     {
       "id": "p-brodo-di-ossa-di-pollo",
+      "fonte": "5030",
       "titolo": "Brodo di ossa di pollo",
       "descrizione": "Brodo ricco di collagene ottenuto da ali di pollo arrostite e lasciate in infusione molto a lungo, base di molte altre ricette.",
       "sezione": "prep",
@@ -13769,6 +13823,7 @@
     },
     {
       "id": "p-pasta-piccante-al-tonno",
+      "fonte": "5030",
       "titolo": "Pasta piccante al tonno",
       "descrizione": "Fusilli con un sugo di pomodoro, olive, acciughe, capperi e peperoncino, tonno e Parmigiano.",
       "sezione": "prep",
@@ -13836,6 +13891,7 @@
     },
     {
       "id": "p-insalata-thai-di-manzo",
+      "fonte": "5030",
       "titolo": "Insalata thai di manzo",
       "descrizione": "Fette di bavette o scamone con pomodorini, cetriolo, erbe e un condimento agrodolce piccante, con polvere di riso tostato.",
       "categoria": "piatti-unici",
@@ -13894,6 +13950,7 @@
     },
     {
       "id": "p-petto-di-pollo-arrosto-con-pure-e-verdure",
+      "fonte": "5030",
       "titolo": "Petto di pollo arrosto con purè e verdure",
       "descrizione": "Petto di pollo con la pelle rosolato e finito in forno, con salsa all'aglio nero, purè di patate e bietole e cavolo nero saltati.",
       "categoria": "secondi",
@@ -13953,6 +14010,7 @@
     },
     {
       "id": "p-zuppa-di-pollo-cavolo-arrostito-e-noodles",
+      "fonte": "5030",
       "titolo": "Zuppa di pollo, cavolo arrostito e noodles",
       "descrizione": "Brodo di ossa aromatizzato con kombu, zenzero e soia, con cosce di pollo, cavolo alla griglia e noodles ramen.",
       "sezione": "prep",
@@ -14018,6 +14076,7 @@
     },
     {
       "id": "p-cheeseburger-al-peperoncino-con-lattuga-grigliata",
+      "fonte": "5030",
       "titolo": "Cheeseburger al peperoncino con lattuga grigliata",
       "descrizione": "Hamburger di manzo con formaggio fuso, cipolla, guindilla e jalapeño sott'aceto e una salsa da burger, con cuori di lattuga grigliati alla senape.",
       "categoria": "secondi",
@@ -14080,6 +14139,7 @@
     },
     {
       "id": "p-hummus-con-manzo-speziato-e-insalata-tritata",
+      "fonte": "5030",
       "titolo": "Hummus con manzo speziato e insalata tritata",
       "descrizione": "Hummus cremoso con macinato di manzo alla harissa, insalata tritata di cetriolo, cipolla e erbe, con pane piatto tostato.",
       "sezione": "prep",
@@ -14156,6 +14216,7 @@
     },
     {
       "id": "p-ramen-cremoso-al-parmigiano-con-pollo",
+      "fonte": "5030",
       "titolo": "Ramen cremoso al Parmigiano con pollo",
       "descrizione": "Ramen con un brodo reso cremoso dal tuorlo e dal Parmigiano, come in una carbonara, macinato di pollo e verdure sbollentate.",
       "categoria": "primi",
@@ -14213,6 +14274,7 @@
     },
     {
       "id": "p-ragu-di-pollo-e-funghi",
+      "fonte": "5030",
       "titolo": "Ragù di pollo e funghi",
       "descrizione": "Ragù ricco di pollo macinato e funghi shiitake con brodo e Parmigiano, pronto in 30 minuti e adatto al freezer.",
       "sezione": "prep",
@@ -14280,6 +14342,7 @@
     },
     {
       "id": "p-spaghetti-zucchine-e-limone-con-petto-di-pollo",
+      "fonte": "5030",
       "titolo": "Spaghetti zucchine e limone con petto di pollo",
       "descrizione": "Spaghetti in una crema leggera di zucchine, limone e Parmigiano, con petto di pollo rosolato.",
       "categoria": "primi",
@@ -14343,6 +14406,7 @@
     },
     {
       "id": "p-pasta-con-cavolo-nero-salsiccia-e-fagioli",
+      "fonte": "5030",
       "titolo": "Pasta con cavolo nero, salsiccia e fagioli",
       "descrizione": "Pasta corta con salsiccia al finocchio sbriciolata, cavolo nero, cannellini e brodo, mantecata con Parmigiano e limone.",
       "sezione": "prep",
@@ -14414,6 +14478,7 @@
     },
     {
       "id": "p-bolognese-veloce",
+      "fonte": "5030",
       "titolo": "Bolognese veloce",
       "descrizione": "Ragù di manzo con soffritto frullato, acciuga, concentrato di pomodoro e brodo, ridotto in mezz'ora e mantecato con gli spaghetti.",
       "sezione": "prep",
@@ -14485,6 +14550,7 @@
     },
     {
       "id": "p-zuppa-di-orzo-con-polpette-di-maiale-e-finocchio",
+      "fonte": "5030",
       "titolo": "Zuppa di orzo con polpette di maiale e finocchio",
       "descrizione": "Polpettine di maiale ai semi di finocchio e scorza di limone in un brodo con orzo, cipolla e zucchine, con crosta di Parmigiano.",
       "sezione": "prep",
@@ -14561,6 +14627,7 @@
     },
     {
       "id": "p-laab-di-maiale",
+      "fonte": "5030",
       "titolo": "Laab di maiale",
       "descrizione": "Macinato di maiale appena cotto, con scalogno, erbe fresche e un condimento di lime, salsa di pesce e peperoncino, da avvolgere in foglie di lattuga con riso tostato.",
       "sezione": "prep",
@@ -14630,6 +14697,7 @@
     },
     {
       "id": "p-insalata-di-pollo-e-riso-croccante-leggera",
+      "fonte": "5030",
       "titolo": "Insalata di pollo e riso croccante (versione leggera)",
       "descrizione": "Cosce di pollo dorate e croccanti con verdure fresche, uova sode e riso freddo tostato in padella fino a diventare croccante, con condimento di lime e salsa di pesce.",
       "categoria": "piatti-unici",
@@ -14691,6 +14759,7 @@
     },
     {
       "id": "p-udon-con-salsa-di-tofu-piccante-e-pollo",
+      "fonte": "5030",
       "titolo": "Udon con salsa di tofu piccante e pollo",
       "descrizione": "Udon con una crema piccante di tofu, tahini e miso, macinato di pollo alla soia e ostriche e insalata fresca di cetriolo ed erbe.",
       "sezione": "prep",
@@ -14760,6 +14829,7 @@
     },
     {
       "id": "p-noodles-al-burro-di-arachidi-piccante-con-pollo",
+      "fonte": "5030",
       "titolo": "Noodles al burro di arachidi piccante con pollo",
       "descrizione": "Udon conditi con una salsa di burro di arachidi e miso, con macinato di pollo in salsa di gochujang e insalata di cetriolo e coriandolo.",
       "sezione": "prep",
@@ -14833,6 +14903,7 @@
     },
     {
       "id": "p-bowl-di-manzo-al-miele-piccante-con-formaggio-di-capra",
+      "fonte": "5030",
       "titolo": "Bowl di manzo al miele piccante con formaggio di capra",
       "descrizione": "Macinato di manzo speziato come per i tacos, patate dolci croccanti, lattuga e pomodorini, con crema di formaggio di capra montata e miele piccante.",
       "sezione": "prep",
@@ -14900,6 +14971,7 @@
     },
     {
       "id": "p-insalata-di-pollo-e-riso-croccante-con-pelle",
+      "fonte": "5030",
       "titolo": "Insalata di pollo e riso croccante (con pelle)",
       "descrizione": "Cosce di pollo con la pelle croccante, riso da sushi croccante in padella, verdure fresche e uova sode con un condimento di lime e salsa di pesce.",
       "categoria": "piatti-unici",
@@ -14960,6 +15032,7 @@
     },
     {
       "id": "p-rigatoni-piccanti-alla-vodka",
+      "fonte": "5030",
       "titolo": "Rigatoni piccanti alla vodka",
       "descrizione": "Rigatoni con macinato di maiale, pasta di peperoncino calabrese, concentrato, vodka, crème fraîche e spinaci, pronti in 30 minuti.",
       "sezione": "prep",
@@ -15030,6 +15103,7 @@
     },
     {
       "id": "p-petto-di-pollo-in-padella-con-cavolo-bruciacchiato-e-parmigiano",
+      "fonte": "5030",
       "titolo": "Petto di pollo in padella con cavolo bruciacchiato e Parmigiano",
       "descrizione": "Petto di pollo con la pelle rosolato e finito in forno, con salsa di brodo e burro e cavolo grigliato condito con Parmigiano, erba cipollina e limone.",
       "categoria": "secondi",
@@ -15087,6 +15161,7 @@
     },
     {
       "id": "p-riso-con-pollo-alla-soia-e-pomodori-all-olio-piccante",
+      "fonte": "5030",
       "titolo": "Riso con pollo alla soia e pomodori all'olio piccante",
       "descrizione": "Cosce di pollo glassate in una salsa appiccicosa di ostriche, senape e miele piccante, su riso da sushi, con pomodorini all'olio al peperoncino e un tuorlo.",
       "sezione": "prep",
@@ -15160,6 +15235,7 @@
     },
     {
       "id": "p-merluzzo-al-curry-verde-thai",
+      "fonte": "5030",
       "titolo": "Merluzzo al curry verde thai",
       "descrizione": "Lombo di merluzzo cotto in un curry verde cremoso con latte di cocco light, spinaci e coriandolo, su riso jasmine e con insalata di scalogno e basilico.",
       "sezione": "prep",
@@ -15232,6 +15308,7 @@
     },
     {
       "id": "p-salmone-croccante-con-ponzu-di-pomodoro",
+      "fonte": "5030",
       "titolo": "Salmone croccante con ponzu di pomodoro",
       "descrizione": "Salmone con la pelle croccante, pomodorini e scalogni arrostiti, salsa ponzu con i succhi di cottura e maionese giapponese.",
       "categoria": "secondi",
@@ -15293,6 +15370,7 @@
     },
     {
       "id": "p-riso-con-pancetta-uova-e-pomodoro",
+      "fonte": "5030",
       "titolo": "Riso con pancetta, uova e pomodoro",
       "descrizione": "Riso da sushi cotto con salsa di soia e pomodorini, con pancetta croccante e una frittata morbida e cremosa a vulcano.",
       "categoria": "piatti-unici",
@@ -15346,6 +15424,7 @@
     },
     {
       "id": "p-pollo-croccante-con-riso-ai-funghi-e-olio-di-cipollotto-allo-zenzero",
+      "fonte": "5030",
       "titolo": "Pollo croccante con riso ai funghi e olio di cipollotto allo zenzero",
       "descrizione": "Cosce di pollo con la pelle croccante su riso da sushi ai funghi shiitake, con una salsa calda di cipollotto, zenzero e olio.",
       "categoria": "piatti-unici",
@@ -15404,6 +15483,7 @@
     },
     {
       "id": "p-pollo-al-miso-con-riso-agli-spinaci",
+      "fonte": "5030",
       "titolo": "Pollo al miso con riso agli spinaci",
       "descrizione": "Strisce di pollo marinate in miso, miele e soia e cotte sotto il grill, su riso da sushi verde agli spinaci, con tuorlo, erba cipollina e limone.",
       "sezione": "prep",
@@ -15478,6 +15558,7 @@
     },
     {
       "id": "p-pollo-croccante-con-fagioli-e-porri",
+      "fonte": "5030",
       "titolo": "Pollo croccante con fagioli e porri",
       "descrizione": "Cosce di pollo con la pelle croccante su una crema di fagioli e porri alla senape e Parmigiano, con insalatina di erbe e porro crudo.",
       "sezione": "prep",
@@ -15544,6 +15625,7 @@
     },
     {
       "id": "p-bowl-di-riso-con-maiale-piccante-alla-coreana",
+      "fonte": "5030",
       "titolo": "Bowl di riso con maiale piccante alla coreana",
       "descrizione": "Macinato di maiale rosolato con cipolla e glassato in una salsa di gochujang, su riso da sushi con insalatina di cipollotti al peperoncino.",
       "sezione": "prep",
@@ -15617,6 +15699,7 @@
     },
     {
       "id": "p-pollo-all-aglio-e-miele",
+      "fonte": "5030",
       "titolo": "Pollo all'aglio e miele",
       "descrizione": "Cosce di pollo con la pelle croccante, glassate in una salsa di aglio caramellato, miele e soia, su riso cotto nel brodo con cetrioli.",
       "categoria": "piatti-unici",
@@ -15671,6 +15754,7 @@
     },
     {
       "id": "p-spaghetti-alla-carbonara",
+      "fonte": "5030",
       "titolo": "Spaghetti alla carbonara proteica",
       "descrizione": "Carbonara con uova intere e tuorli, pancetta rosolata nel suo grasso e Parmigiano, in una versione proteica.",
       "categoria": "primi",
@@ -15721,6 +15805,7 @@
     },
     {
       "id": "p-pollo-piccante-all-aglio-con-riso-verde-agli-spinaci",
+      "fonte": "5030",
       "titolo": "Pollo piccante all'aglio con riso verde agli spinaci",
       "descrizione": "Bocconcini di pollo laccati in una salsa di gochujang, miele e aglio, su riso da sushi verde agli spinaci con zenzero, e un tuorlo.",
       "sezione": "prep",
@@ -15793,6 +15878,7 @@
     },
     {
       "id": "p-pollo-in-camicia-allo-zenzero-e-cipollotto-con-riso-al-brodo",
+      "fonte": "5030",
       "titolo": "Pollo in camicia allo zenzero e cipollotto con riso al brodo",
       "descrizione": "Petto di pollo lessato nel brodo aromatico, riso cotto nel brodo, cetriolo fresco e salsa calda di cipollotto e zenzero: ispirato al riso al pollo hainanese.",
       "sezione": "prep",
@@ -15867,6 +15953,7 @@
     },
     {
       "id": "p-riso-al-brodo-di-curry-rosso-con-pollo",
+      "fonte": "5030",
       "titolo": "Riso al brodo di curry rosso con pollo",
       "descrizione": "Riso jasmine in un brodo di curry rosso e cocco, con cosce di pollo, cavolo scottato, mais grigliato, erbe fresche e lime.",
       "sezione": "prep",
@@ -15941,6 +16028,7 @@
     },
     {
       "id": "p-bistecca-tigre-che-piange",
+      "fonte": "5030",
       "titolo": "Bistecca \"tigre che piange\"",
       "descrizione": "Controfiletto scottato e affettato, con una salsa thai agrodolce piccante con polvere di riso tostato, da avvolgere in foglie di lattuga con riso e basilico thai.",
       "categoria": "piatti-unici",
@@ -16000,6 +16088,7 @@
     },
     {
       "id": "p-oyakodon",
+      "fonte": "5030",
       "titolo": "Oyakodon",
       "descrizione": "Ciotola giapponese di pollo e cipolla in brodo dashi e soia, coperta di uova appena rapprese, servita su riso.",
       "categoria": "piatti-unici",
@@ -16060,6 +16149,7 @@
     },
     {
       "id": "p-pollo-al-basilico-thai",
+      "fonte": "5030",
       "titolo": "Pollo al basilico thai",
       "descrizione": "Bocconcini di pollo saltati con scalogno, aglio e peperoncino in una salsa di soia e ostriche, con basilico thai, su riso con uovo fritto croccante.",
       "sezione": "prep",
@@ -16134,6 +16224,7 @@
     },
     {
       "id": "p-pasta-al-forno-con-tonno-e-gochujang",
+      "fonte": "5030",
       "titolo": "Pasta al forno con tonno e gochujang",
       "descrizione": "Fusilli in una crema di fiocchi di latte, tonno, Parmigiano e gochujang, gratinati con cheddar e finiti con basilico.",
       "sezione": "prep",
@@ -16200,6 +16291,7 @@
     },
     {
       "id": "p-bulgogi-di-manzo-veloce",
+      "fonte": "5030",
       "titolo": "Bulgogi di manzo veloce",
       "descrizione": "Fettine di controfiletto marinate in soia, miele, aglio e zenzero e saltate in padella, su riso jasmine con un cetriolo marinato al peperoncino.",
       "sezione": "prep",
@@ -16280,6 +16372,7 @@
     },
     {
       "id": "p-pasta-verde-al-cavolo-nero-con-pollo",
+      "fonte": "5030",
       "titolo": "Pasta verde al cavolo nero con pollo",
       "descrizione": "Fusilli in una crema verde di cavolo nero, fiocchi di latte, formaggio fresco e Parmigiano, con pollo sfilacciato e limone.",
       "sezione": "prep",
@@ -16348,6 +16441,7 @@
     },
     {
       "id": "p-noodles-freddi-piccanti-con-pollo-e-salsa-di-tofu",
+      "fonte": "5030",
       "titolo": "Noodles freddi piccanti con pollo e salsa di tofu",
       "descrizione": "Ramen freddi con una salsa di tofu vellutato, burro di arachidi, miso e gochugaru, pollo cotto a fettine, cetriolo e olio al peperoncino.",
       "sezione": "prep",
@@ -16415,6 +16509,7 @@
     },
     {
       "id": "p-pollo-al-gochujang-con-riso-al-cipollotto",
+      "fonte": "5030",
       "titolo": "Pollo al gochujang con riso al cipollotto",
       "descrizione": "Cosce di pollo a pezzi dorate e laccate con gochujang, soia e miele, su riso da sushi al burro con cipollotto, zenzero e aglio, e cavolo bianco ghiacciato.",
       "sezione": "prep",
@@ -16485,6 +16580,7 @@
     },
     {
       "id": "p-merluzzo-al-miso-con-asparagi",
+      "fonte": "5030",
       "titolo": "Merluzzo al miso con asparagi",
       "descrizione": "Lombi di merluzzo marinati in miso, mirin e sakè e gratinati, con asparagi al vapore, salsa al burro e miso e riso.",
       "categoria": "secondi",
@@ -16538,6 +16634,7 @@
     },
     {
       "id": "gr-pollo-tikka-masala",
+      "fonte": "gr",
       "titolo": "Pollo tikka masala",
       "descrizione": "Pollo marinato nello yogurt e speziato, grigliato e finito in una salsa di pomodoro, spezie e panna.",
       "sezione": "prep",
@@ -16623,6 +16720,7 @@
     },
     {
       "id": "gr-costine-di-manzo-alla-bourguignonne",
+      "fonte": "gr",
       "titolo": "Costine di manzo alla bourguignonne",
       "descrizione": "Costine di manzo brasate per ore nel vino rosso con pancetta, scalogni e funghi, in un sugo lucido e ricco.",
       "sezione": "prep",
@@ -16694,6 +16792,7 @@
     },
     {
       "id": "gr-zuppa-di-cipolle-alla-francese",
+      "fonte": "gr",
       "titolo": "Zuppa di cipolle alla francese",
       "descrizione": "Cipolle caramellate a lungo in brodo di manzo, con crostoni di baguette gratinati al Gruyère.",
       "sezione": "prep",
@@ -16755,6 +16854,7 @@
     },
     {
       "id": "gr-patate-alla-boulangere",
+      "fonte": "gr",
       "titolo": "Patate alla boulangère",
       "descrizione": "Strati di patate sottili cotti lentamente in brodo di manzo su un letto di cipolle caramellate.",
       "sezione": "prep",
@@ -16818,6 +16918,7 @@
     },
     {
       "id": "gr-salsicce-avvolte-nella-pancetta-glassate",
+      "fonte": "gr",
       "titolo": "Salsicce avvolte nella pancetta glassate",
       "descrizione": "Salsicciotte avvolte in pancetta croccante e laccate con senape a grani e sciroppo dorato.",
       "sezione": "prep",
@@ -16865,6 +16966,7 @@
     },
     {
       "id": "gr-camembert-al-forno",
+      "fonte": "gr",
       "titolo": "Camembert al forno",
       "descrizione": "Camembert cotto nella sua scatola con aglio, rosmarino e sciroppo dorato, da inzuppare con ciabatta calda.",
       "categoria": "antipasti",
@@ -16907,6 +17009,7 @@
     },
     {
       "id": "gr-prosciutto-glassato-all-hoisin-con-uova-e-patate",
+      "fonte": "gr",
       "titolo": "Prosciutto glassato all'hoisin con uova e patate",
       "descrizione": "Cosciotto di maiale lessato e glassato con salsa hoisin e senape, servito con patate arrosto croccanti e uovo fritto.",
       "sezione": "prep",
@@ -16970,6 +17073,7 @@
     },
     {
       "id": "gr-samosa-di-agnello-speziato-qeema",
+      "fonte": "gr",
       "titolo": "Samosa di agnello speziato (qeema)",
       "descrizione": "Samosa fritti con pasta burrosa ai semi di nigella, ripieni di macinato d'agnello speziato, piselli e menta, con salsa yogurt alla menta.",
       "sezione": "prep",
@@ -17055,6 +17159,7 @@
     },
     {
       "id": "gr-fish-pie-con-cozze-e-pure",
+      "fonte": "gr",
       "titolo": "Fish pie con cozze e purè",
       "descrizione": "Pasticcio di pesce misto e cozze in salsa al latte con Cheddar, uova sode e piselli, coperto da purè gratinato.",
       "sezione": "prep",
@@ -17136,6 +17241,7 @@
     },
     {
       "id": "gr-panino-con-porchetta",
+      "fonte": "gr",
       "titolo": "Panino con porchetta",
       "descrizione": "Pancia di maiale arrotolata con semi tostati, erbe e scorza di limone, cotta per una cotenna croccante, da servire a fette o in ciabatta.",
       "sezione": "prep",
@@ -17196,6 +17302,7 @@
     },
     {
       "id": "gr-ragu-di-guancia-di-manzo",
+      "fonte": "gr",
       "titolo": "Ragù di guancia di manzo",
       "descrizione": "Guance di manzo brasate quattro ore in vino, pomodoro e pancetta con anice stellato e cannella, sfilacciate nel sugo e condite con la pasta.",
       "sezione": "prep",
@@ -17266,6 +17373,7 @@
     },
     {
       "id": "gr-curry-rosso-thai-di-pollo",
+      "fonte": "gr",
       "titolo": "Curry rosso thai di pollo",
       "descrizione": "Pollo in un curry rosso di latte di cocco, con mais baby e basilico thai: pronto in mezz'ora.",
       "sezione": "prep",
@@ -17318,6 +17426,7 @@
     },
     {
       "id": "gr-croque-madame-all-italiana",
+      "fonte": "gr",
       "titolo": "Croque madame all'italiana",
       "descrizione": "Focaccia gratinata con besciamella alla ricotta, pesto di pistacchi e mortadella, coperta da un uovo fritto.",
       "categoria": "piatti-unici",
@@ -17369,6 +17478,7 @@
     },
     {
       "id": "gr-pancia-di-maiale-croccante-con-nam-jim-jaew",
+      "fonte": "gr",
       "titolo": "Pancia di maiale croccante con nam jim jaew",
       "descrizione": "Pancia di maiale marinata, cotta piano e poi croccante in cotenna, servita in foglie di lattuga con riso e salsa thai piccante e acida.",
       "sezione": "prep",
@@ -17442,6 +17552,7 @@
     },
     {
       "id": "gr-pizza-newyorkese-a-lievitazione-di-24-ore",
+      "fonte": "gr",
       "titolo": "Pizza newyorkese a lievitazione di 24 ore",
       "descrizione": "Pizza dalla base sottile e croccante e dal cornicione morbido, con impasto fatto maturare 24 ore in frigo.",
       "sezione": "prep",
@@ -17505,6 +17616,7 @@
     },
     {
       "id": "gr-moussaka",
+      "fonte": "gr",
       "titolo": "Moussaka",
       "descrizione": "Strati di ragù d'agnello, melanzane dorate e besciamella setosa, cotti fino a una superficie dorata.",
       "sezione": "prep",
@@ -17575,6 +17687,7 @@
     },
     {
       "id": "gr-spalla-d-agnello-brasata-nel-latte-con-riso-alla-curcuma",
+      "fonte": "gr",
       "titolo": "Spalla d'agnello brasata nel latte con riso alla curcuma",
       "descrizione": "Spalla d'agnello cotta a lungo nel latte con spezie, servita su riso basmati alla curcuma con cipolla rossa, melograno e prezzemolo.",
       "sezione": "prep",
@@ -17640,6 +17753,7 @@
     },
     {
       "id": "gr-pure-di-patate-di-joel-robuchon",
+      "fonte": "gr",
       "titolo": "Purè di patate di Joël Robuchon",
       "descrizione": "Il purè più ricco che esista: patate passate calde e montate con burro freddo a cubetti e latte, fino a una crema setosa.",
       "sezione": "prep",
@@ -17704,6 +17818,7 @@
     },
     {
       "id": "gr-hotpot-di-stinco-d-agnello",
+      "fonte": "gr",
       "titolo": "Hotpot di stinco d'agnello",
       "descrizione": "Stinchi d'agnello brasati nel vino rosso, sfilacciati in una salsa lucida e coperti da strati di patate croccanti.",
       "sezione": "prep",
@@ -17778,6 +17893,7 @@
     },
     {
       "id": "gr-gratin-dauphinois",
+      "fonte": "gr",
       "titolo": "Gratin dauphinois",
       "descrizione": "Patate sottili cotte lentamente in panna aromatizzata e Comté, fino a una superficie dorata e filante.",
       "sezione": "prep",
@@ -17843,6 +17959,7 @@
     },
     {
       "id": "gr-panino-con-uova-e-maionese-alla-giapponese-tamago-sando",
+      "fonte": "gr",
       "titolo": "Panino con uova e maionese alla giapponese (tamago sando)",
       "descrizione": "Panino soffice con crema di uova sode e maionese giapponese e due uova barzotte al centro, che si aprono al taglio.",
       "sezione": "prep",
@@ -17890,6 +18007,7 @@
     },
     {
       "id": "gr-ragu-d-anatra-alle-cinque-spezie-con-gnocchi-fatti-in-casa",
+      "fonte": "gr",
       "titolo": "Ragù d'anatra alle cinque spezie con gnocchi fatti in casa",
       "descrizione": "Cosce d'anatra brasate in un sugo di pomodoro con cinque spezie cinesi, servite con gnocchi di patate rosolati.",
       "sezione": "prep",
@@ -17966,6 +18084,7 @@
     },
     {
       "id": "gr-guance-di-manzo-brasate-al-vino-rosso-e-birra-scura",
+      "fonte": "gr",
       "titolo": "Guance di manzo brasate al vino rosso e birra scura",
       "descrizione": "Guance di manzo brasate 4 ore in vino rosso e stout fino a farsi tenere come burro, servite su purè con salsa lucida.",
       "sezione": "prep",
@@ -18036,6 +18155,7 @@
     },
     {
       "id": "gr-biscotti-al-cioccolato-con-burro-nocciola-e-miso",
+      "fonte": "gr",
       "titolo": "Biscotti al cioccolato con burro nocciola e miso",
       "descrizione": "Cookie con gocce di cioccolato fondente, burro nocciola e miso bianco, con impasto riposato in frigo.",
       "sezione": "prep",
@@ -18100,6 +18220,7 @@
     },
     {
       "id": "gr-crumble-di-mele-e-banana",
+      "fonte": "gr",
       "titolo": "Crumble di mele e banana",
       "descrizione": "Crumble con tanta copertura e pezzi di flapjack che diventano mordenti e caramellati nel forno, su mele e banana.",
       "sezione": "prep",
@@ -18183,6 +18304,7 @@
     },
     {
       "id": "gr-pasta-cremosa-con-pollo-e-chorizo",
+      "fonte": "gr",
       "titolo": "Pasta cremosa con pollo e chorizo",
       "descrizione": "Cosce di pollo con pelle croccante, chorizo e pasta in una salsa di vino bianco, pomodoro e panna con parmigiano.",
       "categoria": "primi",
@@ -18233,6 +18355,7 @@
     },
     {
       "id": "gr-bistecca-di-controfiletto-alla-crying-tiger",
+      "fonte": "gr",
       "titolo": "Bistecca di controfiletto alla crying tiger",
       "descrizione": "Controfiletto marinato a secco, rosolato in padella con burro e aglio e servito con la salsa thai nam jim jaew.",
       "categoria": "secondi",
@@ -18280,6 +18403,7 @@
     },
     {
       "id": "gr-gyros-di-pollo-con-pita-tzatziki-e-patatine-all-origano",
+      "fonte": "gr",
       "titolo": "Gyros di pollo con pita, tzatziki e patatine all'origano",
       "descrizione": "Cosce di pollo marinate nello yogurt, cotte a torre e affettate come allo spiedo, in pita fatte in casa con tzatziki, insalata greca e patatine.",
       "sezione": "prep",
@@ -18373,6 +18497,7 @@
     },
     {
       "id": "gr-curry-di-gamberoni-all-aglio-e-peperoncino",
+      "fonte": "gr",
       "titolo": "Curry di gamberoni all'aglio e peperoncino",
       "descrizione": "Gamberoni in un masala denso con venti spicchi d'aglio, zenzero e peperoncino, cotti pochi minuti alla fine.",
       "sezione": "prep",
@@ -18445,6 +18570,7 @@
     },
     {
       "id": "gr-curry-di-guancia-di-manzo-alla-srilankese",
+      "fonte": "gr",
       "titolo": "Curry di guancia di manzo alla srilankese",
       "descrizione": "Guancia di manzo intera brasata con spezie tostate, foglie di curry e latte di cocco fino a sfaldarsi.",
       "sezione": "prep",
@@ -18528,6 +18654,7 @@
     },
     {
       "id": "gr-alette-di-pollo-alla-salsa-di-pesce",
+      "fonte": "gr",
       "titolo": "Alette di pollo alla salsa di pesce",
       "descrizione": "Alette marinate, fritte croccanti e condite con una salsa di lime, salsa di pesce, peperoncino, menta e coriandolo.",
       "categoria": "secondi",
@@ -18577,6 +18704,7 @@
     },
     {
       "id": "gr-rogan-josh-d-agnello",
+      "fonte": "gr",
       "titolo": "Rogan josh d'agnello",
       "descrizione": "Agnello marinato nello yogurt e cotto lentamente con spezie kashmire, in una salsa rossa e setosa.",
       "sezione": "prep",
@@ -18652,6 +18780,7 @@
     },
     {
       "id": "gr-smash-burger-quadruplo-con-cipolle-alla-guinness-e-peperonci",
+      "fonte": "gr",
       "titolo": "Smash burger quadruplo con cipolle alla Guinness e peperoncini sottaceto",
       "descrizione": "Quattro hamburger schiacciati sulla piastra con Red Leicester, cipolle brasate nella Guinness e peperoncini in agrodolce.",
       "categoria": "piatti-unici",
@@ -18700,6 +18829,7 @@
     },
     {
       "id": "gr-fish-and-chips-2-0",
+      "fonte": "gr",
       "titolo": "Fish and chips 2.0",
       "descrizione": "Pesce in pastella croccante di birra e vodka con patate rustiche fritte, piselli alla menta e salsa tartara.",
       "categoria": "piatti-unici",
@@ -18757,6 +18887,7 @@
     },
     {
       "id": "gr-tacos-di-pesce-alla-baja",
+      "fonte": "gr",
       "titolo": "Tacos di pesce alla Baja",
       "descrizione": "Pesce bianco in pastella croccante in tortillas di mais con insalata di cavolo, cipolla sottaceto e crema al lime.",
       "categoria": "piatti-unici",
@@ -18825,6 +18956,7 @@
     },
     {
       "id": "gr-pane-e-pomodoro-alla-spagnola-pan-con-tomate",
+      "fonte": "gr",
       "titolo": "Pane e pomodoro alla spagnola (pan con tomate)",
       "descrizione": "Pane croccante strofinato con l'aglio e coperto di polpa di pomodoro grattugiato, olio e sale in scaglie.",
       "categoria": "antipasti",
@@ -18861,6 +18993,7 @@
     },
     {
       "id": "gr-ragu-alla-bolognese-infallibile",
+      "fonte": "gr",
       "titolo": "Ragù alla bolognese infallibile",
       "descrizione": "Ragù di manzo e pancetta cotto a lungo con vino, pomodoro, latte e crosta di parmigiano, da condire alla pasta.",
       "sezione": "prep",
@@ -18929,6 +19062,7 @@
     },
     {
       "id": "gr-carre-d-agnello-in-crosta-di-noci",
+      "fonte": "gr",
       "titolo": "Carré d'agnello in crosta di noci",
       "descrizione": "Carré d'agnello rosolato, spennellato di senape e ricoperto di una crosta di noci, erbe, acciughe e parmigiano.",
       "categoria": "secondi",
@@ -18978,6 +19112,7 @@
     },
     {
       "id": "gr-tacos-di-birria",
+      "fonte": "gr",
       "titolo": "Tacos di birria",
       "descrizione": "Manzo brasato in una salsa di peperoncini secchi, sfilacciato e fritto in tortillas con formaggio, da intingere nel brodo di cottura.",
       "sezione": "prep",
@@ -19043,6 +19178,7 @@
     },
     {
       "id": "gr-pollo-fritto-indonesiano-ayam-goreng-2-0",
+      "fonte": "gr",
       "titolo": "Pollo fritto indonesiano (ayam goreng 2.0)",
       "descrizione": "Pollo intero in quattro pezzi, marinato in una pasta di scalogno, citronella e spezie e fritto, con ciuffi croccanti di marinata.",
       "categoria": "secondi",
@@ -19099,6 +19235,7 @@
     },
     {
       "id": "gr-pollo-aperto-a-libro-laccato-al-miso",
+      "fonte": "gr",
       "titolo": "Pollo aperto a libro laccato al miso",
       "descrizione": "Pollo aperto e arrostito, spennellato con una glassa di miso, miele, soia e zenzero fino a caramellare.",
       "sezione": "prep",
@@ -19157,6 +19294,7 @@
     },
     {
       "id": "gr-pollo-qorma-korma",
+      "fonte": "gr",
       "titolo": "Pollo qorma (korma)",
       "descrizione": "Pollo in una salsa delicata di yogurt, anacardi e spezie dolci, cotto piano senza piccante.",
       "sezione": "prep",
@@ -19219,6 +19357,7 @@
     },
     {
       "id": "gr-banh-mi-con-pancia-di-maiale-croccante-alle-cinque-spezie",
+      "fonte": "gr",
       "titolo": "Bánh mì con pancia di maiale croccante alle cinque spezie",
       "descrizione": "Panino vietnamita con pancia di maiale croccante, carote e daikon sottaceto, maionese alla sriracha ed erbe, con baguette fatte in casa.",
       "sezione": "prep",
@@ -19289,6 +19428,7 @@
     },
     {
       "id": "gr-pollo-phaal",
+      "fonte": "gr",
       "titolo": "Pollo phaal",
       "descrizione": "Curry di pollo molto piccante con peperoncino, scotch bonnet e spezie, cotto finché la salsa si stringe attorno al pollo.",
       "sezione": "prep",
@@ -19359,6 +19499,7 @@
     },
     {
       "id": "gr-curry-di-coda-di-bue-alle-arachidi",
+      "fonte": "gr",
       "titolo": "Curry di coda di bue alle arachidi",
       "descrizione": "Coda di bue brasata per ore con spezie, scotch bonnet e burro di arachidi, in un sugo denso e lucido.",
       "sezione": "prep",
@@ -19424,6 +19565,7 @@
     },
     {
       "id": "gr-pasta-cremosa-al-chorizo-con-burrata",
+      "fonte": "gr",
       "titolo": "Pasta cremosa al chorizo con burrata",
       "descrizione": "Rigatoni in una salsa di chorizo, scalogno, pomodoro, vino bianco e panna, con burrata spezzata sopra.",
       "categoria": "primi",
@@ -19468,6 +19610,7 @@
     },
     {
       "id": "gr-pollo-karahi-alla-punjabi",
+      "fonte": "gr",
       "titolo": "Pollo karahi alla punjabi",
       "descrizione": "Pollo con l'osso rosolato con aglio, zenzero e peperoncino e cotto in pomodori freschi fino a una salsa densa che avvolge la carne.",
       "sezione": "prep",
@@ -19532,6 +19675,7 @@
     },
     {
       "id": "gr-burger-di-maiale-croccante-all-hoisin-con-insalata-di-cavolo",
+      "fonte": "gr",
       "titolo": "Burger di maiale croccante all'hoisin con insalata di cavolo al lime",
       "descrizione": "Spalla di maiale brasata 6 ore con soia e spezie, sfilacciata e glassata all'hoisin, in panini con cotenna croccante e insalata al lime.",
       "sezione": "prep",
@@ -19611,6 +19755,7 @@
     },
     {
       "id": "gr-panino-con-bastoncini-di-pesce-fatti-in-casa",
+      "fonte": "gr",
       "titolo": "Panino con bastoncini di pesce fatti in casa",
       "descrizione": "Bastoncini di pesce impanati e fritti in un panino con salsa tartara ed erbe e piselli schiacciati alla menta.",
       "categoria": "piatti-unici",
@@ -19663,6 +19808,7 @@
     },
     {
       "id": "gr-spiedini-di-pollo-glassati-al-miele-e-soia",
+      "fonte": "gr",
       "titolo": "Spiedini di pollo glassati al miele e soia",
       "descrizione": "Spiedini di pollo e cipollotto marinati in miele, soia, hoisin e salsa chili dolce, caramellati in forno o sulla griglia.",
       "sezione": "prep",
@@ -19719,6 +19865,7 @@
     },
     {
       "id": "gr-toast-al-tonno-e-formaggio-fuso-tuna-melt",
+      "fonte": "gr",
       "titolo": "Toast al tonno e formaggio fuso (tuna melt)",
       "descrizione": "Panino al tonno con cetriolini, senape e Cheddar, tostato lentamente in padella coperta finché il centro è fuso.",
       "sezione": "prep",
@@ -19773,6 +19920,7 @@
     },
     {
       "id": "gr-burger-di-pollo-fritto-alla-buffalo",
+      "fonte": "gr",
       "titolo": "Burger di pollo fritto alla buffalo",
       "descrizione": "Cosce di pollo marinate nel latticello e nella salsa buffalo, impanate e fritte, in panini brioche con cavolo e maionese piccante.",
       "categoria": "piatti-unici",
@@ -19837,6 +19985,7 @@
     },
     {
       "id": "gr-costine-di-manzo-al-curry-con-marinata-verde",
+      "fonte": "gr",
       "titolo": "Costine di manzo al curry con marinata verde",
       "descrizione": "Costine di manzo marinate in una pasta verde di erbe e scotch bonnet e brasate in un masala ricco con latte di cocco.",
       "sezione": "prep",
@@ -19916,6 +20065,7 @@
     },
     {
       "id": "gr-laal-maas-agnello-piccante-del-rajasthan",
+      "fonte": "gr",
       "titolo": "Laal maas (agnello piccante del Rajasthan)",
       "descrizione": "Stinchi d'agnello cotti piano in una salsa rossa di peperoncino del Kashmir, yogurt e spezie tostate.",
       "sezione": "prep",
@@ -19975,6 +20125,7 @@
     },
     {
       "id": "gr-pollo-jalfrezi",
+      "fonte": "gr",
       "titolo": "Pollo jalfrezi",
       "descrizione": "Pollo in un masala di pomodoro con peperoni croccanti e peperoncino verde, finito con garam masala.",
       "sezione": "prep",
@@ -20042,6 +20193,7 @@
     },
     {
       "id": "gr-gyros-di-maiale-cotto-lentamente",
+      "fonte": "gr",
       "titolo": "Gyros di maiale cotto lentamente",
       "descrizione": "Fette di spalla di maiale marinate, impilate e cotte tre ore a fuoco basso, poi dorate e affettate sottili in pita con tzatziki, insalata greca e patatine.",
       "sezione": "prep",
@@ -20132,6 +20284,7 @@
     },
     {
       "id": "gr-gamberoni-alla-harissa-rossa-e-panna",
+      "fonte": "gr",
       "titolo": "Gamberoni alla harissa rossa e panna",
       "descrizione": "Gamberoni rosolati in padella con harissa fresca di peperoncini, erbe e lime, legata con panna in una salsa corallo.",
       "categoria": "secondi",
@@ -20185,6 +20338,7 @@
     },
     {
       "id": "gr-rendang-di-manzo-indonesiano",
+      "fonte": "gr",
       "titolo": "Rendang di manzo indonesiano",
       "descrizione": "Manzo cotto per ore nel latte di cocco con una pasta di aromi fino a farlo scurire e asciugare, quasi confit nel grasso di cocco.",
       "sezione": "prep",
@@ -20251,6 +20405,7 @@
     },
     {
       "id": "gr-pollo-aperto-a-libro-al-forno-con-patate-e-chorizo",
+      "fonte": "gr",
       "titolo": "Pollo aperto a libro al forno con patate e chorizo",
       "descrizione": "Pollo aperto e marinato con aglio, senape ed erbe, cotto su una teglia di patate e chorizo, con yogurt al basilico.",
       "sezione": "prep",
@@ -20319,6 +20474,7 @@
     },
     {
       "id": "gr-pollo-arrosto-perfetto-con-salsa-gravy",
+      "fonte": "gr",
       "titolo": "Pollo arrosto perfetto con salsa gravy",
       "descrizione": "Pollo salato in anticipo e farcito di burro alle erbe sotto la pelle, arrostito su un letto di verdure con una salsa gravy al vino bianco.",
       "sezione": "prep",
@@ -20391,6 +20547,7 @@
     },
     {
       "id": "gr-hayashi-rice-manzo-in-salsa-al-vino-rosso-su-riso-e-omelette",
+      "fonte": "gr",
       "titolo": "Hayashi rice (manzo in salsa al vino rosso su riso e omelette)",
       "descrizione": "Manzo e funghi in una salsa lucida al pomodoro e vino rosso, su riso giapponese con un'omelette morbida.",
       "sezione": "prep",
@@ -20458,6 +20615,7 @@
     },
     {
       "id": "gr-curry-di-pollo-all-aglio-e-peperoncino",
+      "fonte": "gr",
       "titolo": "Curry di pollo all'aglio e peperoncino",
       "descrizione": "Pollo marinato e grigliato poi cotto in un masala scuro con venti spicchi d'aglio, zenzero e peperoncino.",
       "sezione": "prep",
@@ -20527,6 +20685,7 @@
     },
     {
       "id": "gr-punta-di-petto-brasata-alla-peri-peri",
+      "fonte": "gr",
       "titolo": "Punta di petto brasata alla peri-peri",
       "descrizione": "Punta di petto di manzo brasata a lungo in salsa peri-peri e lime, con insalata di cavolo piccante.",
       "sezione": "prep",
@@ -20591,6 +20750,7 @@
     },
     {
       "id": "gr-ravioli-di-granchio-fatti-in-casa",
+      "fonte": "gr",
       "titolo": "Ravioli di granchio fatti in casa",
       "descrizione": "Ravioli di pasta all'uovo ripieni di granchio, ricotta e dragoncello, conditi con burro, salvia e salicornia.",
       "sezione": "prep",
@@ -20658,6 +20818,7 @@
     },
     {
       "id": "gr-curry-d-anatra-alle-cinque-spezie",
+      "fonte": "gr",
       "titolo": "Curry d'anatra alle cinque spezie",
       "descrizione": "Cosce d'anatra brasate in latte di cocco con anice stellato, cannella e pepe di Sichuan, ispirato alle crêpe all'anatra croccante.",
       "sezione": "prep",
@@ -20727,6 +20888,7 @@
     },
     {
       "id": "gr-bistecca-con-salsa-al-pepe-di-sichuan-e-miso",
+      "fonte": "gr",
       "titolo": "Bistecca con salsa al pepe di Sichuan e miso",
       "descrizione": "Bistecca rosolata e riposata, con una salsa ai pepi neri e di Sichuan, miso bianco e panna.",
       "categoria": "secondi",
@@ -20772,6 +20934,7 @@
     },
     {
       "id": "gr-zuppa-egusi-con-coda-di-bue",
+      "fonte": "gr",
       "titolo": "Zuppa egusi con coda di bue",
       "descrizione": "Zuppa nigeriana densa di semi di melone macinati, olio di palma, pesce secco e coda di bue.",
       "sezione": "prep",
@@ -20838,6 +21001,7 @@
     },
     {
       "id": "gr-tacos-di-bistecca-con-salsa-verde-e-feta",
+      "fonte": "gr",
       "titolo": "Tacos di bistecca con salsa verde e feta",
       "descrizione": "Bistecca speziata affettata sottile in tortillas con salsa verde di erbe, feta, coriandolo e cipolla bianca.",
       "categoria": "piatti-unici",
@@ -20894,6 +21058,7 @@
     },
     {
       "id": "gr-chili-con-carne",
+      "fonte": "gr",
       "titolo": "Chili con carne alla paprika affumicata",
       "descrizione": "Chili di manzo con fagioli rossi, paprika affumicata e garam masala, cotto piano 1-2 ore.",
       "sezione": "prep",
@@ -20958,6 +21123,7 @@
     },
     {
       "id": "gr-curry-massaman-di-manzo",
+      "fonte": "gr",
       "titolo": "Curry massaman di manzo",
       "descrizione": "Manzo brasato in una pasta di curry fatta in casa con latte di cocco, tamarindo e arachidi tostate.",
       "sezione": "prep",
@@ -21029,6 +21195,7 @@
     },
     {
       "id": "gr-insalata-con-bistecca",
+      "fonte": "gr",
       "titolo": "Insalata con bistecca",
       "descrizione": "Bistecca rosolata e riposata servita su un'insalata di foglie piccanti, avocado e parmigiano con un condimento di senape e balsamico.",
       "categoria": "piatti-unici",
@@ -21084,6 +21251,7 @@
     },
     {
       "id": "gr-burger-con-cotoletta-d-agnello-e-pesto-di-basilico-e-menta",
+      "fonte": "gr",
       "titolo": "Burger con cotoletta d'agnello e pesto di basilico e menta",
       "descrizione": "Cotoletta d'agnello impanata con panko e parmigiano in ciabatta con pesto di basilico, menta e acciughe e caprino.",
       "categoria": "piatti-unici",
@@ -21136,6 +21304,7 @@
     },
     {
       "id": "gr-pollo-alla-vodka-e-parmigiana",
+      "fonte": "gr",
       "titolo": "Pollo alla vodka e parmigiana",
       "descrizione": "Cotoletta di pollo con salsa alla vodka e mozzarella gratinata, sopra rigatoni conditi con la stessa salsa.",
       "categoria": "piatti-unici",
@@ -21191,6 +21360,7 @@
     },
     {
       "id": "gr-toast-con-uova-avocado-e-chorizo",
+      "fonte": "gr",
       "titolo": "Toast con uova, avocado e chorizo",
       "descrizione": "Pane a lievitazione naturale con avocado schiacciato, uova, chorizo croccante e feta.",
       "categoria": "piatti-unici",
@@ -21234,6 +21404,7 @@
     },
     {
       "id": "gr-patate-arrosto-perfette",
+      "fonte": "gr",
       "titolo": "Patate arrosto perfette",
       "descrizione": "Patate sbollentate dalla pasta fredda con erbe e aglio, poi arrostite nel grasso bollente finché sono croccanti.",
       "sezione": "prep",
@@ -21287,6 +21458,7 @@
     },
     {
       "id": "gr-guance-di-maiale-brasate-all-andalusa-con-patate",
+      "fonte": "gr",
       "titolo": "Guance di maiale brasate all'andalusa con patate",
       "descrizione": "Guance di maiale cotte nello sherry oloroso e nel brodo con cipolle caramellate, servite con patate nella loro salsa frullata.",
       "sezione": "prep",
@@ -21340,6 +21512,7 @@
     },
     {
       "id": "gr-risotto-ai-piselli-e-menta-con-capesante",
+      "fonte": "gr",
       "titolo": "Risotto ai piselli e menta con capesante",
       "descrizione": "Risotto cremoso con crema di piselli, menta e limone, servito con capesante scottate.",
       "categoria": "primi",
@@ -21391,6 +21564,7 @@
     },
     {
       "id": "gr-linguine-cremose-ai-gamberi",
+      "fonte": "gr",
       "titolo": "Linguine cremose ai gamberi",
       "descrizione": "Linguine con gamberi in un sugo di olio ai gusci di gambero, acciughe, vino bianco e crème fraîche.",
       "categoria": "primi",
@@ -21434,6 +21608,7 @@
     },
     {
       "id": "gr-lasagna-con-ragu-di-manzo-e-maiale-brasati",
+      "fonte": "gr",
       "titolo": "Lasagna con ragù di manzo e maiale brasati",
       "descrizione": "Lasagna con ragù di spalla di maiale e manzo brasati e sfilacciati, besciamella ai chiodi di garofano e mozzarella.",
       "sezione": "prep",
@@ -21506,6 +21681,7 @@
     },
     {
       "id": "gr-fish-and-chips-con-piselli-schiacciati-alla-menta",
+      "fonte": "gr",
       "titolo": "Fish and chips con piselli schiacciati alla menta",
       "descrizione": "Eglefino in pastella leggera alla birra e aneto, con patatine croccanti e piselli schiacciati alla menta.",
       "categoria": "piatti-unici",
@@ -21561,6 +21737,7 @@
     },
     {
       "id": "gr-spiedini-di-pollo-tandoori-alla-griglia",
+      "fonte": "gr",
       "titolo": "Spiedini di pollo tandoori alla griglia",
       "descrizione": "Pollo marinato 24 ore in yogurt e spezie tandoori, grigliato con carbonizzazione, servito con salsa yogurt, menta e coriandolo.",
       "sezione": "prep",
@@ -21634,6 +21811,7 @@
     },
     {
       "id": "gr-mac-and-cheese-alla-zucca-butternut",
+      "fonte": "gr",
       "titolo": "Mac and cheese alla zucca butternut",
       "descrizione": "Maccheroni al forno in salsa di formaggio con zucca butternut arrosto frullata, Cheddar stagionato e salvia.",
       "sezione": "prep",
@@ -21691,6 +21869,7 @@
     },
     {
       "id": "gr-pollo-jerk",
+      "fonte": "gr",
       "titolo": "Pollo jerk",
       "descrizione": "Cosce di pollo marinate 24 ore nella pasta giamaicana di scotch bonnet, pimento e timo, cotte alla griglia.",
       "sezione": "prep",
@@ -21752,6 +21931,7 @@
     },
     {
       "id": "gr-vindaloo-d-agnello-in-focaccine-con-raita-di-cetrioli",
+      "fonte": "gr",
       "titolo": "Vindaloo d'agnello in focaccine con raita di cetrioli",
       "descrizione": "Agnello brasato in una salsa lucida e acidula, vicina al vindaloo originale, in pane piatto con raita fredda.",
       "sezione": "prep",
@@ -21821,6 +22001,7 @@
     },
     {
       "id": "gr-trota-in-crosta",
+      "fonte": "gr",
       "titolo": "Trota in crosta",
       "descrizione": "Filetto di trota con ripieno cremoso di spinaci, cavolo nero e parmigiano, avvolto nella pasta sfoglia.",
       "categoria": "secondi",
@@ -21874,6 +22055,7 @@
     },
     {
       "id": "gr-shawarma-di-pollo-con-salsa-all-aglio-toum",
+      "fonte": "gr",
       "titolo": "Shawarma di pollo con salsa all'aglio (toum)",
       "descrizione": "Cosce di pollo marinate, cotte in verticale come allo spiedo e affettate in pane con insalata di cetrioli e toum.",
       "sezione": "prep",
@@ -21948,6 +22130,7 @@
     },
     {
       "id": "gr-maiale-sfilacciato-brasato-al-sidro",
+      "fonte": "gr",
       "titolo": "Maiale sfilacciato brasato al sidro",
       "descrizione": "Spalla di maiale brasata nel sidro con spezie e cipolle frullate, sfilacciata in panini con insalata di cavolo rosso.",
       "sezione": "prep",
@@ -22016,6 +22199,7 @@
     },
     {
       "id": "gr-sogliola-alla-mugnaia",
+      "fonte": "gr",
       "titolo": "Sogliola alla mugnaia",
       "descrizione": "Sogliola infarinata e rosolata in padella, con un burro a limone, capperi, aglio e prezzemolo: pronta in 15 minuti.",
       "categoria": "secondi",
@@ -22055,6 +22239,7 @@
     },
     {
       "id": "gr-rombo-intero-arrosto-con-salsa-verde-alla-parigina",
+      "fonte": "gr",
       "titolo": "Rombo intero arrosto con salsa verde alla parigina",
       "descrizione": "Rombo cotto intero al forno con una salsa verde di burro, panna, acciughe, senape ed erbe, con patatine sottili.",
       "categoria": "secondi",
@@ -22104,6 +22289,7 @@
     },
     {
       "id": "gr-panino-chic-con-bastoncini-di-pesce-all-aneto",
+      "fonte": "gr",
       "titolo": "Panino chic con bastoncini di pesce all'aneto",
       "descrizione": "Bastoncini di pesce impanati all'aneto in una ciabatta con salsa tartara fatta in casa, lattuga e cetriolini.",
       "categoria": "piatti-unici",
@@ -22150,6 +22336,7 @@
     },
     {
       "id": "gr-pollo-fritto-malese-ayam-goreng",
+      "fonte": "gr",
       "titolo": "Pollo fritto malese (ayam goreng)",
       "descrizione": "Pollo marinato nel latte di cocco con zenzero, citronella e lime, infarinato e fritto: croccante e profumato.",
       "categoria": "secondi",
@@ -22202,6 +22389,7 @@
     },
     {
       "id": "gr-nasi-goreng-riso-saltato-indonesiano",
+      "fonte": "gr",
       "titolo": "Nasi goreng (riso saltato indonesiano)",
       "descrizione": "Riso jasmine saltato con pollo, scalogno, zenzero e salsa di soia dolce, con uovo fritto, cetriolo e cracker ai gamberi.",
       "sezione": "prep",
@@ -22269,6 +22457,7 @@
     },
     {
       "id": "gr-burger-di-pollo-fritto-in-stile-banh-mi",
+      "fonte": "gr",
       "titolo": "Burger di pollo fritto in stile bánh mì",
       "descrizione": "Pollo fritto in panatura speziata in un panino brioche con verdure in agrodolce, salsa di pesce al lime e sriracha mayo.",
       "categoria": "piatti-unici",
@@ -22338,6 +22527,7 @@
     },
     {
       "id": "gr-gamberoni-all-aglio-e-olio-con-peperoncino",
+      "fonte": "gr",
       "titolo": "Gamberoni all'aglio e olio con peperoncino",
       "descrizione": "Gamberoni con testa e guscio cotti 4 minuti in olio aromatizzato con aglio, peperoncino e paprika affumicata.",
       "categoria": "antipasti",
@@ -22377,6 +22567,7 @@
     },
     {
       "id": "gr-tacos-di-pollo-alla-fajita",
+      "fonte": "gr",
       "titolo": "Tacos di pollo alla fajita",
       "descrizione": "Pollo e peperoni con spezie fatte in casa saltati in padella, in tortillas con guacamole, Cheddar e panna acida.",
       "sezione": "prep",
@@ -22446,6 +22637,7 @@
     },
     {
       "id": "gr-aragosta-alla-thermidor",
+      "fonte": "gr",
       "titolo": "Aragosta alla Thermidor",
       "descrizione": "Aragosta divisa a metà, con il suo carapace riempito di una salsa al vino, panna, senape e Gruyère, gratinata.",
       "categoria": "secondi",
@@ -22486,6 +22678,7 @@
     },
     {
       "id": "gr-tacos-di-manzo-alla-barbacoa-con-tortillas-di-mais-fatte-in",
+      "fonte": "gr",
       "titolo": "Tacos di manzo alla barbacoa con tortillas di mais fatte in casa",
       "descrizione": "Manzo brasato in una salsa di peperoncini messicani, birra e lime, in tortillas di masa harina appena fatte.",
       "sezione": "prep",
@@ -22557,6 +22750,7 @@
     },
     {
       "id": "gr-zuppa-di-pomodoro-con-toast-al-formaggio",
+      "fonte": "gr",
       "titolo": "Zuppa di pomodoro con toast al formaggio",
       "descrizione": "Zuppa di pomodori, aglio e scalogno arrostiti e frullati con basilico e panna, con toast di mozzarella e Cheddar.",
       "sezione": "prep",
@@ -22620,6 +22814,7 @@
     },
     {
       "id": "gr-pollo-katsu-al-curry",
+      "fonte": "gr",
       "titolo": "Pollo katsu al curry",
       "descrizione": "Cotoletta di pollo impanata al panko su riso jasmine, con una salsa di curry giapponese liscia e speziata.",
       "sezione": "prep",
@@ -22687,6 +22882,7 @@
     },
     {
       "id": "gr-nasello-in-padella-con-fagioli-e-chorizo",
+      "fonte": "gr",
       "titolo": "Nasello in padella con fagioli e chorizo",
       "descrizione": "Tranci di nasello con la pelle scottati in padella, su fagioli butter bean con chorizo e spinaci appassiti.",
       "categoria": "secondi",
@@ -22735,6 +22931,7 @@
     },
     {
       "id": "gr-pasta-al-forno-con-pollo-e-chorizo",
+      "fonte": "gr",
       "titolo": "Pasta al forno con pollo e chorizo",
       "descrizione": "Pasta corta al forno con pollo, chorizo, pomodoro e vino rosso, coperta di mozzarella e parmigiano.",
       "sezione": "prep",
@@ -22793,6 +22990,7 @@
     },
     {
       "id": "gr-capesante-scottate-con-purea-di-piselli-alla-menta-e-sanguin",
+      "fonte": "gr",
       "titolo": "Capesante scottate con purea di piselli alla menta e sanguinaccio",
       "descrizione": "Capesante scottate nel burro con purea di piselli e menta e una granella croccante di sanguinaccio (black pudding) e pane.",
       "categoria": "antipasti",
@@ -22841,6 +23039,7 @@
     },
     {
       "id": "gr-pasta-cremosa-ai-funghi-e-tartufo",
+      "fonte": "gr",
       "titolo": "Pasta cremosa ai funghi e tartufo",
       "descrizione": "Pasta in una salsa di funghi portobello, tartufo nero e panna, con parmigiano.",
       "categoria": "primi",
@@ -22882,6 +23081,7 @@
     },
     {
       "id": "gr-wellington-di-rana-pescatrice",
+      "fonte": "gr",
       "titolo": "Wellington di rana pescatrice",
       "descrizione": "Coda di rana pescatrice avvolta in prosciutto crudo e spinaci, chiusa in pasta sfoglia dorata.",
       "categoria": "secondi",
@@ -22929,6 +23129,7 @@
     },
     {
       "id": "gr-spiedini-di-pollo-satay-alla-thai",
+      "fonte": "gr",
       "titolo": "Spiedini di pollo satay alla thai",
       "descrizione": "Spiedini di pollo in una pasta di cocco, arachidi, citronella e spezie, grigliati e serviti con salsa satay calda.",
       "sezione": "prep",
@@ -23000,6 +23201,7 @@
     },
     {
       "id": "gr-stinchi-d-agnello-brasati-al-vino-rosso",
+      "fonte": "gr",
       "titolo": "Stinchi d'agnello brasati al vino rosso",
       "descrizione": "Stinchi d'agnello brasati lentamente nel vino rosso, in una salsa lucida mantecata al burro e gremolata al limone.",
       "sezione": "prep",
@@ -23069,6 +23271,7 @@
     },
     {
       "id": "gr-roast-beef-la-guida",
+      "fonte": "gr",
       "titolo": "Roast beef: la guida",
       "descrizione": "Arrosto di manzo salato in anticipo, rosolato e arrostito al punto giusto con la crosta di rafano e pepe, con gravy al vino rosso.",
       "sezione": "prep",
@@ -23133,6 +23336,7 @@
     },
     {
       "id": "gr-braciola-di-maiale-alla-crying-tiger",
+      "fonte": "gr",
       "titolo": "Braciola di maiale alla crying tiger",
       "descrizione": "Braciola di spalla di maiale rosolata e servita con la salsa thai nam jim jaew al riso tostato, lime e peperoncino.",
       "categoria": "secondi",
@@ -23186,6 +23390,7 @@
     },
     {
       "id": "gr-branzino-alle-spezie-indiane-con-lenticchie-al-latte-di-cocc",
+      "fonte": "gr",
       "titolo": "Branzino alle spezie indiane con lenticchie al latte di cocco",
       "descrizione": "Filetti di branzino marinati in spezie e scottati, su lenticchie brasate in latte di cocco con pomodoro, cumino e garam masala.",
       "sezione": "prep",
@@ -23257,6 +23462,7 @@
     },
     {
       "id": "gr-linguine-all-aragosta",
+      "fonte": "gr",
       "titolo": "Linguine all'aragosta",
       "descrizione": "Linguine finite di cuocere in un fondo di carapaci d'aragosta e pomodoro, con la polpa tagliata a pezzi alla fine.",
       "categoria": "primi",
@@ -23307,6 +23513,7 @@
     },
     {
       "id": "gr-polpette-tenere-e-succose-al-sugo",
+      "fonte": "gr",
       "titolo": "Polpette tenere e succose al sugo",
       "descrizione": "Polpette di manzo con pane ammollato nel latte, rosolate e cotte in un sugo di pomodoro, servite con spaghetti.",
       "sezione": "prep",
@@ -23386,6 +23593,7 @@
     },
     {
       "id": "gr-curry-di-capra-caraibico",
+      "fonte": "gr",
       "titolo": "Curry di capra caraibico",
       "descrizione": "Capra marinata in una pasta di erbe verdi e curry giamaicano, cotta piano con pimento, scotch bonnet e timo.",
       "sezione": "prep",
@@ -23454,6 +23662,7 @@
     },
     {
       "id": "gr-uova-alla-turca-clbr",
+      "fonte": "gr",
       "titolo": "Uova alla turca (çılbır)",
       "descrizione": "Uova in camicia su yogurt greco all'aglio e aneto, con burro al peperoncino Aleppo e pane croccante.",
       "categoria": "piatti-unici",
@@ -23501,6 +23710,7 @@
     },
     {
       "id": "gr-riso-con-anatra-alla-singaporiana",
+      "fonte": "gr",
       "titolo": "Riso con anatra alla singaporiana",
       "descrizione": "Anatra intera brasata in salsa di soia e spezie, servita con riso cotto nel brodo, salsa allo zenzero e peperoncino e cetriolo.",
       "sezione": "prep",
@@ -23580,6 +23790,7 @@
     },
     {
       "id": "gr-stinco-di-manzo-brasato",
+      "fonte": "gr",
       "titolo": "Stinco di manzo brasato",
       "descrizione": "Stinco di manzo con l'osso brasato nel vino rosso, con salsa ridotta e mantecata al burro, da servire con purè.",
       "sezione": "prep",
@@ -23636,6 +23847,7 @@
     },
     {
       "id": "gr-salsicce-e-pure-con-gravy-di-vino-rosso-pancetta-e-cipolle",
+      "fonte": "gr",
       "titolo": "Salsicce e purè con gravy di vino rosso, pancetta e cipolle",
       "descrizione": "Salsicce di qualità in una gravy di vino rosso, pancetta e cipolle, servite su purè alla noce moscata.",
       "sezione": "prep",
@@ -23696,6 +23908,7 @@
     },
     {
       "id": "gr-curry-di-pollo-con-40-spicchi-d-aglio-e-spinaci",
+      "fonte": "gr",
       "titolo": "Curry di pollo con 40 spicchi d'aglio e spinaci",
       "descrizione": "Curry di pollo con aglio dolce e fritto, spinaci e spezie: un incrocio tra il saag punjabi e il pollo provenzale all'aglio.",
       "sezione": "prep",
@@ -23757,6 +23970,7 @@
     },
     {
       "id": "gr-croque-madame",
+      "fonte": "gr",
       "titolo": "Croque madame",
       "descrizione": "Toast con prosciutto e Gruyère, coperto di besciamella alla senape e gratinato, con un uovo fritto sopra.",
       "categoria": "piatti-unici",
@@ -23808,6 +24022,7 @@
     },
     {
       "id": "gr-torta-di-pollo-e-porri",
+      "fonte": "gr",
       "titolo": "Torta di pollo e porri",
       "descrizione": "Cosce di pollo arrostite sfilacciate in una salsa di porri, funghi, pancetta, vino bianco e senape, dentro un guscio di pasta frolla salata.",
       "sezione": "prep",
@@ -23875,6 +24090,7 @@
     },
     {
       "id": "gr-porchetta-cotta-lentamente",
+      "fonte": "gr",
       "titolo": "Porchetta cotta lentamente",
       "descrizione": "Pancia di maiale farcita con spezie tostate, erbe, acciughe e limone, arrotolata e cotta a lungo per una carne che si sfalda e una cotenna croccante.",
       "sezione": "prep",
@@ -23940,6 +24156,7 @@
     },
     {
       "id": "gr-linguine-ai-gamberi-con-fumetto-dei-gusci",
+      "fonte": "gr",
       "titolo": "Linguine ai gamberi con fumetto dei gusci",
       "descrizione": "Linguine terminate in un fondo di gusci di gambero, pomodorini e peperoncino, con i gamberi aggiunti alla fine.",
       "categoria": "primi",
@@ -23993,6 +24210,7 @@
     },
     {
       "id": "gr-pollo-achari",
+      "fonte": "gr",
       "titolo": "Pollo achari",
       "descrizione": "Pollo con l'osso in un curry aromatico con tante spezie in semi, olio di senape e yogurt, finito con un goccio di aceto.",
       "sezione": "prep",
@@ -24057,6 +24275,7 @@
     },
     {
       "id": "gr-ragu-d-anatra-alle-cinque-spezie-con-pappardelle",
+      "fonte": "gr",
       "titolo": "Ragù d'anatra alle cinque spezie con pappardelle",
       "descrizione": "Cosce d'anatra brasate in un sugo di pomodoro e cinque spezie cinesi, sfilacciate e condite con pappardelle e pecorino.",
       "sezione": "prep",
@@ -24120,6 +24339,7 @@
     },
     {
       "id": "gr-pollo-al-burro-butter-chicken",
+      "fonte": "gr",
       "titolo": "Pollo al burro (butter chicken)",
       "descrizione": "Pollo marinato nello yogurt e grigliato, cotto in una salsa makhani al burro, pomodoro e spezie, mantecata con yogurt e burro.",
       "sezione": "prep",
@@ -24194,6 +24414,7 @@
     },
     {
       "id": "gr-cotoletta-di-pollo-croccante-con-spinaci-alla-panna",
+      "fonte": "gr",
       "titolo": "Cotoletta di pollo croccante con spinaci alla panna",
       "descrizione": "Petti di pollo appiattiti, impanati con parmigiano e fritti, serviti con spinaci cremosi, patatine e limone.",
       "categoria": "secondi",
@@ -24248,6 +24469,7 @@
     },
     {
       "id": "gr-pasta-alla-zozzona",
+      "fonte": "gr",
       "titolo": "Pasta alla zozzona",
       "descrizione": "Rigatoni con guanciale, salsiccia e pomodoro, mantecati con tuorli e pecorino romano, come una carbonara più ricca.",
       "categoria": "primi",
@@ -24297,6 +24519,7 @@
     },
     {
       "id": "gr-curry-di-manzo-del-nord-dell-india-con-naan-all-aglio-e-burr",
+      "fonte": "gr",
       "titolo": "Curry di manzo del nord dell'India con naan all'aglio e burro",
       "descrizione": "Manzo brasato a lungo in un masala ricco di pomodoro e yogurt, con naan fatti in casa spennellati di burro all'aglio.",
       "sezione": "prep",
@@ -24380,6 +24603,7 @@
     },
     {
       "id": "gr-panino-con-bistecca-cipolle-alla-guinness-e-maionese-all-agl",
+      "fonte": "gr",
       "titolo": "Panino con bistecca, cipolle alla Guinness e maionese all'aglio arrosto",
       "descrizione": "Bistecca scottata in ciabatta con cipolle brasate nella Guinness, maionese all'aglio arrosto e foglie piccanti.",
       "categoria": "piatti-unici",
@@ -24438,6 +24662,7 @@
     },
     {
       "id": "gr-toad-in-the-hole-salsicce-nella-pastella-al-forno",
+      "fonte": "gr",
       "titolo": "Toad in the hole (salsicce nella pastella al forno)",
       "descrizione": "Salsicce rosolate e cotte in una pastella gonfia e dorata, con gravy al vino rosso, pancetta e senape.",
       "categoria": "piatti-unici",
@@ -24482,6 +24707,7 @@
     },
     {
       "id": "gr-linguine-al-granchio",
+      "fonte": "gr",
       "titolo": "Linguine al granchio",
       "descrizione": "Linguine con polpa di granchio bianca e bruna, pomodorini, burro, limone e salicornia.",
       "categoria": "primi",

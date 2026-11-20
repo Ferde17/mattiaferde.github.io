@@ -447,11 +447,19 @@ main:focus { outline: none; }
   grid-template-columns: 30% minmax(0, 1fr);
   column-gap: 5.5%;
   grid-template-areas:
-    ".    head"
+    "foto head"
     "ingr steps"
     "prep prep";
 }
 .r-head { grid-area: head; padding-bottom: clamp(24px, 3.2vw, 34px); }
+/* Foto del piatto: riquadro fisso 4:3 in alto a sinistra, sopra agli ingredienti */
+.r-foto { grid-area: foto; margin: 0; align-self: start; }
+.r-foto img {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: 3px; background: var(--chip);
+  box-shadow: 0 0 0 1px var(--line);
+}
 .r-ingr { grid-area: ingr; }
 .r-steps { grid-area: steps; }
 
@@ -597,8 +605,9 @@ main:focus { outline: none; }
   .sheet { border-radius: 0; box-shadow: none; padding: 24px var(--gutter) 40px; background: var(--sheet); }
   .r-grid {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "head" "ingr" "steps" "prep";
+    grid-template-areas: "head" "foto" "ingr" "steps" "prep";
   }
+  .r-foto { margin: 0 0 26px; }
   .prep-cols { grid-template-columns: minmax(0, 1fr); gap: 22px; }
   .sec-tab { flex: 1; justify-content: center; }
   .r-ingr { padding-bottom: 30px; margin-bottom: 26px; position: relative; }
