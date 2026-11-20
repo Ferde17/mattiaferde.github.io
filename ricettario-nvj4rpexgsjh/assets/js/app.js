@@ -384,7 +384,7 @@
               </fieldset>
               ${chipGroup('difficolta', 'Difficoltà', db.difficolta, true)}
               ${chipGroup('costo', 'Costo', usedOptions(db.costo, 'costo'), false, true)}
-              ${chipGroup('fonti', 'Fonte', usedOptions(db.fonti, 'fonti'))}
+              ${chipGroup('fonti', 'Fonte', usedOptions(db.fonti, 'fonti').map((o) => ({ ...o, nome: o.sigla || o.nome })))}
               ${isPrep ? `
               <fieldset class="fgroup">
                 <legend class="flabel">Si congela</legend>
@@ -559,7 +559,7 @@
     filters.categorie.forEach((v) => add(catName(v), 'rm-categorie', v));
     filters.difficolta.forEach((v) => add(diff(v)?.nome ?? v, 'rm-difficolta', v));
     filters.costo.forEach((v) => add(`Costo ${(cost(v)?.nome ?? v).toLocaleLowerCase('it')}`, 'rm-costo', v));
-    filters.fonti.forEach((v) => add(fonte(v)?.nome ?? v, 'rm-fonti', v));
+    filters.fonti.forEach((v) => add(fonte(v)?.sigla || fonte(v)?.nome || v, 'rm-fonti', v));
     FACET_KEYS.forEach((k) => filters[k].forEach((v) => add(byId(db[k], v)?.nome ?? v, `rm-${k}`, v)));
     if (timeActive(filters)) add($('#tval').textContent, 'rm-tempo', '');
     if (filters.anticipo !== 'tutte') add(filters.anticipo === 'si' ? 'In anticipo' : 'Non in anticipo', 'rm-anticipo', '');
